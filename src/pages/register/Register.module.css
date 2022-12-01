@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnGroup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.helpLink {
+  font-size: 0.875rem;
+  color: #e7e7e7;
+  margin: 1rem 0;
+}
+.helpLink:last-child {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=Register.module.css.map */

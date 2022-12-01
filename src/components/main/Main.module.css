@@ -1,0 +1,14 @@
+.main,
+.mainFooter {
+  padding: 1rem;
+}
+
+.main {
+  height: calc(100vh - 68px);
+}
+
+.mainFooter {
+  height: calc(100vh - 132px);
+}
+
+/*# sourceMappingURL=Main.module.css.map */

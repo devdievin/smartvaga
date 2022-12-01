@@ -1,0 +1,26 @@
+@import "../../styles/colors";
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    label {
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+    }
+
+    input {
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+        color: $darkCharcoal;
+        
+        &:focus {
+            outline: 2px solid $darkCharcoal;
+            color: $softBlack;
+        }
+    }
+}

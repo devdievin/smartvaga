@@ -1,0 +1,28 @@
+.btn {
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background-color: #f26419;
+  color: #f7f7f7;
+}
+
+.btnSecondary {
+  background-color: #f6ae2d;
+  color: #383838;
+}
+
+.btnLarge {
+  padding: 0.75rem 1.5rem;
+}
+
+.btnSmall {
+  padding: 0.5rem 0.625rem;
+}
+
+/*# sourceMappingURL=Button.module.css.map */

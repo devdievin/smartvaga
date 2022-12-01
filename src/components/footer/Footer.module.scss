@@ -1,0 +1,16 @@
+@import "../../styles/colors";
+@import "../../styles/sizes";
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $charcoal;
+    color: $softWhite;
+    height: $footerHeight;
+    font-size: 0.875rem;
+
+    span {
+        font-weight: 400;
+    }
+}

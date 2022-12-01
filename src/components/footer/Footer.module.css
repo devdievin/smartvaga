@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2f4858;
+  color: #f7f7f7;
+  height: 64px;
+  font-size: 0.875rem;
+}
+.footer span {
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=Footer.module.css.map */

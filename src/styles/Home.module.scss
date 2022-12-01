@@ -1,0 +1,35 @@
+@import "./colors";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 1.5rem;
+        color: $charcoal;
+        text-decoration: underline;
+        margin-top: 0.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        color: #33658a;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.imageContainer {
+    max-width: 400px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin-bottom: 1rem;
+
+    .image {
+        position: relative !important;
+    }
+}

@@ -1,0 +1,23 @@
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.inputGroup label {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+.inputGroup input {
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  color: #233642;
+}
+.inputGroup input:focus {
+  outline: 2px solid #233642;
+  color: #383838;
+}
+
+/*# sourceMappingURL=Input.module.css.map */

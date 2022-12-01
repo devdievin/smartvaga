@@ -1,0 +1,25 @@
+@import "../../styles/colors";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
+.btnGroup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.helpLink {
+    font-size: 0.875rem;
+    color: $lightGray;
+    margin: 1rem 0;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

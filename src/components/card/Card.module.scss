@@ -1,0 +1,28 @@
+@import "../../styles/colors";
+
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    border: none;
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+}
+
+.cardPrimary {
+    background-color: $charcoal;
+    color: $softWhite;
+}
+
+.cardDefault {
+    background-color: $softWhite;
+    color: $softBlack;
+}
+
+.cardHeader {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}

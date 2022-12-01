@@ -1,0 +1,28 @@
+@import "../../styles/colors";
+
+.btn {
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btnPrimary {
+    background-color: $orangeRed;
+    color: $softWhite;
+}
+
+.btnSecondary {
+    background-color: $honeyYellow;
+    color: $softBlack;
+}
+
+.btnLarge {
+    padding: 0.75rem 1.5rem;
+}
+
+.btnSmall {
+    padding: 0.5rem 0.625rem;
+}
