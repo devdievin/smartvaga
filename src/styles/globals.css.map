@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["globals.scss","partials/_colors.scss"],"names":[],"mappings":"AAGA;AAAA;EAEI;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;AAAA;AAAA;EAGI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAEJ;EACI;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI,kBC1CQ;ED2CR,OC/CQ;;;ADkDZ;EACI,kBChDU;EDiDV,OCnDQ;;;ADsDZ;EACI;;;AAGJ;EACI","file":"globals.css"}

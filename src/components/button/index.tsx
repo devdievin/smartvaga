@@ -1,20 +1,15 @@
-import styles from './Button.module.css';
+import { MouseEventHandler } from 'react';
 
 type ButtonProps = {
     text: string,
     type?: 'submit' | 'reset' | 'button',
-    size: string,
-    color: string
+    style: string,
+    callback?: MouseEventHandler<HTMLButtonElement>
 }
 
-const ButtonComponent = ({ text, type, size, color }: ButtonProps) => {
-
-    const btnColor = (color === 'primary') ? styles.btnPrimary : styles.btnSecondary;
-
-    const btnSize = (size === 'lg') ? styles.btnLarge : styles.btnSmall;
-
+const ButtonComponent = ({ text, type, style, callback }: ButtonProps) => {
     return (
-        <button type={type} className={`${styles.btn} ${btnSize} ${btnColor}`}>
+        <button type={type} className={style} onClick={callback}>
             {text}
         </button>
     );

@@ -1,10 +1,10 @@
-@import "../../styles/colors";
+@import "../../styles/partials/colors";
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: inherit;
+    height: 100%;
 }
 
 .btnGroup {
