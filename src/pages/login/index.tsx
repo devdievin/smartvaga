@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 // import { useForm } from 'react-hook-form';
 
 import ButtonComponent from "../../components/button";
@@ -16,35 +15,13 @@ import styles from './Login.module.css';
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Login() {
-    const router = useRouter();
     const { signIn } = useContext(AuthContext);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         const { email, password } = event.target;
 
-        // console.log(email, password);
-
         await signIn({ email: email.value, password: password.value });
-
-        // const response = await fetch(`${process.env.API_URL}/login`, {
-        //     body: JSON.stringify({
-        //         email: email.value,
-        //         password: password.value
-        //     }),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     method: 'POST'
-        // });
-
-        // const result = await response.json();
-
-        // console.log(result);
-
-        // if (response.status === 200) {
-        //     router.push("/dashboard");
-        // }
     }
 
     return (
@@ -67,7 +44,7 @@ export default function Login() {
                                 </Link>
                             </div>
                             <div className={styles.btnGroup}>
-                                <ButtonComponent text="Entrar" type="submit" style="btn btn-primary btn-large" />
+                                <ButtonComponent text="Entrar" type="submit" style="btn btn-primary btn-large btn-full" />
                             </div>
                             <div className={`${styles.helpLink} align-center`}>
                                 <Link href={"/"}>

@@ -1,0 +1,11 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.menu {
+    height: $menuMobileHeight;
+    background-color: $charcoal;
+    color: $softWhite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

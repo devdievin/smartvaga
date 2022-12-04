@@ -1,0 +1,10 @@
+.menu {
+  height: 64px;
+  background-color: #2f4858;
+  color: #f7f7f7;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*# sourceMappingURL=Menu.module.css.map */

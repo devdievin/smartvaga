@@ -7,6 +7,7 @@ import HeaderComponent from "../../components/header";
 import InputComponent from "../../components/input";
 import LinkComponent from "../../components/link";
 import MainComponent from "../../components/main";
+import { api } from "../../services/api";
 
 import styles from './Register.module.css';
 
@@ -14,29 +15,28 @@ export default function Register() {
     const router = useRouter();
 
     const handleSubmit = async (event: any) => {
-        event.preventDefault();
-        const { name, email, password, cpassword } = event.target;
+        try {
+            event.preventDefault();
+            const { name, email, password, cpassword } = event.target;
 
-        if (!checkPasswords(password.value, cpassword.value)) return alert("Senhas não são iguais");
+            if (!checkPasswords(password.value, cpassword.value)) return alert("As senhas não são iguais");
 
-        const response = await fetch(`${process.env.API_URL}/register`, {
-            body: JSON.stringify({
+            const response = await api.post('/register', {
                 name: name.value,
                 email: email.value,
                 password: password.value
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST'
-        });
+            });
 
-        const result = await response.json();
-
-        console.log(result);
-
-        if (response.status === 200) {
-            router.push('/login');
+            if (response.status === 201) {
+                router.push('/login');
+            }
+        } catch (err) {
+            if (err.response) {
+                alert(err.response.data.message);
+                console.error("Response Error:", err.response);
+            } else {
+                console.error("Error:", err.message);
+            }
         }
     }
 
@@ -61,7 +61,7 @@ export default function Register() {
                             <InputComponent label="Senha:" name="password" type={"password"} required={true} />
                             <InputComponent label="Confirma senha:" name="cpassword" type={"password"} required={true} />
                             <div className={styles.btnGroup}>
-                                <ButtonComponent text="Criar" type="submit" style="btn btn-secondary btn-large"/>
+                                <ButtonComponent text="Criar" type="submit" style="btn btn-secondary btn-large btn-full" />
                             </div>
                         </form>
                     </CardComponent>

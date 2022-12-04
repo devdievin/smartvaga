@@ -1,19 +1,23 @@
 import { GetServerSideProps } from "next";
 import { useContext, useEffect } from "react";
-import FooterComponent from "../../components/footer";
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import { AuthContext } from "../../contexts/AuthContext";
 import { parseCookies } from 'nookies';
 import { getAPIClient } from "../../services/axios";
+import MenuComponent from "../../components/menu";
 
 const Dashboard = () => {
-    const { user } = useContext(AuthContext);
+    const { user, signOut } = useContext(AuthContext);
 
     useEffect(() => {
         // api.get('/profile');
     }, [])
+
+    const logout = async (event: any) => {
+        await signOut();
+    }
 
     return (
         <>
@@ -24,10 +28,13 @@ const Dashboard = () => {
             </HeaderComponent>
 
             <MainComponent hideFooter={false}>
-                <h1>Dashboard...</h1>
+                <div>
+                    <h1>Dashboard...</h1>
+                    <button onClick={logout}>Logout</button>
+                </div>
             </MainComponent>
 
-            <FooterComponent />
+            <MenuComponent />
         </>
     );
 }

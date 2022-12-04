@@ -13,7 +13,7 @@ export default function Home() {
       <HeadComponent title='Smartvaga' description='Encontre e reserve a vaga para seu carro rapidamente.' />
 
       <HeaderComponent>
-        <LinkComponent text='Sign Up' style='btn btn-secondary btn-small' url={"/register"} />
+        <LinkComponent text='Login' style='btn btn-primary btn-small' url={"/login"} />
       </HeaderComponent>
 
       <MainComponent hideFooter={true}>
@@ -28,7 +28,7 @@ export default function Home() {
               className={styles.image}
             />
           </div>
-          <LinkComponent text='COMEÇAR' style='btn btn-primary btn-large' url={"/register"} />
+          <LinkComponent text='COMEÇAR' style='btn btn-secondary btn-large' url={"/register"} />
         </div>
       </MainComponent>
 
