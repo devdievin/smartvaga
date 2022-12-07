@@ -8,6 +8,14 @@
     margin-bottom: 1rem;
 }
 
+.dateInput {
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #767676;
+    border-radius: 0.25rem;
+}
+
 .vacanciesGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;

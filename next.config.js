@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    API_URL: "http://localhost:4000"
+    API_URL: "http://localhost:4000",
+    // NEXT_PUBLIC_PORTFOLIO_URL: "https://dievanodantas.netlify.app"
   }
 }
 

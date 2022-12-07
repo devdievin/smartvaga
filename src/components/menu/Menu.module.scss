@@ -9,8 +9,24 @@
     background-color: $darkCharcoal;
     color: $softWhite;
     padding: 1.25rem;
+}
+
+.headerMenu {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1.5rem;
+    
+    .title{
+        color: $honeyYellow;
+        font-size: 1.125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+
+.componentWrapper {
+    position: relative;
+    height: calc(100% - 46px);
 }
 
 .menu {

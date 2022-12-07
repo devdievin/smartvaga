@@ -6,8 +6,23 @@
   background-color: #233642;
   color: #f7f7f7;
   padding: 1.25rem;
+}
+
+.headerMenu {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.headerMenu .title {
+  color: #f6ae2d;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.componentWrapper {
+  position: relative;
+  height: calc(100% - 46px);
 }
 
 .menu {
