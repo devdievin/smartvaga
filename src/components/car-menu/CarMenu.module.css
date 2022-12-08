@@ -1,0 +1,24 @@
+.container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.card {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.125rem;
+  border-bottom: 1px solid #e7e7e7;
+}
+.card div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card div:not(.cardTitle) {
+  padding-left: 0.875rem;
+}
+.card .cardTitle {
+  font-size: 0.938rem;
+}
+
+/*# sourceMappingURL=CarMenu.module.css.map */

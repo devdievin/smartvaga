@@ -1,7 +1,9 @@
-
 import Image from 'next/image';
 import { useState } from 'react';
-import { HelpComponent } from '../help';
+import { CarMenuComponent } from '../car-menu';
+import { ContentMenuComponent } from '../content-menu';
+import { HelpComponent } from '../help-menu';
+import { ReserveMenuComponent } from '../reserve-menu';
 import styles from './Menu.module.css';
 
 type MenuProps = {
@@ -23,9 +25,9 @@ const MenuComponent = () => {
     const menuSwitch = (name: string) => {
         switch (name) {
             case MENUS.reserves:
-                return <div>reservas aqui...</div>;
+                return <ReserveMenuComponent />;
             case MENUS.cars:
-                return <div>carros aqui...</div>;
+                return <CarMenuComponent />;
             case MENUS.help:
                 return <HelpComponent />;
         }
@@ -38,18 +40,20 @@ const MenuComponent = () => {
     return (
         <div>
             {(menuOpenned) &&
-                <div className={styles.contentMenu}>
-                    <div className={styles.headerMenu}>
-                        <div className={styles.title}>{menu.title}</div>
-                        <div onClick={closeMenu}>
-                            <Image src={"/icons/icon-close.svg"} alt={"Botão fechar"} width={16} height={16} />
+                <ContentMenuComponent>
+                    <div className='h-100'>
+                        <div className={styles.headerMenu}>
+                            <div className={styles.title}>{menu.title}</div>
+                            <div onClick={closeMenu}>
+                                <Image src={"/icons/icon-close.svg"} alt={"Botão fechar"} width={16} height={16} />
+                            </div>
+                        </div>
+
+                        <div className={styles.componentWrapper}>
+                            {menuSwitch(menu.name)}
                         </div>
                     </div>
-
-                    <div className={styles.componentWrapper}>
-                        {menuSwitch(menu.name)}
-                    </div>
-                </div>
+                </ContentMenuComponent>
             }
             <div className={styles.menu}>
                 <div className={styles.iconLink} onClick={() => showMenu(MENUS.reserves, "Minhas Reservas")}>

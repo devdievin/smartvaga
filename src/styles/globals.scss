@@ -19,6 +19,13 @@ a {
     box-sizing: border-box;
 }
 
+.w-100 {
+    width: 100%;
+}
+.h-100 {
+    height: 100%;
+}
+
 .align-start,
 .align-center,
 .align-end {
@@ -70,4 +77,19 @@ a {
 
 .btn-full {
     width: 100%;
+}
+
+.input-default {
+    width: 100%;
+    font-size: 1rem;
+    color: $darkCharcoal;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+
+    &:focus {
+        outline: 2px solid $darkCharcoal;
+        color: $softBlack;
+    }
 }

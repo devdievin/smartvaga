@@ -16,6 +16,14 @@ a {
   box-sizing: border-box;
 }
 
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
 .align-start,
 .align-center,
 .align-end {
@@ -68,6 +76,20 @@ a {
 
 .btn-full {
   width: 100%;
+}
+
+.input-default {
+  width: 100%;
+  font-size: 1rem;
+  color: #233642;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+.input-default:focus {
+  outline: 2px solid #233642;
+  color: #383838;
 }
 
 /*# sourceMappingURL=globals.css.map */

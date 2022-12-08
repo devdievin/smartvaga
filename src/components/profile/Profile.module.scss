@@ -1,0 +1,72 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.profileMenu {
+    .profile {
+        position: relative;
+        width: 2.25rem; //36px
+        height: 2.25rem; //36px
+        border-radius: 50%;
+        background-image: url("/icons/profilecircle.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit: cover;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .menu {
+        color: $softWhite;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -0.5rem; // 8px
+            right: 1.625rem; // 24px
+            width: 1rem; //20px
+            height: 1rem;
+            background: $darkCharcoal;
+            transform: rotate(45deg);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h3 {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.menuHidden {
+    position: absolute;
+    top: 5rem; // 80px
+    right: 0;
+    padding: 0.625rem; //10px
+    background: $darkCharcoal;
+    font-size: 0.875rem; //14px
+    width: 10rem; //  160px
+    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000;
+}
+.menuActive {
+    position: absolute;
+    right: 0;
+    padding: 0.625rem; //10px
+    background: $darkCharcoal;
+    font-size: 0.875rem; //14px
+    width: 10rem; //  160px
+    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    transition: 0.5s;
+    top: $headerHeight;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+}

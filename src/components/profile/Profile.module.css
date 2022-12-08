@@ -1,0 +1,66 @@
+.profileMenu .profile {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-image: url("/icons/profilecircle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  overflow: hidden;
+  cursor: pointer;
+}
+.profileMenu .menu {
+  color: #f7f7f7;
+}
+.profileMenu .menu::before {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  right: 1.625rem;
+  width: 1rem;
+  height: 1rem;
+  background: #233642;
+  transform: rotate(45deg);
+}
+.profileMenu .menu ul {
+  list-style: none;
+}
+.profileMenu .menu h3 {
+  margin-bottom: 1rem;
+}
+
+.menuHidden {
+  position: absolute;
+  top: 5rem;
+  right: 0;
+  padding: 0.625rem;
+  background: #233642;
+  font-size: 0.875rem;
+  width: 10rem;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000;
+}
+
+.menuActive {
+  position: absolute;
+  right: 0;
+  padding: 0.625rem;
+  background: #233642;
+  font-size: 0.875rem;
+  width: 10rem;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  transition: 0.5s;
+  top: 68px;
+  visibility: visible;
+  opacity: 1;
+  z-index: 1000;
+}
+
+/*# sourceMappingURL=Profile.module.css.map */

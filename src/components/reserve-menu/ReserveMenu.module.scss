@@ -1,0 +1,29 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.card {
+    font-size: 0.938rem; //15px
+    line-height: 1.5rem;
+    padding-bottom: 1.125rem; //18px
+    border-bottom: 1px solid $lightGray;
+
+    div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    div:not(.reserveId) {
+        padding-left: 0.875rem;
+    }
+    
+    .reserveId {
+        font-size: 0.875rem; //14px
+    }
+}
+
