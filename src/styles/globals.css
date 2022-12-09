@@ -92,4 +92,18 @@ a {
   color: #383838;
 }
 
+.select-default {
+  width: 100%;
+  font-size: 1rem;
+  color: #233642;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.25rem;
+  margin: 0.5rem 0;
+}
+.select-default:focus {
+  outline: 2px solid #233642;
+  color: #383838;
+}
+
 /*# sourceMappingURL=globals.css.map */

@@ -93,3 +93,21 @@ a {
         color: $softBlack;
     }
 }
+
+.select-default {
+    width: 100%;
+    font-size: 1rem;
+    color: $darkCharcoal;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.25rem;
+    margin: 0.5rem 0;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    // appearance: none;
+
+    &:focus {
+        outline: 2px solid $darkCharcoal;
+        color: $softBlack;
+    }
+}

@@ -1,3 +1,5 @@
+import { formatTimeZero } from "./format";
+
 export const timeRange = [
     "08:00",
     "09:00",
@@ -9,4 +11,11 @@ export const timeRange = [
     "15:00",
     "16:00",
     "17:00"
-]
+];
+
+export const setExitTime = (entry_time: string, reserve_hours: number) => {
+    const time = entry_time.split(":");
+    const entry_hour = parseInt(time[0]);
+    const exit_time = `${entry_hour + reserve_hours}:00`;
+    return formatTimeZero(exit_time);
+}

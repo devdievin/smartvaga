@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
+import Router from "next/router";
 import { parseCookies } from 'nookies';
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAPIClient } from "../../services/axios";
@@ -11,21 +12,13 @@ import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
-
-import styles from './Dashboard.module.css';
 import { TimePickerComponent } from "../../components/time-picker";
 import { timeRange } from "../../utils/time";
 import { ProfileComponent } from "../../components/profile";
-import Router from "next/router";
 
-// const nVacancies = [
-//     { num: 1, status: true, reserve: { id: "2bh123sassd", date: "2022-12-06", entry_time: "15:00:00", car: { id: "afe1cea6-ec42-474a-ba40-a665b42c2caf" } } },
-//     { num: 2, status: false, reserve: null },
-//     { num: 3, status: true, reserve: { id: "ubwbh27382v", date: "2022-12-08", entry_time: "13:00:00", car: { id: "asdajsheb-jas322e-3nj211" } } },
-//     { num: 4, status: false, reserve: null },
-//     { num: 5, status: false, reserve: null },
-//     { num: 6, status: true, reserve: { id: "ywbsa97382o", date: "2022-12-07", entry_time: "10:00:00", car: { id: "afe1cea6-ec42-82nd-72yb-a665b42c2caf" } } },
-// ];
+// import { tVacancies } from "../../utils/reserves-test";
+
+import styles from './Dashboard.module.css';
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
@@ -41,7 +34,7 @@ export default function Dashboard() {
             .catch(err => console.error(err));
     }, [])
 
-    const change = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectDate = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const date = e.target.value;
         setReserveDate(date);
     }
@@ -50,24 +43,50 @@ export default function Dashboard() {
         setReserveTime(e.target.value);
     }
 
-    const findMyCar = (id: string) => {
+    const searchReserves = (reserveDate: string, entry_time: string) => {
+        let reserve;
+        let carIcon, carIconFocus;
+
+        return vacancies.map((vacancy, index) => {
+            let reserves: any[] = vacancy.reserves;
+
+            reserve = reserves.find(reserve => reserve.date === reserveDate && reserve.entry_time === `${entry_time}:00`);
+
+            { carIcon = (index % 2 === 1) ? "/images/car-default-right.svg" : "/images/car-default-left.svg" }
+            { carIconFocus = (index % 2 === 1) ? "/images/car-focus-right.svg" : "/images/car-focus-left.svg" }
+
+            return <div key={index}>
+                {
+                    (reserve) ?
+                        <>
+                            {/* Renderiza os carros nas vagas */}
+                            {findMyCar(reserve.car.id, carIconFocus, carIcon, vacancy.num)}
+                        </>
+                        :
+                        <span onClick={() => addReserve(vacancy.num)}>
+                            {vacancy.num}
+                        </span>
+                }
+            </div>
+        });
+    }
+
+    const findMyCar = (id: string, myCarIcon: string, carIcon: string, vacancyNum: number) => {
         if (id === null || id === undefined) throw new Error("Car ID in reserve nullable");
 
         const cars = user?.cars;
 
         const result = cars?.find(car => car.id === id);
 
-        return result;
+        if (result) {
+            return <Image src={myCarIcon} alt={"meu carro"} title={`Meu carro`} width={150} height={130} />
+        }
+        return <Image src={carIcon} alt={"carro"} title={`Vaga ${vacancyNum}`} width={150} height={130} />
     }
 
     const addReserve = (num: number) => {
-        console.log("click", num);
-
-        Router.push(`/create/reserve/${num}`);
+        Router.push(`/create/reserve/${num}/${reserveDate}/${reserveTime}`);
     }
-
-    let carIcon;
-    let carIconFocus;
 
     return (
         <>
@@ -80,30 +99,12 @@ export default function Dashboard() {
             <MainComponent hideFooter={false}>
                 <div>
                     <div className={styles.datetimeHeader}>
-                        <input type="date" className={styles.dateInput} value={reserveDate} onChange={change} />
-                        <TimePickerComponent name="hora" data={timeRange} onChange={selectHour} value={reserveTime} />
+                        <input type="date" className={styles.dateInput} value={reserveDate} onChange={selectDate} />
+                        <TimePickerComponent name="hora" data={timeRange} value={reserveTime} onChange={selectHour} />
                     </div>
 
                     <div className={styles.vacanciesGrid}>
-                        {vacancies.map((vacancy, index) => {
-                            { carIcon = (index % 2 === 1) ? "/images/car-default-right.svg" : "/images/car-default-left.svg" }
-                            { carIconFocus = (index % 2 === 1) ? "/images/car-focus-right.svg" : "/images/car-focus-left.svg" }
-                            return <div key={index}>
-                                {(vacancy.reserve !== null && (vacancy.reserve?.date === reserveDate && vacancy.reserve?.entry_time === `${reserveTime}:00`)) ?
-                                    <>
-                                        {(findMyCar(vacancy.reserve?.car.id)) ?
-                                            <Image src={carIconFocus} alt={"car"} title={`Meu carro`} width={150} height={130} />
-                                            :
-                                            <Image src={carIcon} alt={"car"} title={`Vaga ${vacancy.num}`} width={150} height={130} />
-                                        }
-                                    </>
-                                    :
-                                    <span onClick={() => addReserve(vacancy.num)}>
-                                        {vacancy.num}
-                                    </span>
-                                }
-                            </div>;
-                        })}
+                        {searchReserves(reserveDate, reserveTime)}
                     </div>
                 </div>
             </MainComponent>
