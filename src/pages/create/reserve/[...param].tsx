@@ -31,8 +31,9 @@ export default function CreateReserve() {
     }, []);
 
     const onSubmit = async (data: any) => {
+        data.car = JSON.parse(data.car);
         data.vacancy = vacancy;
-        console.log(data);
+        // console.log(data);
         const response = await api.post("/reserve", data);
         console.log(response.data);
     };
@@ -65,7 +66,7 @@ export default function CreateReserve() {
                             <select {...register("car")} className="select-default" id="selectCars">
                                 {user?.cars ?
                                     user?.cars.map((car, index) => {
-                                        return <option value={car} key={index}>{car.brand} {car.name} {car.model}</option>
+                                        return <option value={JSON.stringify(car)} key={index}>{car.brand} {car.name} {car.model}</option>
                                     }) :
                                     <option disabled={true} defaultValue={undefined}>Nenhum veículo cadastrado</option>
                                 }

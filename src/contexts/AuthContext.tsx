@@ -21,7 +21,7 @@ type User = {
 type AuthContextType = {
     isAuthenticated: boolean;
     user: User | null;
-    signIn: (data: SignInData) => Promise<void>;
+    signIn: (data: SignInData) => Promise<boolean| undefined>;
     signOut: () => Promise<void>
 }
 
@@ -59,7 +59,13 @@ export function AuthProvider({ children }: any): JSX.Element {
 
             setUser(user);
 
-            Router.push("/dashboard");
+            console.log(user);  
+
+            if (user.cpf === null || user.birth_date === null) {
+                return Router.push("/complete");
+            }
+
+            return Router.push("/dashboard");
         } catch (err) {
             if (err.response) {
                 // The client was given an error response (5xx, 4xx)

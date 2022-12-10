@@ -6,14 +6,14 @@ import { parseCookies } from 'nookies';
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAPIClient } from "../../services/axios";
 import { api } from "../../services/api";
-import moment from 'moment';
+// import moment from 'moment';
 
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { TimePickerComponent } from "../../components/time-picker";
-import { timeRange } from "../../utils/time";
+import { setTimeRange, timeNow, timeRangeNow, TIME_RANGE, WORKING_DAY } from "../../utils/time";
 import { ProfileComponent } from "../../components/profile";
 
 // import { tVacancies } from "../../utils/reserves-test";
@@ -23,10 +23,12 @@ import styles from './Dashboard.module.css';
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
     const [vacancies, setVacancies] = useState<any[]>([]);
-    const [reserveDate, setReserveDate] = useState(moment().format('YYYY-MM-DD'));
-    const [reserveTime, setReserveTime] = useState("08:00");
+    const [reserveDate, setReserveDate] = useState(WORKING_DAY);
+    const [reserveTime, setReserveTime] = useState(timeRangeNow(TIME_RANGE)[0]);
 
     useEffect(() => {
+        // console.log(timeRangeNow(timeRange));
+
         api.get('/vacancies')
             .then(response => {
                 setVacancies(response.data);
@@ -99,8 +101,8 @@ export default function Dashboard() {
             <MainComponent hideFooter={false}>
                 <div>
                     <div className={styles.datetimeHeader}>
-                        <input type="date" className={styles.dateInput} value={reserveDate} onChange={selectDate} />
-                        <TimePickerComponent name="hora" data={timeRange} value={reserveTime} onChange={selectHour} />
+                        <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
+                        <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
                     </div>
 
                     <div className={styles.vacanciesGrid}>

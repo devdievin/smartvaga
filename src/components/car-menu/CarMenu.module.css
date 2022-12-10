@@ -21,4 +21,10 @@
   font-size: 0.938rem;
 }
 
+.btnAdd {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 /*# sourceMappingURL=CarMenu.module.css.map */
