@@ -28,6 +28,11 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btnAdd:hover {
+  transform: scale(1.05);
 }
 
 /*# sourceMappingURL=CarMenu.module.css.map */

@@ -1,41 +1,46 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
 .container {
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    // display: block;
-    // position: relative;
+    font-size: 0.875rem;
 
-    .checkmark {
+    .checkbox {
+        width: 18px;
+        height: 18px;
+        border-radius: 2px;
         display: flex;
         justify-content: center;
         align-items: center;
-        // position: absolute;
-        // top: 0;
-        // left: 0px;
-        height: 18px;
-        width: 18px;
-        background-color: #eee;
-        border-radius: 2px;
-        z-index: 1;
+        margin-right: 0.25rem;
+        cursor: pointer;
 
-        .checkbox {
-            position: relative;
-            // font-size: 1.125rem;
-            // opacity: 0;
-            // width: 0;
-            // height: 0;
-            z-index: 2;
-            // margin-right: 0.5rem;
-        }
-
-        input:checked ~ .checkmark {
-            background-color: #ff0a54;
+        &:hover {
+            // background-color: #e7e7e7;
         }
     }
 
-    &:hover input ~ .checkmark {
-        background-color: #ccc;
+    .unchecked {
+        background-color: $softWhite;
+    }
+
+    .checked {
+        background-color: dodgerblue;
+    }
+
+    .checkmark {
+        // color: $softWhite;
+        // font-weight: 600;
+        width: 6px;
+        height: 10px;
+        border: solid $softWhite;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
     }
 }

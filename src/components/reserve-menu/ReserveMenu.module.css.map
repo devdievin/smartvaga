@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["ReserveMenu.module.scss"],"names":[],"mappings":"AAGA;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI","file":"ReserveMenu.module.css"}
+{"version":3,"sourceRoot":"","sources":["ReserveMenu.module.scss","../../styles/partials/_colors.scss"],"names":[],"mappings":"AAGA;EACI;EACA;;;AAGJ;EACI;EACA;EAEA;EACA;EACA;EACA;;AAEA;EACI,kBCjBG;;ADoBP;EACI;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI;;;AAIR;EACI;EACA;EACA;EACA;EACA,OCnCU;EDoCV;EACA;EACA","file":"ReserveMenu.module.css"}

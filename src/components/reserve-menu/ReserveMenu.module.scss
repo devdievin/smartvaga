@@ -9,8 +9,15 @@
 .card {
     font-size: 0.938rem; //15px
     line-height: 1.5rem;
+    // padding-top: 1.125rem; //18px
     padding-bottom: 1.125rem; //18px
     border-bottom: 1px solid $lightGray;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $charcoal;
+    }
 
     div {
         white-space: nowrap;
@@ -19,11 +26,21 @@
     }
 
     div:not(.reserveId) {
-        padding-left: 0.875rem;
+        margin-left: 0.875rem;
     }
-    
+
     .reserveId {
         font-size: 0.875rem; //14px
     }
 }
 
+.expiredTag {
+    font-size: 0.875rem;
+    font-weight: 500;
+    width: max-content;
+    border: 2px solid $honeyYellow;
+    color: $honeyYellow;
+    border-radius: 0.125rem;
+    padding: 0.125rem 0.5rem;
+    margin-top: 0.25rem;
+}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import styles from "./Checkbox.module.css";
@@ -5,17 +6,22 @@ import styles from "./Checkbox.module.css";
 type CheckboxProps = {
     name: string;
     label: string;
-    required: boolean;
     children: JSX.Element;
-    register: UseFormRegister<FieldValues>;
+    checked: () => void;
 }
 
-export const CheckboxComponent = ({ name, label, required, children, register }: CheckboxProps) => {
+export const CheckboxComponent = ({ name, label, children, checked }: CheckboxProps) => {
+    const [status, setStatus] = useState(false);
+
+    const handleCheckbox = () => {
+        setStatus(!status);
+    }
+
     return (
         <div className={styles.container}>
-            <span className={styles.checkmark}>
-                <input {...register(name)} type={"checkbox"} required={required} className={styles.checkbox} />
-            </span>
+            <div className={`${styles.checkbox} ${status ? styles.checked : styles.unchecked}`} onClick={() => { handleCheckbox(); checked() }}>
+                <span className={styles.checkmark}></span>
+            </div>
             {children}
         </div>
     );

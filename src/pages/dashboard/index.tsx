@@ -90,7 +90,7 @@ export default function Dashboard() {
     }
 
     const addReserve = (num: number) => {
-        Router.push(`/create/reserve/${num}/${reserveDate}/${reserveTime}`);
+        Router.push(`/reserve/create/${num}/${reserveDate}/${reserveTime}`);
     }
 
     return (

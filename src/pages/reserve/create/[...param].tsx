@@ -1,6 +1,10 @@
+import Image from "next/image";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { parseCookies } from "nookies";
+import { getAPIClient } from "../../../services/axios";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { api } from "../../../services/api";
 import { setExitTime } from "../../../utils/time";
@@ -14,7 +18,6 @@ import { ContentMenuComponent } from "../../../components/content-menu";
 import { ProfileComponent } from "../../../components/profile";
 
 import styles from "./CreateReserve.module.css";
-import Image from "next/image";
 
 export default function CreateReserve() {
     const router = useRouter();
@@ -97,4 +100,24 @@ export default function CreateReserve() {
             <MenuComponent />
         </div>
     );
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    const apiClient = getAPIClient(ctx);
+    const { 'smartvaga.token': token } = parseCookies(ctx);
+
+    if (!token) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
+    }
+
+    await apiClient.get('/profile');
+
+    return {
+        props: {}
+    }
 }

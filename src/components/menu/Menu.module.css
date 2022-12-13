@@ -9,6 +9,13 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+.headerMenu .iconClose {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.headerMenu .iconClose:hover {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
 
 .componentWrapper {
   position: relative;
@@ -18,7 +25,6 @@
 .menu {
   height: 64px;
   background-color: #2f4858;
-  color: #f7f7f7;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,7 +37,11 @@
   cursor: pointer;
 }
 .iconLink:hover {
-  background-color: #f6ae2d;
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
+
+.active {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
 }
 
 /*# sourceMappingURL=Menu.module.css.map */

@@ -1,6 +1,12 @@
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import { parseCookies } from "nookies";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { api } from "../../../services/api";
+import { getAPIClient } from "../../../services/axios";
+
 import ButtonComponent from "../../../components/button";
 import { ContentMenuComponent } from "../../../components/content-menu";
 import HeadComponent from "../../../components/head";
@@ -9,12 +15,10 @@ import InputComponent from "../../../components/input";
 import MainComponent from "../../../components/main";
 import MenuComponent from "../../../components/menu";
 import { ProfileComponent } from "../../../components/profile";
-import { AuthContext } from "../../../contexts/AuthContext";
-import { api } from "../../../services/api";
 
 import styles from "./CarAdd.module.css";
 
-const CarAdd = () => {
+export default function CarAdd() {
     const { user } = useContext(AuthContext);
     const router = useRouter();
     const { register, handleSubmit } = useForm();
@@ -62,4 +66,22 @@ const CarAdd = () => {
     );
 }
 
-export default CarAdd;
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    const apiClient = getAPIClient(ctx);
+    const { 'smartvaga.token': token } = parseCookies(ctx);
+
+    if (!token) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
+    }
+
+    await apiClient.get('/profile');
+
+    return {
+        props: {}
+    }
+}

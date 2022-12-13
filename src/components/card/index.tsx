@@ -1,7 +1,7 @@
 import styles from './Card.module.css';
 
 type CardProps = {
-    title: string,
+    title?: string,
     color: string,
     children: JSX.Element
 }
@@ -12,9 +12,9 @@ const CardComponent = ({ title, color, children }: CardProps) => {
 
     return (
         <div className={`${styles.card} ${cardColor}`}>
-            <div className={styles.cardHeader}>
+            {title && <div className={styles.cardHeader}>
                 <span>{title}</span>
-            </div>
+            </div>}
             {children}
         </div>
     );

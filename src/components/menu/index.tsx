@@ -16,10 +16,24 @@ enum MENUS { reserves = "reserves", cars = "cars", help = "help" };
 const MenuComponent = () => {
     const [menuOpenned, setMenuOpenned] = useState(false);
     const [menu, setMenu] = useState<MenuProps>({ name: MENUS.reserves, title: "Minhas Reservas" });
+    const [reserveStatus, setReserveStatus] = useState(styles.iconLink);
+    const [carStatus, setCarStatus] = useState(styles.iconLink);
+    const [helpStatus, setHelpStatus] = useState(styles.iconLink);
 
     const showMenu = (menuName: string, menuTitle: string) => {
         setMenu({ name: menuName, title: menuTitle });
-        setMenuOpenned(true);
+
+        setIconStatus(menuName);
+
+        if (menuOpenned && (menuName === menu.name)) {
+            setIconStatus("none");
+        }
+
+        if (menuOpenned && menuName !== menu.name) {
+            return setMenuOpenned(true);
+        }
+
+        setMenuOpenned(!menuOpenned);
     }
 
     const menuSwitch = (name: string) => {
@@ -35,6 +49,32 @@ const MenuComponent = () => {
 
     const closeMenu = () => {
         setMenuOpenned(false);
+        setIconStatus("none");
+    }
+
+    const setIconStatus = (menu: string) => {
+        switch (menu) {
+            case MENUS.reserves:
+                setReserveStatus(`${styles.iconLink} ${styles.active}`);
+                setCarStatus(styles.iconLink);
+                setHelpStatus(styles.iconLink);
+                break;
+            case MENUS.cars:
+                setCarStatus(`${styles.iconLink} ${styles.active}`);
+                setReserveStatus(styles.iconLink);
+                setHelpStatus(styles.iconLink);
+                break;
+            case MENUS.help:
+                setHelpStatus(`${styles.iconLink} ${styles.active}`);
+                setReserveStatus(styles.iconLink);
+                setCarStatus(styles.iconLink);
+                break;
+            default:
+                setReserveStatus(styles.iconLink);
+                setCarStatus(styles.iconLink);
+                setHelpStatus(styles.iconLink);
+                break;
+        }
     }
 
     return (
@@ -44,7 +84,7 @@ const MenuComponent = () => {
                     <div className='h-100'>
                         <div className={styles.headerMenu}>
                             <div className={styles.title}>{menu.title}</div>
-                            <div onClick={closeMenu}>
+                            <div onClick={closeMenu} className={styles.iconClose}>
                                 <Image src={"/icons/icon-close.svg"} alt={"Botão fechar"} width={16} height={16} />
                             </div>
                         </div>
@@ -56,13 +96,13 @@ const MenuComponent = () => {
                 </ContentMenuComponent>
             }
             <div className={styles.menu}>
-                <div className={styles.iconLink} onClick={() => showMenu(MENUS.reserves, "Minhas Reservas")}>
+                <div className={reserveStatus} onClick={() => showMenu(MENUS.reserves, "Minhas Reservas")}>
                     <Image src={"/icons/archive.svg"} alt={"reservas"} width={32} height={32} />
                 </div>
-                <div className={styles.iconLink} onClick={() => showMenu(MENUS.cars, "Meus Carros")}>
+                <div className={carStatus} onClick={() => showMenu(MENUS.cars, "Meus Carros")}>
                     <Image src={"/icons/car.svg"} alt={"carros"} width={32} height={32} />
                 </div>
-                <div className={styles.iconLink} onClick={() => showMenu(MENUS.help, "Ajuda")}>
+                <div className={helpStatus} onClick={() => showMenu(MENUS.help, "Ajuda")}>
                     <Image src={"/icons/help.svg"} alt={"ajuda"} width={32} height={32} />
                 </div>
             </div>

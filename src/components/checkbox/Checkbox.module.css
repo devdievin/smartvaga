@@ -4,26 +4,32 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-size: 0.875rem;
 }
-.container .checkmark {
+.container .checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 18px;
-  width: 18px;
-  background-color: #eee;
-  border-radius: 2px;
-  z-index: 1;
+  margin-right: 0.25rem;
+  cursor: pointer;
 }
-.container .checkmark .checkbox {
-  position: relative;
-  z-index: 2;
+.container .unchecked {
+  background-color: #f7f7f7;
 }
-.container .checkmark input:checked ~ .checkmark {
-  background-color: #ff0a54;
+.container .checked {
+  background-color: dodgerblue;
 }
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
+.container .checkmark {
+  width: 6px;
+  height: 10px;
+  border: solid #f7f7f7;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 /*# sourceMappingURL=Checkbox.module.css.map */

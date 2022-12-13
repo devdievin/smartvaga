@@ -8,6 +8,11 @@
   line-height: 1.5rem;
   padding-bottom: 1.125rem;
   border-bottom: 1px solid #e7e7e7;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.card:hover {
+  background-color: #2f4858;
 }
 .card div {
   white-space: nowrap;
@@ -15,10 +20,21 @@
   text-overflow: ellipsis;
 }
 .card div:not(.reserveId) {
-  padding-left: 0.875rem;
+  margin-left: 0.875rem;
 }
 .card .reserveId {
   font-size: 0.875rem;
+}
+
+.expiredTag {
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: max-content;
+  border: 2px solid #f6ae2d;
+  color: #f6ae2d;
+  border-radius: 0.125rem;
+  padding: 0.125rem 0.5rem;
+  margin-top: 0.25rem;
 }
 
 /*# sourceMappingURL=ReserveMenu.module.css.map */

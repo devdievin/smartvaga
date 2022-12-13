@@ -1,7 +1,10 @@
 import Router from "next/router";
+import { GetServerSideProps } from "next";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { parseCookies } from "nookies";
 import { api } from "../../services/api";
+import { getAPIClient } from "../../services/axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import { ContentMenuComponent } from "../../components/content-menu";
@@ -15,7 +18,7 @@ import { ProfileComponent } from "../../components/profile";
 
 import styles from "./Complete.module.css";
 
-const Complete = () => {
+export default function Complete() {
     const { user } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
 
@@ -63,4 +66,22 @@ const Complete = () => {
     );
 }
 
-export default Complete;
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    const apiClient = getAPIClient(ctx);
+    const { 'smartvaga.token': token } = parseCookies(ctx);
+
+    if (!token) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
+    }
+
+    await apiClient.get('/profile');
+
+    return {
+        props: {}
+    }
+}

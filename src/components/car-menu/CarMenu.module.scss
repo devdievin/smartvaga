@@ -34,4 +34,12 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+        // filter: brightness(0) saturate(100%) invert(46%) sepia(77%) saturate(3253%) hue-rotate(354deg) brightness(101%)
+        //     contrast(90%);
+    }
 }

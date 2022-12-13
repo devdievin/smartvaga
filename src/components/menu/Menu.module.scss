@@ -1,16 +1,28 @@
 @import "../../styles/partials/colors";
 @import "../../styles/partials/sizes";
 
+$filterSvgColor: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%)
+    contrast(93%);
+
 .headerMenu {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-    
-    .title{
+
+    .title {
         color: $honeyYellow;
         font-size: 1.125rem;
         font-weight: 600;
         text-transform: uppercase;
+    }
+
+    .iconClose {
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            filter: $filterSvgColor;
+        }
     }
 }
 
@@ -22,7 +34,6 @@
 .menu {
     height: $menuMobileHeight;
     background-color: $charcoal;
-    color: $softWhite;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,6 +46,10 @@
     cursor: pointer;
 
     &:hover {
-        background-color: $honeyYellow;
+        filter: $filterSvgColor;
     }
+}
+
+.active {
+    filter: $filterSvgColor;
 }

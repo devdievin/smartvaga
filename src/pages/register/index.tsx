@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useState } from "react"
 import { useForm } from "react-hook-form";
 import ButtonComponent from "../../components/button";
 import CardComponent from "../../components/card";
@@ -16,16 +17,19 @@ import styles from './Register.module.css';
 export default function Register() {
     const router = useRouter();
     const { register, handleSubmit } = useForm();
+    const [check, setCheck] = useState(false);
 
     const onSubmit = async (data: any) => {
         try {
-            console.log(data);
             const { name, email, password, cpassword } = data;
 
-            console.log(name, email, password, cpassword);
+            // console.log(name, email, password, cpassword);
 
             if (!checkPasswords(password, cpassword)) return alert("As senhas não são iguais");
 
+            if (!check) return alert("É necessário aceitar os termos de uso");
+
+            console.log(data);
             const response = await api.post('/register', {
                 name: name,
                 email: email,
@@ -33,7 +37,7 @@ export default function Register() {
             });
 
             if (response.status === 201) {
-                router.push('/login');
+                router.push('/comecando');
             }
         } catch (err) {
             if (err.response) {
@@ -66,7 +70,7 @@ export default function Register() {
                             <InputComponent register={register} placeholder="Senha" name="password" type={"password"} required={true} />
                             <InputComponent register={register} placeholder="Confirma senha" name="cpassword" type={"password"} required={true} />
 
-                            <CheckboxComponent register={register} name="check" label="Concordo com os Termos de uso" required={true}>
+                            <CheckboxComponent name="check" label="Concordo com os Termos de uso" checked={() => setCheck(!check)}>
                                 <span>Concordo com os Termos de uso</span>
                             </CheckboxComponent>
 
