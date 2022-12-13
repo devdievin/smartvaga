@@ -1,0 +1,44 @@
+@import "../../../styles/partials/colors";
+@import "../../../styles/partials/sizes";
+
+.container {
+    height: 100%;
+
+    h3 {
+        font-size: 1.125rem;
+        line-height: 1.375rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $honeyYellow;
+        margin-bottom: 3rem;
+    }
+
+    .text1 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .selectCar {
+        margin-bottom: 4.5rem;
+    }
+
+    .text2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .btnGroup {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btnCancel {
+        cursor: pointer;
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}

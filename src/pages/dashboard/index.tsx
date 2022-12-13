@@ -65,8 +65,11 @@ export default function Dashboard() {
                             {findMyCar(reserve.car.id, carIconFocus, carIcon, vacancy.num)}
                         </>
                         :
-                        <span onClick={() => addReserve(vacancy.num)}>
-                            {vacancy.num}
+                        <span className={styles.freeVacancy} onClick={() => addReserve(vacancy.num)}>
+                            <span>V-0{vacancy.num}</span>
+                            <span className={styles.btnAdd}>
+                                <Image src={"/icons/icon-add.svg"} alt={"add"} width={36} height={36}/>
+                            </span>
                         </span>
                 }
             </div>
@@ -81,9 +84,9 @@ export default function Dashboard() {
         const result = cars?.find(car => car.id === id);
 
         if (result) {
-            return <Image src={myCarIcon} alt={"meu carro"} title={`Meu carro`} width={150} height={130} />
+            return <Image src={myCarIcon} alt={"meu carro"} title={`Meu carro`} width={140} height={70} />
         }
-        return <Image src={carIcon} alt={"carro"} title={`Vaga ${vacancyNum}`} width={150} height={130} />
+        return <Image src={carIcon} alt={"carro"} title={`Vaga ${vacancyNum}`} width={140} height={70} />
     }
 
     const addReserve = (num: number) => {
@@ -98,7 +101,7 @@ export default function Dashboard() {
                 <ProfileComponent />
             </HeaderComponent>
 
-            <MainComponent hideFooter={false}>
+            <MainComponent hideFooter={false} dark={true}>
                 <div>
                     <div className={styles.datetimeHeader}>
                         <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />

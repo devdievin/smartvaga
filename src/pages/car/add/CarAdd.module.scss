@@ -1,0 +1,23 @@
+@import "../../../styles/partials/colors";
+@import "../../../styles/partials/sizes";
+
+.container {
+    h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $honeyYellow;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-size: 1.125rem;
+        margin-bottom: 1rem;
+    }
+
+    .inlineTwo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+    }
+}

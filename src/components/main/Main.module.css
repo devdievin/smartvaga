@@ -11,4 +11,8 @@
   height: calc(100vh - 132px);
 }
 
+.mainDark {
+  background-color: #233642;
+}
+
 /*# sourceMappingURL=Main.module.css.map */

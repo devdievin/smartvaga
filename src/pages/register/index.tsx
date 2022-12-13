@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 import ButtonComponent from "../../components/button";
 import CardComponent from "../../components/card";
+import { CheckboxComponent } from "../../components/checkbox";
 import FooterComponent from "../../components/footer";
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
@@ -13,18 +15,21 @@ import styles from './Register.module.css';
 
 export default function Register() {
     const router = useRouter();
+    const { register, handleSubmit } = useForm();
 
-    const handleSubmit = async (event: any) => {
+    const onSubmit = async (data: any) => {
         try {
-            event.preventDefault();
-            const { name, email, password, cpassword } = event.target;
+            console.log(data);
+            const { name, email, password, cpassword } = data;
 
-            if (!checkPasswords(password.value, cpassword.value)) return alert("As senhas não são iguais");
+            console.log(name, email, password, cpassword);
+
+            if (!checkPasswords(password, cpassword)) return alert("As senhas não são iguais");
 
             const response = await api.post('/register', {
-                name: name.value,
-                email: email.value,
-                password: password.value
+                name: name,
+                email: email,
+                password: password
             });
 
             if (response.status === 201) {
@@ -55,13 +60,18 @@ export default function Register() {
             <MainComponent hideFooter={false}>
                 <div className={styles.container}>
                     <CardComponent title="Criar conta" color="primary">
-                        <form onSubmit={handleSubmit} method="post">
-                            <InputComponent label="Nome:" name="name" type={"text"} required={true} />
-                            <InputComponent label="E-mail:" name="email" type={"email"} required={true} />
-                            <InputComponent label="Senha:" name="password" type={"password"} required={true} />
-                            <InputComponent label="Confirma senha:" name="cpassword" type={"password"} required={true} />
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <InputComponent register={register} placeholder="Nome" name="name" type={"text"} required={true} />
+                            <InputComponent register={register} placeholder="Email" name="email" type={"email"} required={true} />
+                            <InputComponent register={register} placeholder="Senha" name="password" type={"password"} required={true} />
+                            <InputComponent register={register} placeholder="Confirma senha" name="cpassword" type={"password"} required={true} />
+
+                            <CheckboxComponent register={register} name="check" label="Concordo com os Termos de uso" required={true}>
+                                <span>Concordo com os Termos de uso</span>
+                            </CheckboxComponent>
+
                             <div className={styles.btnGroup}>
-                                <ButtonComponent text="Criar" type="submit" style="btn btn-secondary btn-large btn-full" />
+                                <ButtonComponent text="CRIAR" type="submit" style="btn btn-secondary btn-large btn-full" />
                             </div>
                         </form>
                     </CardComponent>

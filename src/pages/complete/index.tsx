@@ -1,14 +1,19 @@
 import Router from "next/router";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { api } from "../../services/api";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import { ContentMenuComponent } from "../../components/content-menu";
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
+import InputComponent from "../../components/input";
+import ButtonComponent from "../../components/button";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { ProfileComponent } from "../../components/profile";
-import { AuthContext } from "../../contexts/AuthContext";
-import { api } from "../../services/api";
+
+import styles from "./Complete.module.css";
 
 const Complete = () => {
     const { user } = useContext(AuthContext);
@@ -18,7 +23,7 @@ const Complete = () => {
         try {
             const updateData = { ...user, cpf: data.cpf, birth_date: data.birth_date };
             const response = await api.put(`/account/update/${user?.id}`, updateData);
-            
+
             if (response.status === 200) return Router.push("/dashboard");
 
             console.log(response.data);
@@ -36,14 +41,18 @@ const Complete = () => {
             </HeaderComponent>
             <MainComponent hideFooter={false}>
                 <ContentMenuComponent>
-                    <div>
-                        <h4>Olá {user?.name},</h4>
-                        <p>Para ter acesso a plataforma com mais segurança, complete seus dados cadastrais.</p>
+                    <div className={styles.container}>
+                        <p className={styles.title}>Olá {user?.name},</p>
+                        <p>Para usar todas as funcionalidades da plataforma com segurança. Precisamos que conclua seu cadastro.</p>
+
+                        <p>Fica tranquilo, leva menos de 1 minuto.</p>
 
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <input {...register("cpf")} type="text" className="input-default" placeholder="Seu cpf" required />
-                            <input {...register("birth_date")} type="text" className="input-default" placeholder="Data de nascimento" required />
-                            <button type="submit" className="btn btn-primary btn-small">Terminar</button>
+                            <InputComponent register={register} type={"text"} label={"CPF:"} name="cpf" required={true} />
+                            <InputComponent register={register} type={"text"} label={"Data de nascimento:"} name="birth_date" required={true} />
+                            <div className={styles.btnGroup}>
+                                <ButtonComponent type="submit" text={"COMPLETAR CADASTRO"} style={"btn btn-secondary btn-large"} />
+                            </div>
                         </form>
                     </div>
                 </ContentMenuComponent>

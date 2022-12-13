@@ -13,3 +13,7 @@
 .mainFooter {
     height: calc(100vh - ($headerHeight + $footerHeight));
 }
+
+.mainDark {
+    background-color: $darkCharcoal;
+}

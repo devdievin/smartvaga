@@ -1,4 +1,5 @@
 import { HTMLInputTypeAttribute } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import styles from './Input.module.css';
 
@@ -8,14 +9,15 @@ type InputProps = {
     name: string
     placeholder?: string,
     required?: boolean;
+    register: UseFormRegister<FieldValues>;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputComponent = ({ label, type, name, placeholder, required, onChange }: InputProps) => {
+const InputComponent = ({ label, type, name, placeholder, required, register, onChange }: InputProps) => {
     return (
         <div className={styles.inputGroup}>
             {(label) && <label>{label}</label>}
-            <input type={type} name={name} placeholder={placeholder} required={required} onChange={onChange} />
+            <input {...register(name)} type={type} name={name} placeholder={placeholder} required={required} onChange={onChange} />
         </div>
     );
 }

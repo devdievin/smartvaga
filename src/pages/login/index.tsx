@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Link from "next/link";
-// import { useForm } from 'react-hook-form';
+import { AuthContext } from "../../contexts/AuthContext";
+import { useForm } from "react-hook-form";
 
 import ButtonComponent from "../../components/button";
 import CardComponent from "../../components/card";
@@ -12,16 +13,15 @@ import LinkComponent from "../../components/link";
 import MainComponent from "../../components/main";
 
 import styles from './Login.module.css';
-import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Login() {
     const { signIn } = useContext(AuthContext);
+    const { register, handleSubmit } = useForm();
 
-    const handleSubmit = async (event: any) => {
-        event.preventDefault();
-        const { email, password } = event.target;
+    const onSubmit = async (data: any) => {
+        const { email, password } = data;
 
-        await signIn({ email: email.value, password: password.value });
+        await signIn({ email: email, password: password });
     }
 
     return (
@@ -35,19 +35,19 @@ export default function Login() {
             <MainComponent hideFooter={false}>
                 <div className={styles.container}>
                     <CardComponent title="Login" color="primary">
-                        <form onSubmit={handleSubmit} method={"POST"}>
-                            <InputComponent label="E-mail" name="email" type={"email"} required={true} />
-                            <InputComponent label="Senha" name="password" type={"password"} required={true} />
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <InputComponent register={register} placeholder="Seu e-mail" name="email" type={"email"} required={true} />
+                            <InputComponent register={register} placeholder="Sua senha" name="password" type={"password"} required={true} />
                             <div className={`${styles.helpLink} align-end`}>
                                 <Link href={"/"}>
                                     <span>Esqueceu sua senha?</span>
                                 </Link>
                             </div>
                             <div className={styles.btnGroup}>
-                                <ButtonComponent text="Entrar" type="submit" style="btn btn-primary btn-large btn-full" />
+                                <ButtonComponent text="ENTRAR" type="submit" style="btn btn-primary btn-large btn-full" />
                             </div>
                             <div className={`${styles.helpLink} align-center`}>
-                                <Link href={"/"}>
+                                <Link href={"/register"}>
                                     <span>Não tenho conta</span>
                                 </Link>
                             </div>

@@ -1,0 +1,29 @@
+.container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.container .checkmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 2px;
+  z-index: 1;
+}
+.container .checkmark .checkbox {
+  position: relative;
+  z-index: 2;
+}
+.container .checkmark input:checked ~ .checkmark {
+  background-color: #ff0a54;
+}
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/*# sourceMappingURL=Checkbox.module.css.map */

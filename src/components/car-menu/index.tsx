@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -26,13 +27,15 @@ export const CarMenuComponent = () => {
         <div className={styles.container}>
             {cars.map((car, index) => {
                 return <div className={styles.card} key={index}>
-                    <div className={styles.cardTitle}>{car.brand} {car.name} {car.model} - {car.year}</div>
+                    <div className={styles.cardTitle}>{car.brand} {car.name} {car.model}</div>
+                    <div>Ano: {car.year} | Cor: {car.color}</div>
                     <div>Placa: {car.licensePlate}</div>
-                    <div>Cor: {car.color}</div>
                 </div>;
             })}
 
-            <button type='button' className={`btn btn-primary btn-small ${styles.btnAdd}`} onClick={handleAddCar}>ADD</button>
+            <span className={styles.btnAdd} onClick={handleAddCar}>
+                <Image src={"/icons/icon-add.svg"} alt={"Add"} width={44} height={44} />
+            </span>
         </div>
     );
 }

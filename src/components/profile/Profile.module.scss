@@ -1,6 +1,9 @@
 @import "../../styles/partials/colors";
 @import "../../styles/partials/sizes";
 
+$borderSize: 1px;
+$borderColorDivider: #455a64;
+
 .profileMenu {
     .profile {
         position: relative;
@@ -17,56 +20,90 @@
     }
 
     .menu {
+        position: absolute;
+        right: 0;
+        width: 10rem; //  160px
+        height: max-content;
+        background: $charcoal;
         color: $softWhite;
+        font-size: 0.875rem; //14px
+        border: $borderSize solid $softWhite;
+        border-radius: 0.25rem;
+        box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+        padding: 0.625rem; //10px
+        transition: 0.5s;
+        z-index: 1000;
 
         &::before {
             content: "";
             position: absolute;
-            top: -0.5rem; // 8px
+            top: -0.625rem; // 10px
             right: 1.625rem; // 24px
-            width: 1rem; //20px
+            width: 1rem; //16px
             height: 1rem;
-            background: $darkCharcoal;
+            background: $charcoal;
+            border-left: $borderSize solid;
+            border-top: $borderSize solid;
+            border-color: $softWhite;
             transform: rotate(45deg);
-        }
-
-        ul {
-            list-style: none;
+            z-index: 1000;
         }
 
         h3 {
-            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        h4 {
+            font-size: 11px;
+            font-weight: 300;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        ul {
+            border-top: $borderSize solid $borderColorDivider;
+            list-style: none;
+            margin-top: 0.625rem;
+            padding-top: 0.625rem;
+
+            li {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                span {
+                    margin-left: 0.5rem;
+                }
+            }
+
+            .btnLogout {
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            li:not(:last-child) {
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.5rem;
+                border-bottom: $borderSize solid $borderColorDivider;
+            }
         }
     }
 }
 
 .menuHidden {
-    position: absolute;
     top: 5rem; // 80px
-    right: 0;
-    padding: 0.625rem; //10px
-    background: $darkCharcoal;
-    font-size: 0.875rem; //14px
-    width: 10rem; //  160px
-    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    transition: 0.5s;
     visibility: hidden;
     opacity: 0;
-    z-index: 1000;
 }
 .menuActive {
-    position: absolute;
-    right: 0;
-    padding: 0.625rem; //10px
-    background: $darkCharcoal;
-    font-size: 0.875rem; //14px
-    width: 10rem; //  160px
-    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    transition: 0.5s;
     top: $headerHeight;
     visibility: visible;
     opacity: 1;
-    z-index: 1000;
 }

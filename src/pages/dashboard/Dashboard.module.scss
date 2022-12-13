@@ -1,6 +1,8 @@
 @import "../../styles/partials/colors";
 @import "../../styles/partials/sizes";
 
+$gridColor: #4c4c4c;
+
 .datetimeHeader {
     display: flex;
     justify-content: space-between;
@@ -12,6 +14,7 @@
     height: 2.5rem;
     font-size: 1rem;
     padding: 0.5rem;
+    color: $softBlack;
     border: 1px solid #767676;
     border-radius: 0.25rem;
 }
@@ -20,15 +23,39 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 120px);
-    background-color: #747474;
+    background-color: $gridColor;
     color: $softWhite;
 
     div {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid $softWhite;
+        border: 2px solid $softWhite;
         font-size: 1.75rem;
         font-weight: 600;
+
+        .freeVacancy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+
+            span:first-child {
+                position: absolute;
+                margin-top: 0.25rem;
+                letter-spacing: 10%;
+                font-size: 0.875rem;
+            }
+
+            span:last-child {
+                margin: auto auto;
+                font-size: 3rem;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+        }
     }
 }

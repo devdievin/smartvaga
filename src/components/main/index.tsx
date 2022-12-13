@@ -1,16 +1,19 @@
 import styles from './Main.module.css';
 
 type MainProps = {
-    hideFooter: boolean,
-    children: JSX.Element
+    hideFooter: boolean;
+    dark?: boolean;
+    children: JSX.Element;
 }
 
-const MainComponent = ({ hideFooter, children }: MainProps) => {
+const MainComponent = ({ hideFooter, dark, children }: MainProps) => {
 
     const mainStyle = (hideFooter) ? styles.main : styles.mainFooter;
 
+    const mainColor = (dark) ? styles.mainDark : "";
+
     return (
-        <main className={mainStyle}>
+        <main className={`${mainStyle} ${mainColor}`}>
             {children}
         </main>
     );
