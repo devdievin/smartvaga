@@ -24,10 +24,15 @@ export default function CarAdd() {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = async (data: any) => {
-        data.user = user;
-        // console.log(data);
-        const response = await api.post("/car", data);
-        console.log(response.data);
+        try {
+            data.user = user;
+            // console.log(data);
+            const response = await api.post("/car", data);
+            console.log(response.data);
+        } catch (error) {
+            alert(error.response.data.message);
+            console.error(error);
+        }
     }
 
     return (

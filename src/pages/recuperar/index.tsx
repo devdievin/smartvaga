@@ -37,7 +37,7 @@ export default function Recover() {
 
                             <div>
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <InputComponent type={"email"} name={"email"} placeholder={"Seu e-mail"} register={register} />
+                                    <InputComponent type={"email"} name={"email"} placeholder={"Seu e-mail"} register={register} required={true} />
 
                                     <div>
                                         <ButtonComponent type="submit" text="PRÓXIMO" style="btn btn-primary btn-large" />

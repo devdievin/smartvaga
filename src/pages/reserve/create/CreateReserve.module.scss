@@ -42,3 +42,23 @@
         }
     }
 }
+
+.resultcontainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.resultCard {
+    background-color: $charcoal;
+    text-align: center;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}

@@ -15,6 +15,7 @@ import MenuComponent from "../../components/menu";
 import { TimePickerComponent } from "../../components/time-picker";
 import { setTimeRange, timeNow, timeRangeNow, TIME_RANGE, WORKING_DAY } from "../../utils/time";
 import { ProfileComponent } from "../../components/profile";
+import LoadingComponent from "../../components/loading";
 
 // import { tVacancies } from "../../utils/reserves-test";
 
@@ -22,6 +23,7 @@ import styles from './Dashboard.module.css';
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(true);
     const [vacancies, setVacancies] = useState<any[]>([]);
     const [reserveDate, setReserveDate] = useState(WORKING_DAY);
     const [reserveTime, setReserveTime] = useState(timeRangeNow(TIME_RANGE)[0]);
@@ -33,7 +35,13 @@ export default function Dashboard() {
             .then(response => {
                 setVacancies(response.data);
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                console.error(err)
+            }).finally(() => {
+                setTimeout(() => {
+                    setIsLoading(false)
+                }, 1 * 1000);
+            });
     }, [])
 
     const selectDate = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +76,7 @@ export default function Dashboard() {
                         <span className={styles.freeVacancy} onClick={() => addReserve(vacancy.num)}>
                             <span>V-0{vacancy.num}</span>
                             <span className={styles.btnAdd}>
-                                <Image src={"/icons/icon-add.svg"} alt={"add"} width={36} height={36}/>
+                                <Image src={"/icons/icon-add.svg"} alt={"add"} width={36} height={36} />
                             </span>
                         </span>
                 }
@@ -102,16 +110,18 @@ export default function Dashboard() {
             </HeaderComponent>
 
             <MainComponent hideFooter={false} dark={true}>
-                <div>
-                    <div className={styles.datetimeHeader}>
-                        <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
-                        <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
-                    </div>
+                {isLoading ? <LoadingComponent /> :
+                    <div>
+                        <div className={styles.datetimeHeader}>
+                            <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
+                            <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
+                        </div>
 
-                    <div className={styles.vacanciesGrid}>
-                        {searchReserves(reserveDate, reserveTime)}
+                        <div className={styles.vacanciesGrid}>
+                            {searchReserves(reserveDate, reserveTime)}
+                        </div>
                     </div>
-                </div>
+                }
             </MainComponent>
 
             <MenuComponent />

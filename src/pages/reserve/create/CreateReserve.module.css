@@ -34,4 +34,24 @@
   opacity: 0.6;
 }
 
+.resultcontainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.resultCard {
+  background-color: #2f4858;
+  text-align: center;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
 /*# sourceMappingURL=CreateReserve.module.css.map */

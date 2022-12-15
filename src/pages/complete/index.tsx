@@ -13,7 +13,7 @@ import HeaderComponent from "../../components/header";
 import InputComponent from "../../components/input";
 import ButtonComponent from "../../components/button";
 import MainComponent from "../../components/main";
-import MenuComponent from "../../components/menu";
+import FooterComponent from "../../components/footer";
 import { ProfileComponent } from "../../components/profile";
 
 import styles from "./Complete.module.css";
@@ -48,7 +48,7 @@ export default function Complete() {
                         <p className={styles.title}>Olá {user?.name},</p>
                         <p>Para usar todas as funcionalidades da plataforma com segurança. Precisamos que conclua seu cadastro.</p>
 
-                        <p>Fica tranquilo, leva menos de 1 minuto.</p>
+                        <p>Fica tranquilo(a), leva menos de 1 minuto.</p>
 
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <InputComponent register={register} type={"text"} label={"CPF:"} name="cpf" required={true} />
@@ -61,7 +61,7 @@ export default function Complete() {
                 </ContentMenuComponent>
             </MainComponent>
 
-            <MenuComponent />
+            <FooterComponent />
         </div>
     );
 }

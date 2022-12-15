@@ -39,7 +39,7 @@ export default function Login() {
                             <InputComponent register={register} placeholder="Seu e-mail" name="email" type={"email"} required={true} />
                             <InputComponent register={register} placeholder="Sua senha" name="password" type={"password"} required={true} />
                             <div className={`${styles.helpLink} align-end`}>
-                                <Link href={"/"}>
+                                <Link href={"/recuperar"}>
                                     <span>Esqueceu sua senha?</span>
                                 </Link>
                             </div>
