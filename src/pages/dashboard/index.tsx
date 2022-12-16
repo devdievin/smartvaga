@@ -92,7 +92,7 @@ export default function Dashboard() {
         const result = cars?.find(car => car.id === id);
 
         if (result) {
-            return <Image src={myCarIcon} alt={"meu carro"} title={`Meu carro`} width={140} height={70} />
+            return <Image src={myCarIcon} alt={"meu carro"} title={`${result.brand} ${result.name} ${result.color}`} width={140} height={70} />
         }
         return <Image src={carIcon} alt={"carro"} title={`Vaga ${vacancyNum}`} width={140} height={70} />
     }

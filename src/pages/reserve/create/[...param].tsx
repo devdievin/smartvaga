@@ -17,9 +17,9 @@ import MenuComponent from "../../../components/menu";
 import { ContentMenuComponent } from "../../../components/content-menu";
 import { ProfileComponent } from "../../../components/profile";
 import LoadingComponent from "../../../components/loading";
+import ModalComponent from "../../../components/modal";
 
 import styles from "./CreateReserve.module.css";
-import ButtonComponent from "../../../components/button";
 
 export default function CreateReserve() {
     const router = useRouter();
@@ -27,6 +27,8 @@ export default function CreateReserve() {
     const { user } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
+    const [modalResponseStatus, setModalResponseStatus] = useState(200);
+    const [modalResponseData, setModalResponseData] = useState("");
     const [vacancy, setVacancy] = useState();
     const { register, handleSubmit } = useForm();
 
@@ -55,26 +57,22 @@ export default function CreateReserve() {
             data.car = JSON.parse(data.car);
             data.vacancy = vacancy;
 
-            // alert("OK");
-            setSubmitted(true);
+            const response = await api.post("/reserve", data);
 
-            // const response = await api.post("/reserve", data);
+            console.log(response);
 
-            // if (response.status === 201) {
-            //     router.push("/dashboard");
-            // }
-
-            // console.log(response.data);
+            if (response) {
+                setModalResponseStatus(response.status);
+                setModalResponseData(response.data.message);
+                setSubmitted(true);
+            }
         } catch (error) {
-            alert(error.response.data.message);
+            setModalResponseStatus(error.response.status);
+            setModalResponseData(error.response.data.message);
+            setSubmitted(true);
             console.error(error);
         }
     };
-
-    const goBack = () => {
-        router.push("/dashboard");
-    }
-
 
     return (
         <div>
@@ -91,7 +89,6 @@ export default function CreateReserve() {
                             <div>
                                 <h3>Criar uma reserva</h3>
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    {/* date - entry_time - exit_time - car - vacancy */}
                                     <p className={styles.text1}>Você está reservando a vaga {param![0]} para o dia <strong>{moment(param![1]).format("DD/MM/YYYY")}</strong> das <strong>{param![2]}</strong> às <strong>{exit_time}</strong>.</p>
 
                                     <div className={styles.selectCar}>
@@ -111,7 +108,7 @@ export default function CreateReserve() {
                                     </div>
 
                                     <div className={styles.btnGroup}>
-                                        <span onClick={goBack} className={styles.btnCancel}>
+                                        <span onClick={() => router.push("/dashboard")} className={styles.btnCancel}>
                                             <Image src={"/icons/icon-circle-error.svg"} alt={"Não"} width={50} height={50} />
                                         </span>
                                         <button type="submit" className="btn btn-transparent">
@@ -121,12 +118,7 @@ export default function CreateReserve() {
                                 </form>
                             </div>
 
-                            {submitted && <div className={styles.resultcontainer}>
-                                <div className={styles.resultCard}>
-                                    <p>Cadastro realizado com sucesso!</p>
-                                    <ButtonComponent text={"CONTINUAR"} type={"button"} style={"btn btn-secondary btn-small mt-1"} callback={() => setSubmitted(false)}/>
-                                </div>
-                            </div>}
+                            {submitted && <ModalComponent status={modalResponseStatus} message={modalResponseData} redirectPath={"/dashboard"} />}
 
                         </div>
                     }

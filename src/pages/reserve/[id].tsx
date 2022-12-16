@@ -15,6 +15,7 @@ import { ProfileComponent } from "../../components/profile";
 import { ContentMenuComponent } from "../../components/content-menu";
 import ButtonComponent from "../../components/button";
 import LoadingComponent from "../../components/loading";
+import ExpiredTagComponent from "../../components/expired-tag";
 
 import styles from "./ShowReserve.module.css";
 
@@ -61,7 +62,9 @@ export default function ShowReserve() {
                                 <p>Entrada: {formatTimeZero(reserve.entry_time)} | Saída: {formatTimeZero(reserve.exit_time)}</p>
                                 <p>Veículo: {reserve.car.brand} {reserve.car.name} {reserve.car.model}</p>
                                 <p>Placa: {reserve.car.licensePlate} | Cor: {reserve.car.color}</p>
+                                <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
                             </div>
+
 
                             <ButtonComponent text={"EDITAR"} type={"button"} style={"btn btn-secondary btn-small w-100 mb-1"} />
                             <ButtonComponent text={"EXCLUIR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} />

@@ -26,15 +26,4 @@
   font-size: 0.875rem;
 }
 
-.expiredTag {
-  font-size: 0.875rem;
-  font-weight: 500;
-  width: max-content;
-  border: 2px solid #f6ae2d;
-  color: #f6ae2d;
-  border-radius: 0.125rem;
-  padding: 0.125rem 0.5rem;
-  margin-top: 0.25rem;
-}
-
 /*# sourceMappingURL=ReserveMenu.module.css.map */

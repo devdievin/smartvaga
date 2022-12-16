@@ -59,9 +59,11 @@ a {
     outline: none;
     border: none;
     cursor: pointer;
+    transition: 0.25s;
 
     &:hover {
-        opacity: 0.6;
+        opacity: 0.85;
+        transform: scale(1.01);
     }
 }
 

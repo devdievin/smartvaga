@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../services/api';
-import { formatTimeZero, hourFormat } from '../../utils/format';
-import { timeNow, TODAY } from '../../utils/time';
+import { hourFormat } from '../../utils/format';
 import moment from 'moment';
 
 import LoadingComponent from '../loading';
+import ExpiredTagComponent from '../expired-tag';
 
 import styles from './ReserveMenu.module.css';
 
@@ -31,14 +31,6 @@ export const ReserveMenuComponent = () => {
             });
     }, []);
 
-    const checkReserveDate = (date: string, exit_time: string) => {
-        // console.log(date, formatTimeZero(exit_time));
-        if (date < TODAY || (date === TODAY && (formatTimeZero(exit_time) <= timeNow()))) {
-            return <div className={styles.expiredTag}>Reserva expirada!</div>
-        }
-        return <></>;
-    }
-
     const handleClick = (id: string) => {
         // console.log("clicou", id);
         router.push(`/reserve/${id}`);
@@ -56,9 +48,7 @@ export const ReserveMenuComponent = () => {
                             <div>
                                 Validade: {moment(reserve.date).format("DD/MM/YYYY")} - {hourFormat(reserve.entry_time, "HH:MM")} às {hourFormat(reserve.exit_time, "HH:MM")}
                             </div>
-                            <>
-                                {checkReserveDate(reserve.date, reserve.exit_time)}
-                            </>
+                            <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
                         </div>;
 
                     })}
