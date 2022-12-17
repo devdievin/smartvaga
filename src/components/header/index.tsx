@@ -2,13 +2,14 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 
 type HeaderProps = {
-    children: JSX.Element
+    logoLink: string;
+    children: JSX.Element;
 }
 
-const HeaderComponent = ({children}: HeaderProps) => {
+const HeaderComponent = ({ logoLink, children }: HeaderProps) => {
     return (
         <header className={styles.header}>
-            <Link href="/"><span className={styles.brand}>SMARTVAGA</span></Link>
+            <Link href={logoLink}><span className={styles.brand}>SMARTVAGA</span></Link>
             <div>
                 {children}
             </div>

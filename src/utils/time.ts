@@ -27,18 +27,19 @@ export const setExitTime = (entry_time: string, reserve_hours: number) => {
 export const timeNow = () => {
     const datetime = new Date();
     const hr = datetime.getHours();
-    return `${hr}:00`;
+
+    return (hr < 10) ? `0${hr}:00` : `${hr}:00`;
 }
 
 export const timeRangeNow = (range: string[]) => {
     const index = range.indexOf(timeNow());
 
-    if (index === -1) {
+    if (index === -1 || index === (range.length - 1)) {
         WORKING_DAY = moment().add(1, "day").format('YYYY-MM-DD');
+        return range;
     }
 
-    const result = range.slice((index + 1), range.length);
-    return result;
+    return range.slice((index + 1), range.length);
 }
 
 export const setTimeRange = (reserveDate: string, range: string[]) => {

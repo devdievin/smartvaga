@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <HeadComponent title='Smartvaga' description='Encontre e reserve a vaga para seu carro rapidamente.' />
 
-      <HeaderComponent>
+      <HeaderComponent logoLink='/'>
         <LinkComponent text='Login' style='btn btn-primary btn-small' url={"/login"} />
       </HeaderComponent>
 

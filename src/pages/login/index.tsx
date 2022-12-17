@@ -28,7 +28,7 @@ export default function Login() {
         <>
             <HeadComponent title="Login - Smartvaga" description="Fazer o login para acessar o Smartvaga" />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/">
                 <LinkComponent text='Sign Up' style='btn btn-secondary btn-small' url={"/register"} />
             </HeaderComponent>
 

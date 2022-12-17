@@ -39,7 +39,7 @@ export default function Complete() {
         <div>
             <HeadComponent title="complete" description="bla bla bla" />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/">
                 <ProfileComponent />
             </HeaderComponent>
             <MainComponent hideFooter={false}>

@@ -1,0 +1,110 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: $softWhite;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid $darkOldBlue;
+    margin-bottom: 1.25rem;
+
+    .imgProfile {
+    }
+
+    .text {
+        width: 100%;
+        padding: 0 0.5rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 400;
+            color: $softGray;
+        }
+    }
+
+    .iconEdit {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 0.25rem;
+    }
+}
+
+.info {
+    padding: 0 0.25rem;
+
+    p {
+        margin-bottom: 1.25rem;
+
+        .label {
+            color: $darkSkyBlue;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .passwordWrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .input {
+        background-color: transparent;
+        width: 10rem;
+        color: $softWhite;
+        font-size: 1rem;
+        border: none;
+    }
+}
+
+.containerModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modalForm {
+        background-color: $charcoal;
+        width: 17.5rem;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        animation: TopToDown 0.3s linear both;
+    }
+}
+
+@keyframes TopToDown {
+    from {
+        transform: translateY(-5rem);
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        visibility: visible;
+        opacity: 1;
+    }
+}

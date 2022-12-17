@@ -71,7 +71,7 @@ $borderColorDivider: #455a64;
             margin-top: 0.625rem;
             padding-top: 0.625rem;
 
-            li {
+            li, div {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -81,10 +81,11 @@ $borderColorDivider: #455a64;
                 }
             }
 
-            .btnLogout {
+            .btn {
                 cursor: pointer;
+
                 &:hover {
-                    opacity: 0.5;
+                    filter: $filterYellowColor;
                 }
             }
 

@@ -29,10 +29,19 @@ export default function CreateReserve() {
     const [submitted, setSubmitted] = useState(false);
     const [modalResponseStatus, setModalResponseStatus] = useState(200);
     const [modalResponseData, setModalResponseData] = useState("");
+    const [userCars, setUserCars] = useState<any[]>([]);
     const [vacancy, setVacancy] = useState();
     const { register, handleSubmit } = useForm();
 
     useEffect(() => {
+        api.get(`/cars/${user?.id}`)
+            .then(response => {
+                setUserCars(response.data);
+            })
+            .catch(err => {
+                console.error(err)
+            });
+
         api.get(`/vacancy/${param![0]}`)
             .then(response => {
                 setVacancy(response.data);
@@ -59,7 +68,7 @@ export default function CreateReserve() {
 
             const response = await api.post("/reserve", data);
 
-            console.log(response);
+            // console.log(response);
 
             if (response) {
                 setModalResponseStatus(response.status);
@@ -78,7 +87,7 @@ export default function CreateReserve() {
         <div>
             <HeadComponent title="Criar Reserva" description="teste" />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />
             </HeaderComponent>
 
@@ -94,8 +103,8 @@ export default function CreateReserve() {
                                     <div className={styles.selectCar}>
                                         <label>VEÍCULO:</label>
                                         <select {...register("car")} className="select-default" id="selectCars">
-                                            {user?.cars ?
-                                                user?.cars.map((car, index) => {
+                                            {userCars ?
+                                                userCars.map((car, index) => {
                                                     return <option value={JSON.stringify(car)} key={index}>{car.brand} {car.name} {car.model}</option>
                                                 }) :
                                                 <option disabled={true} defaultValue={undefined}>Nenhum veículo cadastrado</option>

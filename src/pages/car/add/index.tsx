@@ -49,7 +49,7 @@ export default function CarAdd() {
         <div>
             <HeadComponent title="add car" description="lorem..." />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />
             </HeaderComponent>
 

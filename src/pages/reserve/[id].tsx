@@ -46,7 +46,7 @@ export default function ShowReserve() {
         <div>
             <HeadComponent title={"Informações da reserva - Smartvaga"} description={"Veja informações detalhadas sobre sua reserva Smartvaga."} />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />
             </HeaderComponent>
 

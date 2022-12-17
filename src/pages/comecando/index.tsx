@@ -14,7 +14,7 @@ export default function Starting() {
         <div>
             <HeadComponent title="Iniciando no Smartvaga" description="lorem ipsum" />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/">
                 <ButtonComponent text={"Login"} type={"button"} style={"btn btn-primary btn-small"} callback={() => Router.push("/login")} />
             </HeaderComponent>
 

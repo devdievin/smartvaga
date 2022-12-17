@@ -57,7 +57,7 @@ export default function Register() {
         <>
             <HeadComponent title="Criar conta - Smartvaga" description="Crie sua conta e comece a facilitar seu dia-a-dia ao estacionar." />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/">
                 <LinkComponent text='Login' style='btn btn-primary btn-small' url={"/login"} />
             </HeaderComponent>
 

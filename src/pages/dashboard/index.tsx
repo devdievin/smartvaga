@@ -13,7 +13,7 @@ import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { TimePickerComponent } from "../../components/time-picker";
-import { setTimeRange, timeNow, timeRangeNow, TIME_RANGE, WORKING_DAY } from "../../utils/time";
+import { setTimeRange, timeRangeNow, TIME_RANGE, WORKING_DAY } from "../../utils/time";
 import { ProfileComponent } from "../../components/profile";
 import LoadingComponent from "../../components/loading";
 
@@ -24,12 +24,20 @@ import styles from './Dashboard.module.css';
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
+    const [userCars, setUserCars] = useState<any[]>([]);
     const [vacancies, setVacancies] = useState<any[]>([]);
     const [reserveDate, setReserveDate] = useState(WORKING_DAY);
     const [reserveTime, setReserveTime] = useState(timeRangeNow(TIME_RANGE)[0]);
 
     useEffect(() => {
         // console.log(timeRangeNow(timeRange));
+        api.get(`/cars/${user?.id}`)
+            .then(response => {
+                setUserCars(response.data);
+            })
+            .catch(err => {
+                console.error(err)
+            });
 
         api.get('/vacancies')
             .then(response => {
@@ -87,9 +95,9 @@ export default function Dashboard() {
     const findMyCar = (id: string, myCarIcon: string, carIcon: string, vacancyNum: number) => {
         if (id === null || id === undefined) throw new Error("Car ID in reserve nullable");
 
-        const cars = user?.cars;
+        const result = userCars.find(car => car.id === id);
 
-        const result = cars?.find(car => car.id === id);
+        console.log(result);
 
         if (result) {
             return <Image src={myCarIcon} alt={"meu carro"} title={`${result.brand} ${result.name} ${result.color}`} width={140} height={70} />
@@ -105,7 +113,7 @@ export default function Dashboard() {
         <>
             <HeadComponent title="Dashboard" description="dashboard smartvaga" />
 
-            <HeaderComponent>
+            <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />
             </HeaderComponent>
 

@@ -60,19 +60,19 @@
   margin-top: 0.625rem;
   padding-top: 0.625rem;
 }
-.profileMenu .menu ul li {
+.profileMenu .menu ul li, .profileMenu .menu ul div {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.profileMenu .menu ul li span {
+.profileMenu .menu ul li span, .profileMenu .menu ul div span {
   margin-left: 0.5rem;
 }
-.profileMenu .menu ul .btnLogout {
+.profileMenu .menu ul .btn {
   cursor: pointer;
 }
-.profileMenu .menu ul .btnLogout:hover {
-  opacity: 0.5;
+.profileMenu .menu ul .btn:hover {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
 }
 .profileMenu .menu ul li:not(:last-child) {
   margin-bottom: 0.5rem;
