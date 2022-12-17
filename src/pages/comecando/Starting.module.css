@@ -1,0 +1,49 @@
+.container {
+  padding: 1rem 0.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #33658a;
+  margin-bottom: 3rem;
+}
+.header .text {
+  margin-left: 1.25rem;
+}
+.header h3 {
+  font-size: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.header h4 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.content1,
+.content2 {
+  color: #2f4858;
+  font-weight: 500;
+}
+
+.content1 {
+  margin-bottom: 2rem;
+}
+.content1 p {
+  margin-bottom: 0.5rem;
+}
+.content1 ul {
+  margin-left: 2rem;
+  line-height: 1.5rem;
+}
+
+.content2 {
+  text-align: center;
+}
+.content2 p {
+  margin-bottom: 2rem;
+}
+
+/*# sourceMappingURL=Starting.module.css.map */

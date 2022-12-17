@@ -1,0 +1,44 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.modal {
+    max-width: 15rem; //240px
+    width: 100%;
+    background-color: $charcoal;
+    text-align: center;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    animation: top-to-down 0.45s both;
+    box-shadow: 2px 2px 8px 4px #000000;
+
+    .iconError {
+        filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%)
+            contrast(93%);
+    }
+}
+
+@keyframes top-to-down {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-5rem); //-80px
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

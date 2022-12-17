@@ -1,0 +1,56 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    padding: 1rem 0.5rem;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: $queenBlue;
+    margin-bottom: 3rem;
+
+    .text {
+        margin-left: 1.25rem;
+    }
+
+    h3 {
+        font-size: 28px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    h4 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.content1,
+.content2 {
+    color: $charcoal;
+    font-weight: 500;
+}
+
+.content1 {
+    margin-bottom: 2rem;
+
+    p {
+        margin-bottom: 0.5rem;
+    }
+
+    ul {
+        margin-left: 2rem;  //32px
+        line-height: 1.5rem; //24px
+    }
+}
+
+.content2 {
+    text-align: center;
+
+    p {
+        margin-bottom: 2rem;
+    }
+}

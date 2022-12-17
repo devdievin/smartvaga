@@ -1,0 +1,21 @@
+.container .label {
+  color: #86bbd8;
+}
+.container h3 {
+  font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.container .reserveInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-bottom: 2.25rem;
+}
+.container .reserveInfo p {
+  margin-bottom: 0.5rem;
+}
+
+/*# sourceMappingURL=ShowReserve.module.css.map */

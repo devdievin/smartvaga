@@ -1,0 +1,13 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.contentMenu {
+    position: absolute;
+    top: $headerHeight;
+    left: 0;
+    width: 100%;
+    height: calc(100% - ($headerHeight + $menuMobileHeight));
+    background-color: $darkCharcoal;
+    color: $softWhite;
+    padding: 1.25rem;
+}

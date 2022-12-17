@@ -1,0 +1,95 @@
+.profileMenu .profile {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-image: url("/icons/profilecircle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  overflow: hidden;
+  cursor: pointer;
+}
+.profileMenu .menu {
+  position: absolute;
+  right: 0;
+  width: 10rem;
+  height: max-content;
+  background: #2f4858;
+  color: #f7f7f7;
+  font-size: 0.875rem;
+  border: 1px solid #f7f7f7;
+  border-radius: 0.25rem;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  padding: 0.625rem;
+  transition: 0.5s;
+  z-index: 1000;
+}
+.profileMenu .menu::before {
+  content: "";
+  position: absolute;
+  top: -0.625rem;
+  right: 1.625rem;
+  width: 1rem;
+  height: 1rem;
+  background: #2f4858;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  border-color: #f7f7f7;
+  transform: rotate(45deg);
+  z-index: 1000;
+}
+.profileMenu .menu h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.profileMenu .menu h4 {
+  font-size: 11px;
+  font-weight: 300;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.profileMenu .menu ul {
+  border-top: 1px solid #455a64;
+  list-style: none;
+  margin-top: 0.625rem;
+  padding-top: 0.625rem;
+}
+.profileMenu .menu ul li, .profileMenu .menu ul div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.profileMenu .menu ul li span, .profileMenu .menu ul div span {
+  margin-left: 0.5rem;
+}
+.profileMenu .menu ul .btn {
+  cursor: pointer;
+}
+.profileMenu .menu ul .btn:hover {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
+.profileMenu .menu ul li:not(:last-child) {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #455a64;
+}
+
+.menuHidden {
+  top: 5rem;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.menuActive {
+  top: 68px;
+  visibility: visible;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=Profile.module.css.map */

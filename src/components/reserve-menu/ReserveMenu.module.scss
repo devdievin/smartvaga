@@ -1,0 +1,54 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    height: 100%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.card {
+    &:not(:first-child) {
+        padding-top: 1.125rem; //18px
+    }
+
+    font-size: 0.875rem; //15px
+    line-height: 1.5rem;
+    padding-bottom: 1.125rem; //18px
+    border-bottom: 1px solid $charcoal;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $charcoal;
+        border-radius: 0.25rem;
+    }
+
+    div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    
+    .reserveId {
+        font-size: 0.875rem; //14px
+        padding: 0 0.25rem;
+        color: $neonGreen;
+    }
+
+    .infoText {
+        margin-left: 0.875rem;
+    }
+    
+    .label {
+        color: $darkSkyBlue;
+    }
+
+    .tag {
+        margin-left: 0.875rem;
+    }
+}

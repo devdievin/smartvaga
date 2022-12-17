@@ -1,0 +1,52 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.headerMenu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    .title {
+        color: $honeyYellow;
+        font-size: 1.125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .iconClose {
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            filter: $filterYellowColor;
+        }
+    }
+}
+
+.componentWrapper {
+    position: relative;
+    height: calc(100% - 46px);
+}
+
+.menu {
+    height: $menuMobileHeight;
+    background-color: $charcoal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.iconLink {
+    height: max-content;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+        filter: $filterYellowColor;
+    }
+}
+
+.active {
+    filter: $filterYellowColor;
+}

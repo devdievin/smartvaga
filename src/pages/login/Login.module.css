@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: inherit;
+  height: 100%;
 }
 
 .btnGroup {
@@ -19,6 +19,13 @@
 }
 .helpLink:last-child {
   margin-bottom: 0;
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 25rem;
+    margin: 0 auto;
+  }
 }
 
 /*# sourceMappingURL=Login.module.css.map */

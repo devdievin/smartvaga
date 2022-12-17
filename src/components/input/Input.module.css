@@ -1,4 +1,5 @@
 .inputGroup {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,15 +10,20 @@
   margin-bottom: 0.5rem;
 }
 .inputGroup input {
+  width: 100%;
   border: none;
   border-radius: 0.25rem;
   font-size: 1rem;
+  font-weight: 500;
   padding: 0.5rem;
   color: #233642;
 }
 .inputGroup input:focus {
   outline: 2px solid #233642;
   color: #383838;
+}
+.inputGroup input::placeholder {
+  color: #2f4858;
 }
 
 /*# sourceMappingURL=Input.module.css.map */

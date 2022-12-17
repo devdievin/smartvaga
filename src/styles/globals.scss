@@ -1,0 +1,146 @@
+@import "./partials/colors";
+@import "./partials/sizes";
+
+html,
+body {
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    background-color: #f7f7f7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.w-100 {
+    width: 100%;
+}
+.h-100 {
+    height: 100%;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.align-start,
+.align-center,
+.align-end {
+    display: flex;
+    align-items: center;
+}
+
+.align-start {
+    justify-content: flex-start;
+}
+
+.align-center {
+    justify-content: center;
+}
+.align-end {
+    justify-content: flex-end;
+}
+
+.btn {
+    border-radius: 0.25rem; //4px
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+        opacity: 0.85;
+        transform: scale(1.01);
+    }
+}
+
+.btn-transparent {
+    width: fit-content;
+    height: max-content;
+    background-color: transparent;
+}
+
+.btn-primary {
+    background-color: $orangeRed;
+    color: $softWhite;
+}
+
+.btn-secondary {
+    background-color: $honeyYellow;
+    color: $softBlack;
+}
+
+$borderSize: 2px;
+.btn-outline-primary {
+    background-color: transparent;
+    color: $orangeRed;
+    border: $borderSize solid $orangeRed;
+}
+
+.btn-outline-secondary {
+    background-color: transparent;
+    color: $honeyYellow;
+    border: $borderSize solid $honeyYellow;
+}
+
+.btn-large {
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-small {
+    padding: 0.5rem 0.625rem;
+}
+
+.btn-fit {
+    width: max-content;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.input-default {
+    width: 100%;
+    font-size: 1rem;
+    color: $darkCharcoal;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+
+    &:focus {
+        outline: 2px solid $darkCharcoal;
+        color: $softBlack;
+    }
+}
+
+.select-default {
+    width: 100%;
+    font-size: 1rem;
+    color: $darkCharcoal;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.25rem;
+    margin: 0.5rem 0;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    // appearance: none;
+
+    &:focus {
+        outline: 2px solid $darkCharcoal;
+        color: $softBlack;
+    }
+}

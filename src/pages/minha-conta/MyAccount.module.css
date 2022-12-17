@@ -1,0 +1,120 @@
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.backPage {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.backPage:hover {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
+.backPage span {
+  margin-left: 0.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #f7f7f7;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #455A64;
+  margin-bottom: 1.25rem;
+}
+.header .text {
+  width: 100%;
+  padding: 0 0.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.header .text h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.header .text p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #acacac;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.header .iconEdit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0.25rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.header .iconEdit:hover {
+  opacity: 0.5;
+}
+
+.info {
+  padding: 0 0.25rem;
+}
+.info p {
+  margin-bottom: 1.25rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.info p .label {
+  color: #86bbd8;
+  margin-right: 0.5rem;
+}
+.info .passwordWrapper {
+  display: flex;
+  align-items: center;
+}
+.info .input {
+  background-color: transparent;
+  width: 10rem;
+  color: #f7f7f7;
+  font-size: 1rem;
+  border: none;
+}
+
+.containerModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerModal .modalForm {
+  background-color: #2f4858;
+  width: 17.5rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  animation: TopToDown 0.3s linear both;
+}
+
+@keyframes TopToDown {
+  from {
+    transform: translateY(-5rem);
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=MyAccount.module.css.map */

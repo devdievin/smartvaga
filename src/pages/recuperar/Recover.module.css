@@ -1,0 +1,27 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.container .header h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.container .header h4 {
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+.container form {
+  text-align: center;
+}
+.container form div {
+  margin-top: 1.5rem;
+}
+
+/*# sourceMappingURL=Recover.module.css.map */

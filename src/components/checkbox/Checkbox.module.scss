@@ -1,0 +1,46 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.875rem;
+
+    .checkbox {
+        width: 18px;
+        height: 18px;
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.25rem;
+        cursor: pointer;
+
+        &:hover {
+            // background-color: #e7e7e7;
+        }
+    }
+
+    .unchecked {
+        background-color: $softWhite;
+    }
+
+    .checked {
+        background-color: dodgerblue;
+    }
+
+    .checkmark {
+        // color: $softWhite;
+        // font-weight: 600;
+        width: 6px;
+        height: 10px;
+        border: solid $softWhite;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}

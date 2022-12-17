@@ -1,0 +1,22 @@
+.helpContainer {
+  height: 100%;
+}
+.helpContainer h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.helpContainer .footer {
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+/*# sourceMappingURL=Help.module.css.map */

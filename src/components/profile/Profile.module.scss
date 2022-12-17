@@ -1,0 +1,110 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+$borderSize: 1px;
+$borderColorDivider: #455a64;
+
+.profileMenu {
+    .profile {
+        position: relative;
+        width: 2.25rem; //36px
+        height: 2.25rem; //36px
+        border-radius: 50%;
+        background-image: url("/icons/profilecircle.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit: cover;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .menu {
+        position: absolute;
+        right: 0;
+        width: 10rem; //  160px
+        height: max-content;
+        background: $charcoal;
+        color: $softWhite;
+        font-size: 0.875rem; //14px
+        border: $borderSize solid $softWhite;
+        border-radius: 0.25rem;
+        box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+        padding: 0.625rem; //10px
+        transition: 0.5s;
+        z-index: 1000;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -0.625rem; // 10px
+            right: 1.625rem; // 24px
+            width: 1rem; //16px
+            height: 1rem;
+            background: $charcoal;
+            border-left: $borderSize solid;
+            border-top: $borderSize solid;
+            border-color: $softWhite;
+            transform: rotate(45deg);
+            z-index: 1000;
+        }
+
+        h3 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        h4 {
+            font-size: 11px;
+            font-weight: 300;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        ul {
+            border-top: $borderSize solid $borderColorDivider;
+            list-style: none;
+            margin-top: 0.625rem;
+            padding-top: 0.625rem;
+
+            li, div {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                span {
+                    margin-left: 0.5rem;
+                }
+            }
+
+            .btn {
+                cursor: pointer;
+
+                &:hover {
+                    filter: $filterYellowColor;
+                }
+            }
+
+            li:not(:last-child) {
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.5rem;
+                border-bottom: $borderSize solid $borderColorDivider;
+            }
+        }
+    }
+}
+
+.menuHidden {
+    top: 5rem; // 80px
+    visibility: hidden;
+    opacity: 0;
+}
+.menuActive {
+    top: $headerHeight;
+    visibility: visible;
+    opacity: 1;
+}

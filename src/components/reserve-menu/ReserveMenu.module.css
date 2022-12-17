@@ -1,0 +1,44 @@
+.container {
+  height: 100%;
+  overflow-y: auto;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.125rem;
+  border-bottom: 1px solid #2f4858;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.card:not(:first-child) {
+  padding-top: 1.125rem;
+}
+.card:hover {
+  background-color: #2f4858;
+  border-radius: 0.25rem;
+}
+.card div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card .reserveId {
+  font-size: 0.875rem;
+  padding: 0 0.25rem;
+  color: #39cd51;
+}
+.card .infoText {
+  margin-left: 0.875rem;
+}
+.card .label {
+  color: #86bbd8;
+}
+.card .tag {
+  margin-left: 0.875rem;
+}
+
+/*# sourceMappingURL=ReserveMenu.module.css.map */

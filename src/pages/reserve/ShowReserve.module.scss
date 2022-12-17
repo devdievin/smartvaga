@@ -1,0 +1,27 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    .label {
+        color: $darkSkyBlue;
+    }
+    
+    h3 {
+        font-size: 1rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .reserveInfo {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        margin-bottom: 2.25rem;
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
