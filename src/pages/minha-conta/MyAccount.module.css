@@ -3,6 +3,19 @@
   height: 100%;
 }
 
+.backPage {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.backPage:hover {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
+.backPage span {
+  margin-left: 0.5rem;
+}
+
 .header {
   display: flex;
   justify-content: flex-start;
@@ -31,12 +44,20 @@
   font-size: 1rem;
   font-weight: 400;
   color: #acacac;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .header .iconEdit {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding-right: 0.25rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.header .iconEdit:hover {
+  opacity: 0.5;
 }
 
 .info {
@@ -44,6 +65,9 @@
 }
 .info p {
   margin-bottom: 1.25rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .info p .label {
   color: #86bbd8;

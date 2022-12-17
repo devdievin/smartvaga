@@ -2,7 +2,7 @@
 @import "../../styles/partials/sizes";
 
 .container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -22,6 +22,7 @@
     border-radius: 0.25rem;
     padding: 1rem;
     animation: top-to-down 0.45s both;
+    box-shadow: 2px 2px 8px 4px #000000;
 
     .iconError {
         filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%)

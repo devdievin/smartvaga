@@ -6,6 +6,21 @@
     height: 100%;
 }
 
+.backPage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    &:hover {
+        filter: $filterYellowColor;
+    }
+
+    span {
+        margin-left: 0.5rem;
+    }
+}
+
 .header {
     display: flex;
     justify-content: flex-start;
@@ -38,6 +53,9 @@
             font-size: 1rem;
             font-weight: 400;
             color: $softGray;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
     }
 
@@ -46,6 +64,12 @@
         justify-content: flex-end;
         align-items: center;
         padding-right: 0.25rem;
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.5;
+        }
     }
 }
 
@@ -54,6 +78,9 @@
 
     p {
         margin-bottom: 1.25rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         .label {
             color: $darkSkyBlue;

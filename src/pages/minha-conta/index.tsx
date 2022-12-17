@@ -1,7 +1,9 @@
 import moment from "moment";
 import "moment/locale/pt-br";
+import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 
@@ -12,13 +14,16 @@ import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { ProfileComponent } from "../../components/profile";
-
-import styles from "./MyAccount.module.css";
 import InputComponent from "../../components/input";
 import { QuestionerComponent } from "../../components/questioner";
 import LoadingComponent from "../../components/loading";
 
+import styles from "./MyAccount.module.css";
+import { AuthContext } from "../../contexts/AuthContext";
+
 export default function MyAccount() {
+    const router = useRouter();
+    const { signOut } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const [userData, setUserData] = useState<any>();
     const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +33,7 @@ export default function MyAccount() {
     useEffect(() => {
         api.get("/profile")
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 setUserData(response.data);
             })
             .catch(err => {
@@ -38,12 +43,16 @@ export default function MyAccount() {
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 1 * 1000);
-                // console.log("terminou a requisição");
             });
     }, []);
 
     const onSubmit = (data: any) => {
         console.log(data);
+    }
+
+    const handleDeleteAccount = async () => {
+        await signOut();
+        router.push("/");
     }
 
     return (
@@ -60,6 +69,12 @@ export default function MyAccount() {
                         <div className={styles.container}>
                             {isLoading ? <LoadingComponent /> :
                                 <div>
+                                    <div className={styles.backPage}>
+                                        <Link href={"/dashboard"}>
+                                            <Image src={"/icons/icon-arrow-back.svg"} alt={"início"} width={14} height={12.25} />
+                                            <span>Início</span>
+                                        </Link>
+                                    </div>
                                     <div className={styles.header}>
                                         <div className={styles.imgProfile}>
                                             <Image src={"/icons/profilecircle.svg"} alt={"minha foto"} width={64} height={64} />
@@ -100,14 +115,14 @@ export default function MyAccount() {
                                                     <InputComponent type={"password"} name={"password"} label={"Senha:"} value={userData.password} onChange={(e) => setUserData({ ...userData, password: e.target.value })} register={register} />
 
                                                     <ButtonComponent type="submit" text="Salvar" style="btn btn-secondary btn-small w-100" />
-                                                    <ButtonComponent type="button" text="Cancelar" style="btn btn-outline-secondary btn-small mt-1 w-100" callback={() => setEdit(false)} />
+                                                    <ButtonComponent type="button" text="Cancelar" style="btn btn-outline-secondary btn-small mt-1 w-100" callback={() => { router.reload(); }} />
                                                 </form>
                                             </div>
                                         </div>
                                     }
 
                                     {deleteAccount &&
-                                        <QuestionerComponent message={"Tem certeza que deseja excluir sua conta?"} negativeAction={() => setDeleteAccount(false)} />
+                                        <QuestionerComponent message={"Tem certeza que deseja excluir sua conta?"} negativeAction={() => setDeleteAccount(false)} positiveAction={handleDeleteAccount} />
                                     }
                                 </div>
                             }

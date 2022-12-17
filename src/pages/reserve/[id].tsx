@@ -16,6 +16,7 @@ import { ContentMenuComponent } from "../../components/content-menu";
 import ButtonComponent from "../../components/button";
 import LoadingComponent from "../../components/loading";
 import ExpiredTagComponent from "../../components/expired-tag";
+import ModalComponent from "../../components/modal";
 
 import styles from "./ShowReserve.module.css";
 
@@ -23,6 +24,9 @@ export default function ShowReserve() {
     const router = useRouter();
     const { id } = router.query;
     const [isLoading, setIsLoading] = useState(true);
+    const [reserveResponseStatus, setReserveResponseStatus] = useState(200);
+    const [reserveResponseMessage, setReserveResponseMessage] = useState("");
+    const [showModal, setShowModal] = useState(false);
     const [reserve, setReserve] = useState<any>();
 
     useEffect(() => {
@@ -39,8 +43,23 @@ export default function ShowReserve() {
                     setIsLoading(false)
                 }, 1 * 1000);
             });
-        // console.log("Reserva:", id);
-    }, [])
+    }, []);
+
+    const handleDeleteReserve = async () => {
+        try {
+            const response = await api.delete(`/reserve/${id}`);
+            console.log(response);
+            if (response) {
+                setReserveResponseStatus(response.status);
+                setReserveResponseMessage(response.data.message);
+                setShowModal(true);
+            }
+        } catch (error) {
+            setReserveResponseStatus(error.response.status);
+            setReserveResponseMessage(error.response.data.message);
+            console.error(error);
+        }
+    }
 
     return (
         <div>
@@ -54,20 +73,25 @@ export default function ShowReserve() {
                 <ContentMenuComponent>
                     {isLoading ? <LoadingComponent /> :
                         <div className={styles.container}>
-                            <h3>Reserva: # {reserve.id}</h3>
+                            <div>
+                                <h3><span className={styles.label}>Reserva:</span> # {reserve.id}</h3>
 
-                            <div className={styles.reserveInfo}>
-                                <p>Nº da vaga: {reserve.vacancy.num}</p>
-                                <p>Dia: {moment(reserve.date).format("DD/MM/YYYY")}</p>
-                                <p>Entrada: {formatTimeZero(reserve.entry_time)} | Saída: {formatTimeZero(reserve.exit_time)}</p>
-                                <p>Veículo: {reserve.car.brand} {reserve.car.name} {reserve.car.model}</p>
-                                <p>Placa: {reserve.car.licensePlate} | Cor: {reserve.car.color}</p>
-                                <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
+                                <div className={styles.reserveInfo}>
+                                    <p><span className={styles.label}>Nº da vaga:</span> {reserve.vacancy.num}</p>
+                                    <p><span className={styles.label}>Dia:</span> {moment(reserve.date).format("DD/MM/YYYY")}</p>
+                                    <p><span className={styles.label}>Entrada:</span> {formatTimeZero(reserve.entry_time)} <span className={styles.label}>| Saída:</span> {formatTimeZero(reserve.exit_time)}</p>
+                                    <p><span className={styles.label}>Veículo:</span> {reserve.car.brand} {reserve.car.name}</p>
+                                    <p><span className={styles.label}>Modelo:</span> {reserve.car.model}</p>
+                                    <p><span className={styles.label}>Placa:</span> {reserve.car.licensePlate}</p>
+                                    <p><span className={styles.label}>Cor:</span> {reserve.car.color}</p>
+                                    <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
+                                </div>
+
+
+                                <ButtonComponent text={"EXCLUIR"} type={"button"} style={"btn btn-secondary btn-small w-100 mb-1"} callback={handleDeleteReserve} />
+                                <ButtonComponent text={"VOLTAR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} callback={() => router.push("/dashboard")} />
                             </div>
-
-
-                            <ButtonComponent text={"EDITAR"} type={"button"} style={"btn btn-secondary btn-small w-100 mb-1"} />
-                            <ButtonComponent text={"EXCLUIR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} />
+                            {showModal && <ModalComponent status={reserveResponseStatus} message={reserveResponseMessage} redirectPath={"/dashboard"} />}
                         </div>
                     }
                 </ContentMenuComponent>

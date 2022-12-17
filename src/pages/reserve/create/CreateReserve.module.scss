@@ -36,9 +36,13 @@
     }
 
     .btnCancel {
+        transition: 0.3s;
+        opacity: 0.6;
         cursor: pointer;
+        
         &:hover {
-            opacity: 0.6;
+            opacity: 1;
+            transform: scale(1.01);
         }
     }
 }

@@ -32,7 +32,6 @@ export const ReserveMenuComponent = () => {
     }, []);
 
     const handleClick = (id: string) => {
-        // console.log("clicou", id);
         router.push(`/reserve/${id}`);
     }
 
@@ -43,12 +42,15 @@ export const ReserveMenuComponent = () => {
                     reserves?.map((reserve, index) => {
                         return <div className={styles.card} key={index} onClick={() => handleClick(reserve.id)}>
                             <div className={styles.reserveId}>#{reserve.id}</div>
-                            <div>Vaga: Nº {reserve.vacancy.num}</div>
-                            <div>Veículo: {reserve.car.name} - Placa: {reserve.car.licensePlate}</div>
-                            <div>
-                                Validade: {moment(reserve.date).format("DD/MM/YYYY")} - {hourFormat(reserve.entry_time, "HH:MM")} às {hourFormat(reserve.exit_time, "HH:MM")}
+                            <div className={styles.infoText}><span className={styles.label}>Vaga:</span> Nº {reserve.vacancy.num}</div>
+                            <div className={styles.infoText}><span className={styles.label}>Veículo:</span> {reserve.car.name}<span className={styles.label}> - Placa:</span> {reserve.car.licensePlate}</div>
+                            <div className={styles.infoText}>
+                                <span className={styles.label}>Validade:</span> {moment(reserve.date).format("DD/MM/YYYY")}<span className={styles.label}> das </span>{hourFormat(reserve.entry_time, "HH:MM")} <span className={styles.label}>às</span> {hourFormat(reserve.exit_time, "HH:MM")}
                             </div>
-                            <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
+
+                            <div className={styles.tag}>
+                                <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
+                            </div>
                         </div>;
 
                     })}
