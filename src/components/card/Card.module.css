@@ -25,4 +25,10 @@
   margin-bottom: 1.5rem;
 }
 
+@media only screen and (min-width: 1400px) {
+  .cardHeader {
+    font-size: 1.75rem;
+  }
+}
+
 /*# sourceMappingURL=Card.module.css.map */

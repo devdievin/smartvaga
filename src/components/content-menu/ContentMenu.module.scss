@@ -11,3 +11,11 @@
     color: $softWhite;
     padding: 1.25rem;
 }
+
+@media only screen and (min-width: 768px) {
+    .contentMenu {
+        left: 300px;
+        width: calc(100% - 300px);
+        height: calc(100% - $headerHeight);
+    }
+}

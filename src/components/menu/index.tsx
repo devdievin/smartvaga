@@ -78,7 +78,7 @@ const MenuComponent = () => {
     }
 
     return (
-        <div>
+        <div className='h-100'>
             {(menuOpenned) &&
                 <ContentMenuComponent>
                     <div className='h-100'>
@@ -98,12 +98,18 @@ const MenuComponent = () => {
             <div className={styles.menu}>
                 <div className={reserveStatus} onClick={() => showMenu(MENUS.reserves, "Minhas Reservas")}>
                     <Image src={"/icons/archive.svg"} alt={"reservas"} width={32} height={32} />
+                    <span className={styles.labelBtn}>Minhas Reservas</span>
                 </div>
                 <div className={carStatus} onClick={() => showMenu(MENUS.cars, "Meus Carros")}>
                     <Image src={"/icons/car.svg"} alt={"carros"} width={32} height={32} />
+                    <span className={styles.labelBtn}>Meus Carros</span>
                 </div>
                 <div className={helpStatus} onClick={() => showMenu(MENUS.help, "Ajuda")}>
                     <Image src={"/icons/help.svg"} alt={"ajuda"} width={32} height={32} />
+                    <span className={styles.labelBtn}>Ajuda</span>
+                </div>
+                <div className={styles.version}>
+                    <span>Smartvaga - versão 1.1.0</span>
                 </div>
             </div>
         </div>

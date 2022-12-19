@@ -16,11 +16,19 @@
 
 .helpLink {
     font-size: 0.875rem;
-    color: $lightGray;
     margin: 1rem 0;
-
+    
     &:last-child {
         margin-bottom: 0;
+    }
+    
+    a {
+        color: rgba($lightGray, 0.6);
+
+        &:hover {
+            color: $honeyYellow;
+            text-decoration: underline;
+        }
     }
 }
 
@@ -29,4 +37,12 @@
         width: 25rem;
         margin: 0 auto;
     }
+
+    .helpLink { 
+        margin: 1.25rem 0;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+
 }

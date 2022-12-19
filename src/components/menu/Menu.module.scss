@@ -43,10 +43,70 @@
     cursor: pointer;
 
     &:hover {
-        filter: $filterYellowColor;
+        img {
+            filter: $filterYellowColor;
+        }
+    }
+
+    .labelBtn {
+        display: none;
     }
 }
 
 .active {
     filter: $filterYellowColor;
+}
+
+.version {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .menu {
+        position: relative;
+        // width: 300px;
+        height: 100%;
+        border-top: 0.25rem solid $darkCharcoal;
+        display: block;
+        padding: 0;
+        // justify-content: space-between;
+        // align-items: center;
+    }
+
+    .iconLink {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-bottom: 1px solid $darkCharcoal;
+        font-size: 1.25rem;
+        color: $softWhite;
+        padding: 1.5rem 1rem;
+
+        &:hover {
+            .labelBtn {
+                filter: $filterYellowColor;
+            }
+        }
+
+        img {
+            width: 1.75rem; //28px
+            height: 1.75rem;
+            margin-right: 0.675rem;
+        }
+
+        .labelBtn {
+            display: block;
+        }
+    }
+
+    .version {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $lightGray;
+    }
 }

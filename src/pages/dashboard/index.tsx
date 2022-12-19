@@ -76,10 +76,10 @@ export default function Dashboard() {
             return <div key={index}>
                 {
                     (reserve) ?
-                        <>
+                        <div className={styles.imgCar}>
                             {/* Renderiza os carros nas vagas */}
                             {findMyCar(reserve.car.id, carIconFocus, carIcon, vacancy.num)}
-                        </>
+                        </div>
                         :
                         <span className={styles.freeVacancy} onClick={() => addReserve(vacancy.num)}>
                             <span>V-0{vacancy.num}</span>
@@ -117,22 +117,34 @@ export default function Dashboard() {
                 <ProfileComponent />
             </HeaderComponent>
 
-            <MainComponent hideFooter={false} dark={true}>
+            <MainComponent hideFooter={true} dark={true}>
                 {isLoading ? <LoadingComponent /> :
-                    <div>
-                        <div className={styles.datetimeHeader}>
-                            <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
-                            <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
-                        </div>
+                    <div className={styles.mainContainer}>
+                        <div className={styles.container}>
+                            <div className={styles.datetimeHeader}>
+                                <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
+                                <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
+                            </div>
 
-                        <div className={styles.vacanciesGrid}>
-                            {searchReserves(reserveDate, reserveTime)}
+                            <div className={styles.vacanciesGrid}>
+                                {searchReserves(reserveDate, reserveTime)}
+                            </div>
+                        </div>
+                        <div className={styles.divMenu}>
+                            <MenuComponent />
+                        </div>
+                        <div className={styles.sideRight}>
+                            <div>
+                                <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
+                            </div>
+                            <div>
+                                <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
+                            </div>
                         </div>
                     </div>
                 }
             </MainComponent>
 
-            <MenuComponent />
         </>
     );
 }
