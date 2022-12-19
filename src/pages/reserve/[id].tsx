@@ -12,7 +12,7 @@ import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { ProfileComponent } from "../../components/profile";
-import { ContentMenuComponent } from "../../components/content-menu";
+// import { ContentMenuComponent } from "../../components/content-menu";
 import ButtonComponent from "../../components/button";
 import LoadingComponent from "../../components/loading";
 import ExpiredTagComponent from "../../components/expired-tag";
@@ -69,11 +69,11 @@ export default function ShowReserve() {
                 <ProfileComponent />
             </HeaderComponent>
 
-            <MainComponent hideFooter={false}>
-                <ContentMenuComponent>
-                    {isLoading ? <LoadingComponent /> :
-                        <div className={styles.container}>
-                            <div>
+            <MainComponent hideFooter={true} dark={true}>
+                {isLoading ? <LoadingComponent /> :
+                    <div className={`main-container`}>
+                        <div className="container bg-dark">
+                            <div className={styles.wrapper}>
                                 <h3><span className={styles.label}>Reserva:</span> # {reserve.id}</h3>
 
                                 <div className={styles.reserveInfo}>
@@ -93,11 +93,14 @@ export default function ShowReserve() {
                             </div>
                             {showModal && <ModalComponent status={reserveResponseStatus} message={reserveResponseMessage} redirectPath={"/dashboard"} />}
                         </div>
-                    }
-                </ContentMenuComponent>
+
+                        <div className={`menu-left`}>
+                            <MenuComponent />
+                        </div>
+                    </div>
+                }
             </MainComponent>
 
-            <MenuComponent />
         </div>
     );
 }

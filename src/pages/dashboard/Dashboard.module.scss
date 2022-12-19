@@ -3,11 +3,6 @@
 
 $gridColor: #4c4c4c;
 
-.container {
-    height: calc(100vh - ($headerHeight + $menuMobileHeight));
-    padding: 1rem 0.5rem;
-}
-
 .datetimeHeader {
     display: flex;
     justify-content: space-between;
@@ -70,7 +65,7 @@ $gridColor: #4c4c4c;
 }
 
 @media only screen and (min-width: 768px) {
-    .mainContainer {
+    .mainContainerDashboard {
         height: 100%;
         display: grid;
         grid-template-columns: 300px 1fr 300px;
@@ -78,17 +73,10 @@ $gridColor: #4c4c4c;
         justify-content: flex-start;
     }
 
-    .divMenu {
+    .sideLeft {
         height: 100%;
         grid-column: 1;
         grid-row: 1;
-    }
-
-    .container {
-        grid-column: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .datetimeHeader {
@@ -106,6 +94,7 @@ $gridColor: #4c4c4c;
                 height: 100px;
             }
         }
+
         & > div {
             .freeVacancy {
                 span:first-child {
@@ -139,7 +128,6 @@ $gridColor: #4c4c4c;
             width: 100%;
             font-size: 1.25rem;
             font-family: "Inter", sans-serif;
-            // padding: 0.75rem 1rem;
         }
     }
 }

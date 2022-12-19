@@ -54,7 +54,9 @@
 }
 
 .active {
-    filter: $filterYellowColor;
+    img {
+        filter: $filterYellowColor;
+    }
 }
 
 .version {
@@ -62,6 +64,23 @@
 }
 
 @media only screen and (min-width: 768px) {
+    .headerMenu {
+        .title {
+            font-size: 1.25rem;
+        }
+
+        .iconClose {
+            img {
+                width: 1.25rem;
+                height: auto;
+            }
+        }
+    }
+
+    .componentWrapper {
+        height: calc(100% - 3rem);
+    }
+
     .menu {
         position: relative;
         // width: 300px;
@@ -69,8 +88,6 @@
         border-top: 0.25rem solid $darkCharcoal;
         display: block;
         padding: 0;
-        // justify-content: space-between;
-        // align-items: center;
     }
 
     .iconLink {
@@ -96,6 +113,16 @@
 
         .labelBtn {
             display: block;
+        }
+    }
+
+    .active {
+        background-color: $darkCharcoal;
+        border-right: 2px solid $honeyYellow;
+
+        img,
+        .labelBtn {
+            filter: $filterYellowColor;
         }
     }
 

@@ -1,8 +1,12 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
 .container {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $softWhite;
 
     .wrapper {
         width: 25rem;

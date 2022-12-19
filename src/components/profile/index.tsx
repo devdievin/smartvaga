@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+
 import styles from "./Profile.module.css";
 
 export const ProfileComponent = () => {
@@ -22,8 +23,10 @@ export const ProfileComponent = () => {
             <div className={styles.profile} onClick={handleProfile}></div>
 
             <div className={`${styles.menu} ${toggleMenu ? styles.menuActive : styles.menuHidden}`}>
-                <h3>{user?.name ? user.name : "usuário"}</h3>
-                <h4>{user?.email ? user.email : "user@email.com"}</h4>
+                <div className={styles.header}>
+                    <h3>{user?.name ? user.name : "usuário"}</h3>
+                    <h4>{user?.email ? user.email : "user@email.com"}</h4>
+                </div>
                 <ul>
                     <li onClick={() => router.push("/minha-conta")}>
                         <div className={styles.btn}>

@@ -3,7 +3,7 @@
   top: 68px;
   left: 0;
   width: 100%;
-  height: calc(100% - 132px);
+  height: calc(100vh - 132px);
   background-color: #233642;
   color: #f7f7f7;
   padding: 1.25rem;

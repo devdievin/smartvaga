@@ -19,6 +19,11 @@ a {
     box-sizing: border-box;
 }
 
+.container {
+    height: calc(100vh - ($headerHeight + $menuMobileHeight));
+    padding: 1rem;
+}
+
 .w-100 {
     width: 100%;
 }
@@ -50,6 +55,11 @@ a {
 }
 .align-end {
     justify-content: flex-end;
+}
+
+.bg-dark {
+    background-color: $darkCharcoal;
+    color: $softWhite;
 }
 
 .btn {
@@ -146,10 +156,33 @@ $borderSize: 2px;
 }
 
 @media only screen and (min-width: 768px) {
+    .main-container {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 1fr;
+        justify-content: flex-start;
+
+        .menu-left {
+            height: 100%;
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+    }
+
+    .container {
+        height: calc(100vh - $headerHeight);
+        grid-column: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .btn {
         font-size: 1.25rem;
     }
-    
+
     .btn-large {
         padding: 1rem 2rem;
     }
@@ -163,7 +196,7 @@ $borderSize: 2px;
     .btn-large {
         padding: 1rem 2rem;
     }
-    
+
     // .btn-small {
     //     padding: 0.75rem 0.875rem;
     // }

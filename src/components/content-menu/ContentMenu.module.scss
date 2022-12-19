@@ -6,7 +6,7 @@
     top: $headerHeight;
     left: 0;
     width: 100%;
-    height: calc(100% - ($headerHeight + $menuMobileHeight));
+    height: calc(100vh - ($headerHeight + $menuMobileHeight));
     background-color: $darkCharcoal;
     color: $softWhite;
     padding: 1.25rem;

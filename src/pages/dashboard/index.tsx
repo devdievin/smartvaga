@@ -119,8 +119,8 @@ export default function Dashboard() {
 
             <MainComponent hideFooter={true} dark={true}>
                 {isLoading ? <LoadingComponent /> :
-                    <div className={styles.mainContainer}>
-                        <div className={styles.container}>
+                    <div className={styles.mainContainerDashboard}>
+                        <div className="container">
                             <div className={styles.datetimeHeader}>
                                 <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
                                 <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
@@ -130,7 +130,7 @@ export default function Dashboard() {
                                 {searchReserves(reserveDate, reserveTime)}
                             </div>
                         </div>
-                        <div className={styles.divMenu}>
+                        <div className={styles.sideLeft}>
                             <MenuComponent />
                         </div>
                         <div className={styles.sideRight}>
