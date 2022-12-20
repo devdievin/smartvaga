@@ -42,9 +42,9 @@ export default function Complete() {
             <HeaderComponent logoLink="/">
                 <ProfileComponent />
             </HeaderComponent>
-            <MainComponent hideFooter={false}>
-                <ContentMenuComponent>
-                    <div className={styles.container}>
+            <MainComponent hideFooter={false} dark={true}>
+                <div className={styles.container}>
+                    <div className={styles.wrapper}>
                         <p className={styles.title}>Olá {user?.name},</p>
                         <p>Para usar todas as funcionalidades da plataforma com segurança. Precisamos que conclua seu cadastro.</p>
 
@@ -58,7 +58,7 @@ export default function Complete() {
                             </div>
                         </form>
                     </div>
-                </ContentMenuComponent>
+                </div>
             </MainComponent>
 
             <FooterComponent />

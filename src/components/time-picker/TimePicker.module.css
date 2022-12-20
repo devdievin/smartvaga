@@ -5,6 +5,16 @@
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 0.25rem;
+  color: #383838;
+}
+
+@media only screen and (min-width: 768px) {
+  .selectTime {
+    width: 100%;
+    height: fit-content;
+    text-align: start;
+    font-size: 1.25rem;
+  }
 }
 
 /*# sourceMappingURL=TimePicker.module.css.map */

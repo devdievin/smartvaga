@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   transition: 0.5s;
+  z-index: 2;
 }
 
 .modal {
@@ -16,8 +17,12 @@
   width: 100%;
   background-color: #2f4858;
   text-align: center;
-  border-radius: 0.25rem;
   padding: 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   animation: top-to-down 0.45s both;
   box-shadow: 2px 2px 8px 4px #000000;
 }
@@ -25,6 +30,22 @@
   filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
 }
 
+@media only screen and (min-width: 768px) {
+  .modal {
+    max-width: 25rem;
+    max-height: 21.875rem;
+    height: 100%;
+    padding: 2rem;
+    border-radius: 0.5rem;
+  }
+  .modal img {
+    width: 5rem;
+    height: auto;
+  }
+  .modal p {
+    font-size: 1.25rem;
+  }
+}
 @keyframes top-to-down {
   from {
     visibility: hidden;

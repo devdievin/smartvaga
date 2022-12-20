@@ -10,13 +10,30 @@
 }
 
 .spinner {
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 0.25rem solid rgba($lightGray, 0.3);
+    width: 4rem; //64px
+    height: 4rem;
+    border: 0.4rem solid rgba($lightGray, 0.3);
     border-left-color: $honeyYellow;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
+
+@media only screen and (min-width: 768px) {
+    .spinner {
+        width: 4.5rem; //72px
+        height: 4.5rem;
+        border-width: 0.45rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .spinner {
+        width: 6rem; //96px
+        height: 6rem;
+        border-width: 0.6rem;
+    }
+}
+
 @keyframes spin {
     to {
         transform: rotate(360deg);

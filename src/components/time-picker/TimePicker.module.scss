@@ -12,4 +12,16 @@
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 0.25rem;
+    color: $softBlack;
+}
+
+@media only screen and (min-width: 768px) {
+    .selectTime {
+        width: 100%;
+        height: fit-content;
+        text-align: start;
+        // padding: 0.5rem 0.25rem;
+        font-size: 1.25rem;
+    }
+    
 }

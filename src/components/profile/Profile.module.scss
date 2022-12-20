@@ -16,13 +16,18 @@ $borderColorDivider: #455a64;
         background-size: cover;
         object-fit: cover;
         overflow: hidden;
+        transition: 0.2s;
         cursor: pointer;
+
+        &:hover {
+            outline: 0.125rem solid $honeyYellow;
+        }
     }
 
     .menu {
         position: absolute;
-        right: 0;
-        width: 10rem; //  160px
+        right: 0.125rem; //2px
+        width: 12rem; //  192px
         height: max-content;
         background: $charcoal;
         color: $softWhite;
@@ -38,7 +43,7 @@ $borderColorDivider: #455a64;
             content: "";
             position: absolute;
             top: -0.625rem; // 10px
-            right: 1.625rem; // 24px
+            right: 1.375rem; // 22px
             width: 1rem; //16px
             height: 1rem;
             background: $charcoal;
@@ -58,20 +63,21 @@ $borderColorDivider: #455a64;
         }
 
         h4 {
-            font-size: 11px;
+            font-size: 0.688rem; //11px
             font-weight: 300;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            color: $lightGray;
         }
 
         ul {
             border-top: $borderSize solid $borderColorDivider;
             list-style: none;
             margin-top: 0.625rem;
-            padding-top: 0.625rem;
 
-            li, div {
+            li,
+            div {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -89,9 +95,15 @@ $borderColorDivider: #455a64;
                 }
             }
 
+            li {
+                padding: 0.875rem 0.375rem;
+            }
+
+            li:last-child {
+                padding-bottom: 0.375rem;
+            }
+
             li:not(:last-child) {
-                margin-bottom: 0.5rem;
-                padding-bottom: 0.5rem;
                 border-bottom: $borderSize solid $borderColorDivider;
             }
         }
@@ -107,4 +119,36 @@ $borderColorDivider: #455a64;
     top: $headerHeight;
     visibility: visible;
     opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+    .profileMenu {
+        .menu {
+            width: 12.5rem;
+            font-size: 1rem; //16px
+            border-radius: 0.5rem;
+
+            .header {
+                padding: 0.375rem;
+
+                h3 {
+                    font-size: 1rem;
+                }
+
+                h4 {
+                    font-size: 0.75rem;
+                }
+            }
+
+            ul {
+                li {
+                    padding: 1rem 0.375rem;
+                }
+
+                li:last-child {
+                    padding-bottom: 0.375rem;
+                }
+            }
+        }
+    }
 }

@@ -53,10 +53,11 @@ export default function CarAdd() {
                 <ProfileComponent />
             </HeaderComponent>
 
-            <MainComponent hideFooter={false}>
-                <ContentMenuComponent>
-                    <div className={styles.container}>
-                        <div>
+            <MainComponent hideFooter={true} dark={true}>
+                {/* <ContentMenuComponent> */}
+                <div className={`main-container`}>
+                    <div className="container bg-dark">
+                        <div className={styles.wrapper}>
                             <h3>Adicionar carro</h3>
                             <p>Informações do veículo:</p>
                             <form onSubmit={handleSubmit(onSubmit)}>
@@ -77,10 +78,14 @@ export default function CarAdd() {
 
                         {submitted && <ModalComponent status={modalResponseStatus} message={modalResponseData} redirectPath={"/dashboard"} />}
                     </div>
-                </ContentMenuComponent>
+                    <div className={`menu-left`}>
+                        <MenuComponent />
+                    </div>
+                </div>
+                {/* </ContentMenuComponent> */}
             </MainComponent>
 
-            <MenuComponent />
+            {/* <MenuComponent /> */}
         </div>
     );
 }

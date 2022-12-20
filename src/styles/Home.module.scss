@@ -1,6 +1,8 @@
 @import "./partials/colors";
+@import "./partials/sizes";
 
 .container {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,5 +33,37 @@
 
     .image {
         position: relative !important;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        h1 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+$wrapperWidthLg: 600px;
+
+@media only screen and (min-width: 1400px) {
+    .container {
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            width: $wrapperWidthLg;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .imageContainer {
+            max-width: $wrapperWidthLg;
+        }
     }
 }

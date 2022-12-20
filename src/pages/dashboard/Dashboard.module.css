@@ -21,7 +21,7 @@
   background-color: #4c4c4c;
   color: #f7f7f7;
 }
-.vacanciesGrid div {
+.vacanciesGrid > div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,25 +29,80 @@
   font-size: 1.75rem;
   font-weight: 600;
 }
-.vacanciesGrid div .freeVacancy {
+.vacanciesGrid > div .freeVacancy {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
 }
-.vacanciesGrid div .freeVacancy span:first-child {
+.vacanciesGrid > div .freeVacancy span:first-child {
   position: absolute;
   margin-top: 0.25rem;
   letter-spacing: 10%;
   font-size: 0.875rem;
 }
-.vacanciesGrid div .freeVacancy span:last-child {
+.vacanciesGrid > div .freeVacancy span:last-child {
   margin: auto auto;
   font-size: 3rem;
   cursor: pointer;
 }
-.vacanciesGrid div .freeVacancy span:last-child:hover {
+.vacanciesGrid > div .freeVacancy span:last-child:hover {
   opacity: 0.6;
+}
+
+.sideRight {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainContainerDashboard {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-rows: 1fr;
+    justify-content: flex-start;
+  }
+  .sideLeft {
+    height: 100%;
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .datetimeHeader {
+    display: none;
+  }
+  .vacanciesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    grid-template-rows: repeat(3, 160px);
+  }
+  .vacanciesGrid .imgCar img {
+    width: 200px;
+    height: 100px;
+  }
+  .vacanciesGrid > div .freeVacancy span:first-child {
+    font-size: 1rem;
+    margin-top: 0.375rem;
+  }
+  .vacanciesGrid .btnAdd img {
+    width: 48px;
+    height: 48px;
+  }
+  .sideRight {
+    display: block;
+    color: #f7f7f7;
+    background-color: #2f4858;
+    border-top: 0.25rem solid #233642;
+    padding: 1rem;
+  }
+  .sideRight > div:first-child {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .sideRight .dateInput {
+    width: 100%;
+    font-size: 1.25rem;
+    font-family: "Inter", sans-serif;
+  }
 }
 
 /*# sourceMappingURL=Dashboard.module.css.map */

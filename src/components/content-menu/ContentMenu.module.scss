@@ -6,8 +6,16 @@
     top: $headerHeight;
     left: 0;
     width: 100%;
-    height: calc(100% - ($headerHeight + $menuMobileHeight));
+    height: calc(100vh - ($headerHeight + $menuMobileHeight));
     background-color: $darkCharcoal;
     color: $softWhite;
     padding: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .contentMenu {
+        left: 300px;
+        width: calc(100% - 300px);
+        height: calc(100% - $headerHeight);
+    }
 }

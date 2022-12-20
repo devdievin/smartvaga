@@ -3,10 +3,18 @@
   top: 68px;
   left: 0;
   width: 100%;
-  height: calc(100% - 132px);
+  height: calc(100vh - 132px);
   background-color: #233642;
   color: #f7f7f7;
   padding: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .contentMenu {
+    left: 300px;
+    width: calc(100% - 300px);
+    height: calc(100% - 68px);
+  }
 }
 
 /*# sourceMappingURL=ContentMenu.module.css.map */

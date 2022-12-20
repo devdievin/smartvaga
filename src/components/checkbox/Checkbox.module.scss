@@ -2,26 +2,21 @@
 @import "../../styles/partials/sizes";
 
 .container {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     font-size: 0.875rem;
 
     .checkbox {
-        width: 18px;
-        height: 18px;
-        border-radius: 2px;
+        width: 1.25rem;
+        aspect-ratio: 1/1;
+        border-radius: 0.125rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 0.25rem;
+        margin-right: 0.5rem;
         cursor: pointer;
-
-        &:hover {
-            // background-color: #e7e7e7;
-        }
     }
 
     .unchecked {
@@ -33,14 +28,30 @@
     }
 
     .checkmark {
-        // color: $softWhite;
-        // font-weight: 600;
-        width: 6px;
-        height: 10px;
+        width: 0.375rem; //6px
+        aspect-ratio: 6/10;
         border: solid $softWhite;
         border-width: 0 3px 3px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        font-size: 1rem;
+        margin: 1.25rem 0;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .container {
+        font-size: 1.125rem;
+        margin: 1.25rem 0;
+
+        .checkbox {
+            width: 1.5rem;
+        }
     }
 }

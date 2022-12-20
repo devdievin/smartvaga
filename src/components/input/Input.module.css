@@ -26,4 +26,17 @@
   color: #2f4858;
 }
 
+@media only screen and (min-width: 768px) {
+  .inputGroup {
+    margin-bottom: 1.25rem;
+  }
+  .inputGroup label {
+    font-size: 1.25rem;
+  }
+  .inputGroup input {
+    font-size: 1.125rem;
+    padding: 0.75rem 0.5rem;
+  }
+}
+
 /*# sourceMappingURL=Input.module.css.map */

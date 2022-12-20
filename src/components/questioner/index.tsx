@@ -21,8 +21,8 @@ export const QuestionerComponent = ({ message, negativeAction, positiveAction }:
                 </div>
 
                 <div className={styles.btnGroup}>
-                    <ButtonComponent text={"Não"} type={"button"} style={"btn btn-outline-secondary btn-small"} callback={negativeAction} />
-                    <ButtonComponent text={"Sim"} type={"button"} style={"btn btn-secondary btn-small"} callback={positiveAction} />
+                    <ButtonComponent text={"Não"} type={"button"} style={"btn btn-outline-secondary btn-large"} callback={negativeAction} />
+                    <ButtonComponent text={"Sim"} type={"button"} style={"btn btn-secondary btn-large"} callback={positiveAction} />
                 </div>
             </div>
         </div>

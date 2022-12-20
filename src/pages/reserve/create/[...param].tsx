@@ -14,7 +14,7 @@ import HeadComponent from "../../../components/head";
 import HeaderComponent from "../../../components/header";
 import MainComponent from "../../../components/main";
 import MenuComponent from "../../../components/menu";
-import { ContentMenuComponent } from "../../../components/content-menu";
+// import { ContentMenuComponent } from "../../../components/content-menu";
 import { ProfileComponent } from "../../../components/profile";
 import LoadingComponent from "../../../components/loading";
 import ModalComponent from "../../../components/modal";
@@ -91,11 +91,12 @@ export default function CreateReserve() {
                 <ProfileComponent />
             </HeaderComponent>
 
-            <MainComponent hideFooter={false}>
-                <ContentMenuComponent>
-                    {isLoading ? <LoadingComponent /> :
-                        <div className={styles.container}>
-                            <div>
+            <MainComponent hideFooter={true} dark={true}>
+                {isLoading ? <LoadingComponent /> :
+                    <div className={`main-container`}>
+                        {/* <ContentMenuComponent> */}
+                        <div className="container bg-dark">
+                            <div className={styles.wrapper}>
                                 <h3>Criar uma reserva</h3>
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <p className={styles.text1}>Você está reservando a vaga {param![0]} para o dia <strong>{moment(param![1]).format("DD/MM/YYYY")}</strong> das <strong>{param![2]}</strong> às <strong>{exit_time}</strong>.</p>
@@ -130,11 +131,14 @@ export default function CreateReserve() {
                             {submitted && <ModalComponent status={modalResponseStatus} message={modalResponseData} redirectPath={"/dashboard"} />}
 
                         </div>
-                    }
-                </ContentMenuComponent>
-            </MainComponent>
+                        {/* </ContentMenuComponent> */}
 
-            <MenuComponent />
+                        <div className={`menu-left`}>
+                            <MenuComponent />
+                        </div>
+                    </div>
+                }
+            </MainComponent>
         </div>
     );
 }

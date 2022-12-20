@@ -14,17 +14,26 @@
 
 .helpLink {
   font-size: 0.875rem;
-  color: #e7e7e7;
   margin: 1rem 0;
 }
 .helpLink:last-child {
   margin-bottom: 0;
+}
+.helpLink a {
+  color: rgba(231, 231, 231, 0.6);
+}
+.helpLink a:hover {
+  color: #f6ae2d;
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 601px) {
   .container {
     width: 25rem;
     margin: 0 auto;
+  }
+  .helpLink {
+    margin: 1.25rem 0;
   }
 }
 
