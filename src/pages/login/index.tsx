@@ -33,7 +33,7 @@ export default function Login() {
             </HeaderComponent>
 
             <MainComponent hideFooter={false}>
-                <div className={styles.container}>
+                <div className="wrapper">
                     <CardComponent title="Login" color="primary">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <InputComponent register={register} placeholder="Seu e-mail" name="email" type={"email"} required={true} />

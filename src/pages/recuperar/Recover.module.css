@@ -1,58 +1,51 @@
-.container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.content {
+  width: 100%;
 }
-.container .header {
+.content .header {
   text-align: center;
   margin-bottom: 3rem;
 }
-.container .header h3 {
+.content .header h3 {
   font-size: 1.375rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
-.container .header h4 {
+.content .header h4 {
   font-size: 0.875rem;
   font-weight: 300;
 }
-.container form {
+.content form {
   text-align: center;
 }
-.container form div {
+.content form div {
   margin-top: 1.5rem;
 }
 
 @media only screen and (min-width: 601px) {
-  .container {
-    width: 25rem;
-    margin: 0 auto;
-  }
-  .container .header {
+  .content .header {
     margin-bottom: 3rem;
   }
-  .container .header h3 {
+  .content .header h3 {
     font-size: 1.375rem;
     margin-bottom: 0.5rem;
   }
-  .container .header h4 {
+  .content .header h4 {
     font-size: 0.875rem;
   }
 }
 @media only screen and (min-width: 1400px) {
-  .container {
+  .content {
     width: 25rem;
     margin: 0 auto;
   }
-  .container .header {
+  .content .header {
     margin-bottom: 3rem;
   }
-  .container .header h3 {
+  .content .header h3 {
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
   }
-  .container .header h4 {
+  .content .header h4 {
     font-size: 1rem;
   }
 }

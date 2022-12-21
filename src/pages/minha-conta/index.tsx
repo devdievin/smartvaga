@@ -116,7 +116,7 @@ export default function MyAccount() {
                                                         <InputComponent type={"password"} name={"password"} label={"Senha:"} value={userData.password} onChange={(e) => setUserData({ ...userData, password: e.target.value })} register={register} />
 
                                                         <ButtonComponent type="submit" text="Salvar" style="btn btn-secondary btn-small w-100" />
-                                                        <ButtonComponent type="button" text="Cancelar" style="btn btn-outline-secondary btn-small mt-1 w-100" callback={() => { router.reload(); }} />
+                                                        <ButtonComponent type="button" text="Cancelar" style="btn btn-outline-secondary btn-small mt-1 w-100" callback={() => { setEdit(false); }} />
                                                     </form>
                                                 </div>
                                             </div>

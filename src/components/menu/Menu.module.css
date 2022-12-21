@@ -1,3 +1,7 @@
+.containerMenu {
+  height: 100%;
+}
+
 .headerMenu {
   display: flex;
   justify-content: space-between;

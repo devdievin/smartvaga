@@ -17,19 +17,21 @@ export const CarMenuComponent = () => {
     const [cars, setCars] = useState<any[]>([]);
 
     useEffect(() => {
-        api.get(`/cars/${user?.id}`)
-            .then(response => {
-                setCars(response.data);
-            })
-            .catch(err => {
-                console.error(err)
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    setIsLoading(false)
-                }, 1 * 1000);
-            });
-    }, []);
+        if (user) {
+            api.get(`/cars/${user.id}`)
+                .then(response => {
+                    setCars(response.data);
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        setIsLoading(false)
+                    }, 1 * 1000);
+                });
+        }
+    }, [user]);
 
     const negativeAction = () => setDeleted(false);
 

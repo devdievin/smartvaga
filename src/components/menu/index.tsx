@@ -81,7 +81,7 @@ const MenuComponent = () => {
         <div className='h-100'>
             {(menuOpenned) &&
                 <ContentMenuComponent>
-                    <div className='h-100'>
+                    <div className={styles.containerMenu}>
                         <div className={styles.headerMenu}>
                             <div className={styles.title}>{menu.title}</div>
                             <div onClick={closeMenu} className={styles.iconClose}>

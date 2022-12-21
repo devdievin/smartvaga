@@ -45,8 +45,8 @@ export default function Complete() {
             <MainComponent hideFooter={false} dark={true}>
                 <div className={styles.container}>
                     <div className={styles.wrapper}>
-                        <p className={styles.title}>Olá {user?.name},</p>
-                        <p>Para usar todas as funcionalidades da plataforma com segurança. Precisamos que conclua seu cadastro.</p>
+                        <p className={styles.title}>Olá {user?.name ? user.name : "Motorista"},</p>
+                        <p>Para você usar todas as funcionalidades da plataforma com segurança. Precisamos que conclua seu cadastro.</p>
 
                         <p>Fica tranquilo(a), leva menos de 1 minuto.</p>
 

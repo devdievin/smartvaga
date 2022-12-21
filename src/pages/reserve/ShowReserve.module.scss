@@ -2,10 +2,36 @@
 @import "../../styles/partials/sizes";
 
 .wrapper {
+    width: 100%;
+    height: 100%;
+    // padding: 1rem 1rem;
+
+    .headerMenu {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        .title {
+            color: $honeyYellow;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .iconClose {
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover {
+                filter: $filterYellowColor;
+            }
+        }
+    }
+
     .label {
         color: $darkSkyBlue;
     }
-    
+
     h3 {
         font-size: 1rem;
         white-space: nowrap;
@@ -23,5 +49,10 @@
         p {
             margin-bottom: 0.5rem;
         }
+
+    }
+
+    .btnGroup {
+        width: 15rem; //240px
     }
 }

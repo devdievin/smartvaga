@@ -1,6 +1,10 @@
 @import "../../styles/partials/colors";
 @import "../../styles/partials/sizes";
 
+.containerMenu {
+    height: 100%;
+}
+
 .headerMenu {
     display: flex;
     justify-content: space-between;
@@ -64,6 +68,10 @@
 }
 
 @media only screen and (min-width: 768px) {
+    .containerMenu {
+        // padding: 0.75rem;
+    }
+
     .headerMenu {
         .title {
             font-size: 1.25rem;

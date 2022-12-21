@@ -34,27 +34,29 @@ export default function CreateReserve() {
     const { register, handleSubmit } = useForm();
 
     useEffect(() => {
-        api.get(`/cars/${user?.id}`)
-            .then(response => {
-                setUserCars(response.data);
-            })
-            .catch(err => {
-                console.error(err)
-            });
+        if (user) {
+            api.get(`/cars/${user.id}`)
+                .then(response => {
+                    setUserCars(response.data);
+                })
+                .catch(err => {
+                    console.error(err)
+                });
 
-        api.get(`/vacancy/${param![0]}`)
-            .then(response => {
-                setVacancy(response.data);
-            })
-            .catch(err => {
-                console.error(err)
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    setIsLoading(false)
-                }, 1 * 1000);
-            });
-    }, []);
+            api.get(`/vacancy/${param![0]}`)
+                .then(response => {
+                    setVacancy(response.data);
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        setIsLoading(false)
+                    }, 1 * 1000);
+                });
+        }
+    }, [user]);
 
     const exit_time = setExitTime(param![2], 1);
 

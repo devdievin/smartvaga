@@ -24,6 +24,15 @@ a {
     padding: 1rem;
 }
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    // padding: 1rem;
+}
+
 .w-100 {
     width: 100%;
 }
@@ -177,6 +186,11 @@ $borderSize: 2px;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .wrapper {
+        max-width: 25rem;
+        margin: 0 auto;
     }
 
     .btn {

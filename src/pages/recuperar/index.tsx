@@ -27,29 +27,31 @@ export default function Recover() {
             </HeaderComponent>
 
             <MainComponent hideFooter={false}>
-                <div className={styles.container}>
-                    <CardComponent color={"primary"}>
-                        <div>
-                            <div className={styles.header}>
-                                <h3>Recuperar conta</h3>
-                                <h4>Recupere sua conta Smartvaga</h4>
-                            </div>
-
+                <div className="wrapper">
+                    <div className={styles.content}>
+                        <CardComponent color={"primary"}>
                             <div>
-                                <form onSubmit={handleSubmit(onSubmit)}>
-                                    <InputComponent type={"email"} name={"email"} placeholder={"Seu e-mail"} register={register} required={true} />
+                                <div className={styles.header}>
+                                    <h3>Recuperar conta</h3>
+                                    <h4>Recupere sua conta Smartvaga</h4>
+                                </div>
 
-                                    <div>
-                                        <ButtonComponent type="submit" text="PRÓXIMO" style="btn btn-primary btn-large" />
-                                    </div>
-                                </form>
+                                <div>
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <InputComponent type={"email"} name={"email"} placeholder={"Seu e-mail"} register={register} required={true} />
+
+                                        <div>
+                                            <ButtonComponent type="submit" text="PRÓXIMO" style="btn btn-primary btn-large" />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                    </CardComponent>
+                        </CardComponent>
+                    </div>
                 </div>
-            </MainComponent>
+            </MainComponent >
 
             <FooterComponent />
-        </div>
+        </div >
     );
 }

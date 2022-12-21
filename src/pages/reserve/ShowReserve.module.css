@@ -1,3 +1,25 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .headerMenu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.wrapper .headerMenu .title {
+  color: #f6ae2d;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.wrapper .headerMenu .iconClose {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.wrapper .headerMenu .iconClose:hover {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
 .wrapper .label {
   color: #86bbd8;
 }
@@ -16,6 +38,9 @@
 }
 .wrapper .reserveInfo p {
   margin-bottom: 0.5rem;
+}
+.wrapper .btnGroup {
+  width: 15rem;
 }
 
 /*# sourceMappingURL=ShowReserve.module.css.map */

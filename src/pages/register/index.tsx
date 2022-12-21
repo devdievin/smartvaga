@@ -62,7 +62,7 @@ export default function Register() {
             </HeaderComponent>
 
             <MainComponent hideFooter={false}>
-                <div className={styles.container}>
+                <div className="wrapper">
                     <CardComponent title="Criar conta" color="primary">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <InputComponent register={register} placeholder="Nome" name="name" type={"text"} required={true} />
