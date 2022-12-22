@@ -82,7 +82,10 @@ export default function ShowReserve() {
                                     </div>
                                 </div>
 
-                                <h3><span className={styles.label}>Reserva:</span> # {reserve.id}</h3>
+                                <div className={styles.section1}>
+                                    <h3><span className={styles.label}>Reserva:</span> # {reserve.id}</h3>
+                                    <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
+                                </div>
 
                                 <div className={styles.reserveInfo}>
                                     <p><span className={styles.label}>Nº da vaga:</span> {reserve.vacancy.num}</p>
@@ -92,7 +95,6 @@ export default function ShowReserve() {
                                     <p><span className={styles.label}>Modelo:</span> {reserve.car.model}</p>
                                     <p><span className={styles.label}>Placa:</span> {reserve.car.licensePlate}</p>
                                     <p><span className={styles.label}>Cor:</span> {reserve.car.color}</p>
-                                    <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
                                 </div>
 
                                 <div className={styles.btnGroup}>

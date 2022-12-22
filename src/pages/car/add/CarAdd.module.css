@@ -1,3 +1,6 @@
+.wrapper {
+  height: 100%;
+}
 .wrapper h3 {
   font-size: 1.125rem;
   font-weight: 600;
@@ -13,6 +16,43 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1rem;
+}
+.wrapper .btnGroup div:first-child {
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    width: 70%;
+  }
+  .wrapper .btnGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+  }
+  .wrapper .btnGroup div:first-child {
+    margin-bottom: 0;
+    grid-column: 2;
+  }
+  .wrapper .btnGroup div:last-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .wrapper {
+    width: 50%;
+    padding-top: 1rem;
+  }
+  .wrapper h3 {
+    font-size: 1.5rem;
+  }
+  .wrapper p {
+    font-size: 1.25rem;
+  }
 }
 
 /*# sourceMappingURL=CarAdd.module.css.map */

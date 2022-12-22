@@ -91,7 +91,8 @@ $gridColor: #4c4c4c;
         .imgCar {
             img {
                 width: 200px;
-                height: 100px;
+                height: auto;
+                // height: 100px;
             }
         }
 
@@ -128,6 +129,37 @@ $gridColor: #4c4c4c;
             width: 100%;
             font-size: 1.25rem;
             font-family: "Inter", sans-serif;
+        }
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .vacanciesGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 400px);
+        grid-template-rows: repeat(3, 256px);
+
+        .imgCar {
+            img {
+                width: 320px;
+                height: auto;
+            }
+        }
+
+        & > div {
+            .freeVacancy {
+                span:first-child {
+                    font-size: 1.375rem;
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+
+        .btnAdd {
+            img {
+                width: 64px;
+                height: auto;
+            }
         }
     }
 }

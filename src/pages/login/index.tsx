@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
@@ -15,14 +15,30 @@ import MainComponent from "../../components/main";
 import styles from './Login.module.css';
 
 export default function Login() {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, isAuthenticated } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
+    const [loading, setLoading] = useState(false);
+
+    const onError = (errors: any, e: any) => console.log(errors, e);
 
     const onSubmit = async (data: any) => {
-        const { email, password } = data;
+        try {
+            const { email, password } = data;
 
-        await signIn({ email: email, password: password });
+            if (!isAuthenticated) {
+                setLoading(true);
+            }
+            
+            await signIn({ email: email, password: password });
+        } catch (error) {
+            setLoading(false);
+            alert(error.message);
+        }
     }
+
+    const checkKeyDown = (e: any) => {
+        if (e.code === 'Enter') e.preventDefault();
+    };
 
     return (
         <>
@@ -35,7 +51,7 @@ export default function Login() {
             <MainComponent hideFooter={false}>
                 <div className="wrapper">
                     <CardComponent title="Login" color="primary">
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <form onSubmit={handleSubmit(onSubmit, onError)} onKeyDown={(e) => checkKeyDown(e)}>
                             <InputComponent register={register} placeholder="Seu e-mail" name="email" type={"email"} required={true} />
                             <InputComponent register={register} placeholder="Sua senha" name="password" type={"password"} required={true} />
                             <div className={`${styles.helpLink} align-end`}>
@@ -53,6 +69,11 @@ export default function Login() {
                             </div>
                         </form>
                     </CardComponent>
+                    {loading &&
+                        <div className={styles.loadWrapper}>
+                            <div className={styles.spinner}></div>
+                        </div>
+                    }
                 </div>
             </MainComponent>
 

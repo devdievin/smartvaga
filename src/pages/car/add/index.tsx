@@ -70,8 +70,14 @@ export default function CarAdd() {
 
                                 <InputComponent register={register} type={"text"} name={"licensePlate"} placeholder={"Placa do veículo"} required={true} />
 
-                                <ButtonComponent type="submit" text="SALVAR" style="btn btn-secondary btn-small w-100 mb-1" />
-                                <ButtonComponent type="reset" text="CANCELAR" style="btn btn-outline-secondary btn-small w-100" callback={() => router.push("/dashboard")} />
+                                <div className={styles.btnGroup}>
+                                    <div>
+                                        <ButtonComponent type="submit" text="SALVAR" style="btn btn-secondary btn-small w-100" />
+                                    </div>
+                                    <div>
+                                        <ButtonComponent type="reset" text="CANCELAR" style="btn btn-outline-secondary btn-small w-100" callback={() => router.push("/dashboard")} />
+                                    </div>
+                                </div>
                             </form>
                         </div>
 
