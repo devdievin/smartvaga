@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["CarAdd.module.scss"],"names":[],"mappings":"AAII;EACI;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;;AAGJ;EACI;EACA;EACA","file":"CarAdd.module.css"}
+{"version":3,"sourceRoot":"","sources":["CarAdd.module.scss","../../../styles/partials/_colors.scss"],"names":[],"mappings":"AAGA;EACI;;AAEA;EACI;EACA;EACA;EACA,OCFM;EDGN;;AAGJ;EACI;EACA;;AAGJ;EACI;EACA;EACA;;AAIA;EACI;;;AAKZ;EACI;IACI;;EAEA;IACI;IACA;IACA;IACA;IACA;IACA;;EAEA;IACI;IACA;;EAGJ;IACI;IACA;;;AAMhB;EACI;IACI;IACA;;EAEA;IACI;;EAGJ;IACI","file":"CarAdd.module.css"}

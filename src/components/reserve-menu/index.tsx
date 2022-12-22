@@ -17,19 +17,21 @@ export const ReserveMenuComponent = () => {
     const [reserves, setReserves] = useState<any[] | null>([]);
 
     useEffect(() => {
-        api.get(`/reserves/${user?.id}`)
-            .then(response => {
-                setReserves(response.data);
-            })
-            .catch(err => {
-                console.error(err)
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    setIsLoading(false)
-                }, 1 * 1000);
-            });
-    }, []);
+        if (user) {
+            api.get(`/reserves/${user.id}`)
+                .then(response => {
+                    setReserves(response.data);
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        setIsLoading(false)
+                    }, 1 * 1000);
+                });
+        }
+    }, [user]);
 
     const handleClick = (id: string) => {
         router.push(`/reserve/${id}`);

@@ -8,7 +8,7 @@ import { api } from "../../../services/api";
 import { getAPIClient } from "../../../services/axios";
 
 import ButtonComponent from "../../../components/button";
-import { ContentMenuComponent } from "../../../components/content-menu";
+// import { ContentMenuComponent } from "../../../components/content-menu";
 import HeadComponent from "../../../components/head";
 import HeaderComponent from "../../../components/header";
 import InputComponent from "../../../components/input";
@@ -54,7 +54,6 @@ export default function CarAdd() {
             </HeaderComponent>
 
             <MainComponent hideFooter={true} dark={true}>
-                {/* <ContentMenuComponent> */}
                 <div className={`main-container`}>
                     <div className="container bg-dark">
                         <div className={styles.wrapper}>
@@ -71,8 +70,14 @@ export default function CarAdd() {
 
                                 <InputComponent register={register} type={"text"} name={"licensePlate"} placeholder={"Placa do veículo"} required={true} />
 
-                                <ButtonComponent type="submit" text="SALVAR" style="btn btn-secondary btn-small w-100 mb-1" />
-                                <ButtonComponent type="reset" text="CANCELAR" style="btn btn-outline-secondary btn-small w-100" callback={() => router.push("/dashboard")} />
+                                <div className={styles.btnGroup}>
+                                    <div>
+                                        <ButtonComponent type="submit" text="SALVAR" style="btn btn-secondary btn-small w-100" />
+                                    </div>
+                                    <div>
+                                        <ButtonComponent type="reset" text="CANCELAR" style="btn btn-outline-secondary btn-small w-100" callback={() => router.push("/dashboard")} />
+                                    </div>
+                                </div>
                             </form>
                         </div>
 
@@ -82,10 +87,7 @@ export default function CarAdd() {
                         <MenuComponent />
                     </div>
                 </div>
-                {/* </ContentMenuComponent> */}
             </MainComponent>
-
-            {/* <MenuComponent /> */}
         </div>
     );
 }

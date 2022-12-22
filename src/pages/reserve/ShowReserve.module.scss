@@ -2,16 +2,46 @@
 @import "../../styles/partials/sizes";
 
 .wrapper {
+    width: 100%;
+    height: 100%;
+
+    .headerMenu {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        .title {
+            color: $honeyYellow;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .iconClose {
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover {
+                filter: $filterYellowColor;
+            }
+        }
+    }
+
     .label {
         color: $darkSkyBlue;
     }
-    
+
+    .section1{
+        margin-bottom: 2rem;
+
+    }
+
     h3 {
         font-size: 1rem;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
     }
 
     .reserveInfo {
@@ -22,6 +52,14 @@
 
         p {
             margin-bottom: 0.5rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        .btnGroup {
+            width: 15rem; //240px
         }
     }
 }

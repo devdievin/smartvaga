@@ -30,27 +30,28 @@ export default function Dashboard() {
     const [reserveTime, setReserveTime] = useState(timeRangeNow(TIME_RANGE)[0]);
 
     useEffect(() => {
-        // console.log(timeRangeNow(timeRange));
-        api.get(`/cars/${user?.id}`)
-            .then(response => {
-                setUserCars(response.data);
-            })
-            .catch(err => {
-                console.error(err)
-            });
+        if (user) {
+            api.get(`/cars/${user.id}`)
+                .then(response => {
+                    setUserCars(response.data);
+                })
+                .catch(err => {
+                    console.error(err)
+                });
 
-        api.get('/vacancies')
-            .then(response => {
-                setVacancies(response.data);
-            })
-            .catch(err => {
-                console.error(err)
-            }).finally(() => {
-                setTimeout(() => {
-                    setIsLoading(false)
-                }, 1 * 1000);
-            });
-    }, [])
+            api.get('/vacancies')
+                .then(response => {
+                    setVacancies(response.data);
+                })
+                .catch(err => {
+                    console.error(err)
+                }).finally(() => {
+                    setTimeout(() => {
+                        setIsLoading(false)
+                    }, 1 * 1000);
+                });
+        }
+    }, [user]);
 
     const selectDate = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const date = e.target.value;

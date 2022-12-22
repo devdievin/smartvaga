@@ -1,12 +1,37 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .headerMenu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.wrapper .headerMenu .title {
+  color: #f6ae2d;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.wrapper .headerMenu .iconClose {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.wrapper .headerMenu .iconClose:hover {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
 .wrapper .label {
   color: #86bbd8;
+}
+.wrapper .section1 {
+  margin-bottom: 2rem;
 }
 .wrapper h3 {
   font-size: 1rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .wrapper .reserveInfo {
   font-size: 1rem;
@@ -16,6 +41,12 @@
 }
 .wrapper .reserveInfo p {
   margin-bottom: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper .btnGroup {
+    width: 15rem;
+  }
 }
 
 /*# sourceMappingURL=ShowReserve.module.css.map */

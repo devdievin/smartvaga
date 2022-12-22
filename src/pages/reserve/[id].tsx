@@ -19,6 +19,7 @@ import ExpiredTagComponent from "../../components/expired-tag";
 import ModalComponent from "../../components/modal";
 
 import styles from "./ShowReserve.module.css";
+import Image from "next/image";
 
 export default function ShowReserve() {
     const router = useRouter();
@@ -74,7 +75,17 @@ export default function ShowReserve() {
                     <div className={`main-container`}>
                         <div className="container bg-dark">
                             <div className={styles.wrapper}>
-                                <h3><span className={styles.label}>Reserva:</span> # {reserve.id}</h3>
+                                <div className={styles.headerMenu}>
+                                    <div className={styles.title}>Detalhes da Reserva</div>
+                                    <div onClick={() => router.push("/dashboard")} className={styles.iconClose}>
+                                        <Image src={"/icons/icon-close.svg"} alt={"Botão fechar"} width={16} height={16} />
+                                    </div>
+                                </div>
+
+                                <div className={styles.section1}>
+                                    <h3><span className={styles.label}>Reserva:</span> # {reserve.id}</h3>
+                                    <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
+                                </div>
 
                                 <div className={styles.reserveInfo}>
                                     <p><span className={styles.label}>Nº da vaga:</span> {reserve.vacancy.num}</p>
@@ -84,12 +95,12 @@ export default function ShowReserve() {
                                     <p><span className={styles.label}>Modelo:</span> {reserve.car.model}</p>
                                     <p><span className={styles.label}>Placa:</span> {reserve.car.licensePlate}</p>
                                     <p><span className={styles.label}>Cor:</span> {reserve.car.color}</p>
-                                    <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
                                 </div>
 
-
-                                <ButtonComponent text={"EXCLUIR"} type={"button"} style={"btn btn-secondary btn-small w-100 mb-1"} callback={handleDeleteReserve} />
-                                <ButtonComponent text={"VOLTAR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} callback={() => router.push("/dashboard")} />
+                                <div className={styles.btnGroup}>
+                                    <ButtonComponent text={"EXCLUIR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} callback={handleDeleteReserve} />
+                                </div>
+                                {/* <ButtonComponent text={"VOLTAR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} callback={() => router.push("/dashboard")} /> */}
                             </div>
                             {showModal && <ModalComponent status={reserveResponseStatus} message={reserveResponseMessage} redirectPath={"/dashboard"} />}
                         </div>
