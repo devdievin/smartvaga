@@ -50,6 +50,9 @@ export default function Dashboard() {
                         setIsLoading(false)
                     }, 1 * 1000);
                 });
+
+                console.log(WORKING_DAY);
+                
         }
     }, [user]);
 

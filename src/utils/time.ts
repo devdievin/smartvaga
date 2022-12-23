@@ -28,6 +28,8 @@ export const timeNow = () => {
     const datetime = new Date();
     const hr = datetime.getHours();
 
+    console.log("TODAY", TODAY);
+    
     return (hr < 10) ? `0${hr}:00` : `${hr}:00`;
 }
 
@@ -43,7 +45,7 @@ export const timeRangeNow = (range: string[]) => {
 }
 
 export const setTimeRange = (reserveDate: string, range: string[]) => {
-    if (reserveDate === WORKING_DAY) {
+    if (reserveDate === TODAY) {
         return timeRangeNow(range);
     }
 
