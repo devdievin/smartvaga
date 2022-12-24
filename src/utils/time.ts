@@ -1,5 +1,8 @@
 import moment from "moment";
+import "moment-timezone";
 import { formatTimeZero } from "./format";
+
+moment.tz.setDefault("America/Sao_Paulo");
 
 export const TODAY = moment().format('YYYY-MM-DD');
 export let WORKING_DAY = moment().format('YYYY-MM-DD');
@@ -29,11 +32,15 @@ export const timeNow = () => {
     const hr = datetime.getHours();
 
     console.log("TODAY", TODAY);
-    
+
     return (hr < 10) ? `0${hr}:00` : `${hr}:00`;
 }
 
 export const timeRangeNow = (range: string[]) => {
+    if (timeNow() < range[0]) {
+        return range;
+    }
+
     const index = range.indexOf(timeNow());
 
     if (index === -1 || index === (range.length - 1)) {

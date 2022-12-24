@@ -60,15 +60,15 @@ export default function CarAdd() {
                             <h3>Adicionar carro</h3>
                             <p>Informações do veículo:</p>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <InputComponent register={register} type={"text"} name={"name"} placeholder={"Nome"} required={true} />
-                                <InputComponent register={register} type={"text"} name={"brand"} placeholder={"Marca"} required={true} />
-                                <InputComponent register={register} type={"text"} name={"model"} placeholder={"Modelo"} required={true} />
+                                <InputComponent register={register} type={"text"} name={"name"} placeholder={"Nome"} maxLength={50} required={true} />
+                                <InputComponent register={register} type={"text"} name={"brand"} placeholder={"Marca"} maxLength={50} required={true} />
+                                <InputComponent register={register} type={"text"} name={"model"} placeholder={"Modelo"} maxLength={60} required={true} />
                                 <div className={styles.inlineTwo}>
-                                    <InputComponent register={register} type={"text"} name={"year"} placeholder={"Ano"} required={true} />
-                                    <InputComponent register={register} type={"text"} name={"color"} placeholder={"Cor"} required={true} />
+                                    <InputComponent register={register} type={"text"} name={"year"} placeholder={"Ano"} minLength={4} maxLength={4} required={true} />
+                                    <InputComponent register={register} type={"text"} name={"color"} placeholder={"Cor"} maxLength={30} required={true} />
                                 </div>
 
-                                <InputComponent register={register} type={"text"} name={"licensePlate"} placeholder={"Placa do veículo"} required={true} />
+                                <InputComponent register={register} type={"text"} name={"licensePlate"} placeholder={"Placa do veículo"} minLength={7} maxLength={7} required={true} />
 
                                 <div className={styles.btnGroup}>
                                     <div>

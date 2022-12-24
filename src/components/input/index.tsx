@@ -8,17 +8,19 @@ type InputProps = {
     type: HTMLInputTypeAttribute;
     name: string;
     value?: string;
+    minLength?: number;
+    maxLength?: number;
     placeholder?: string;
     required?: boolean;
     register: UseFormRegister<FieldValues>;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputComponent = ({ label, type, name, value, placeholder, required, register, onChange }: InputProps) => {
+const InputComponent = ({ label, type, name, value, placeholder, minLength, maxLength, required, register, onChange }: InputProps) => {
     return (
         <div className={styles.inputGroup}>
             {(label) && <label>{label}</label>}
-            <input {...register(name)} type={type} name={name} value={value} placeholder={placeholder} required={required} onChange={onChange} />
+            <input {...register(name)} type={type} name={name} value={value} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={onChange} />
         </div>
     );
 }
