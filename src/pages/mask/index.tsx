@@ -30,7 +30,7 @@ const Mask = () => {
         console.log("HORA ATUAL:", TODAY);
         console.log("HORA DE TRABALHO", WORKING_DAY);
 
-        setTimeRange("2022-12-26", TIME_RANGE);
+        console.log(setTimeRange("2022-12-26", TIME_RANGE));
     }
 
     // const onSubmit = (data: any) => {
