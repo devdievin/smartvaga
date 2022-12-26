@@ -40,6 +40,8 @@ export const timeNow = () => {
 }
 
 export const timeRangeNow = (range: string[]) => {
+    console.log("function timeNow():", timeNow());
+
     if (timeNow() < range[0]) {
         return range;
     }
