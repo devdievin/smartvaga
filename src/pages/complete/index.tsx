@@ -1,6 +1,6 @@
 import Router from "next/router";
 import { GetServerSideProps } from "next";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import { api } from "../../services/api";
@@ -20,6 +20,8 @@ import styles from "./Complete.module.css";
 
 export default function Complete() {
     const { user } = useContext(AuthContext);
+    const [cpf, setCpf] = useState("");
+    const [birth, setBirth] = useState("");
     const { register, handleSubmit } = useForm();
 
     const onSubmit = async (data: any) => {
@@ -51,8 +53,8 @@ export default function Complete() {
                         <p>Fica tranquilo(a), leva menos de 1 minuto.</p>
 
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <InputComponent register={register} type={"text"} label={"CPF:"} name="cpf" required={true} />
-                            <InputComponent register={register} type={"text"} label={"Data de nascimento:"} name="birth_date" required={true} />
+                            <InputComponent register={register} type={"text"} label={"CPF:"} name="cpf" placeholder="Ex.: 000.000.000-00" mask="cpf" state={[cpf, setCpf]} minLength={11} maxLength={11} required={true} />
+                            <InputComponent register={register} type={"text"} label={"Data de nascimento:"} name="birth_date" placeholder="Ex.:01/01/2000" mask="birth" state={[birth, setBirth]} minLength={8} maxLength={8} required={true} />
                             <div className={styles.btnGroup}>
                                 <ButtonComponent type="submit" text={"COMPLETAR CADASTRO"} style={"btn btn-secondary btn-large"} />
                             </div>

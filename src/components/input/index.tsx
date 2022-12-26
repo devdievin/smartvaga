@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute } from "react";
+import { Dispatch, HTMLInputTypeAttribute, SetStateAction, useState } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import styles from './Input.module.css';
@@ -12,15 +12,48 @@ type InputProps = {
     maxLength?: number;
     placeholder?: string;
     required?: boolean;
-    register: UseFormRegister<FieldValues>;
+    mask?: string;
+    state?: [string, Dispatch<SetStateAction<string>>];
+    // register: UseFormRegister<FieldValues>;
+    register: UseFormRegister<any>;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputComponent = ({ label, type, name, value, placeholder, minLength, maxLength, required, register, onChange }: InputProps) => {
+const InputComponent = ({ label, type, name, value, placeholder, minLength, maxLength, required, mask, state, register, onChange }: InputProps) => {
+    const [error, setError] = useState("");
+
+    const inputMask = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
+        let data = e.target.value;
+
+        switch (type) {
+            case "cpf":
+                data = data.replace(/[^\d]/g, "");
+                data = data.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+                break;
+            case "phone":
+                data = data.replace(/[^\d]/g, "");
+                data = data.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, "($1) $2 $3-$4");
+                break;
+            case "birth":
+                data = data.replace(/[^\d]/g, "");
+                data = data.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+                break;
+        }
+
+        state?.[1](data);
+    }
+
+
+
     return (
         <div className={styles.inputGroup}>
             {(label) && <label>{label}</label>}
-            <input {...register(name)} type={type} name={name} value={value} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={onChange} />
+            {(state)
+                ?
+                <input {...register(name)} type={type} name={name} value={state[0]} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={(e) => { (mask) && inputMask(e, mask); onChange }} />
+                :
+                <input {...register(name)} type={type} name={name} value={value} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={onChange} />
+            }
         </div>
     );
 }
