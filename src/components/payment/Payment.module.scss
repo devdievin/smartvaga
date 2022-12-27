@@ -1,0 +1,189 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/sizes";
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    padding: 0 1.25rem;
+}
+
+.card {
+    width: 100%;
+    max-height: 22.5rem; //360px
+    height: 100%;
+    background-color: $charcoal;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    animation: top-to-down 0.5s linear;
+    box-shadow: 2px 2px 8px 4px #000000;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .iconClose {
+            cursor: pointer;
+            transition: transform 0.3s;
+
+            &:hover {
+                filter: $filterYellowColor;
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .payments {
+        display: grid;
+        row-gap: 1rem;
+
+        .formControl {
+            font-size: 1rem;
+            font-weight: 500;
+            color: $softWhite;
+            display: grid;
+            grid-template-columns: 1em max-content auto;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: $darkCharcoal;
+            padding: 1rem;
+            border-radius: 0.375rem;
+
+            input[type="radio"] {
+                /* Add if not using autoprefixer */
+                -webkit-appearance: none;
+                appearance: none;
+                /* For iOS < 15 to remove gradient background */
+                background-color: $softWhite;
+                /* Not removed via appearance */
+                margin: 0;
+                font: inherit;
+                color: currentColor;
+                width: 1rem;
+                height: 1rem;
+                border: 0.15em solid currentColor;
+                border-radius: 50%;
+                display: grid;
+                place-content: center;
+                cursor: pointer;
+            }
+
+            input[type="radio"]::before {
+                content: "";
+                width: 0.625rem;
+                height: 0.625rem;
+                border-radius: 50%;
+                transform: scale(0);
+                transition: 120ms transform ease-in-out;
+                box-shadow: inset 1em 1em $honeyYellow;
+            }
+
+            input[type="radio"]:checked::before {
+                transform: scale(1);
+            }
+        }
+    }
+
+    .infos {
+        color: $softWhite;
+        padding: 1rem 0;
+        .total {
+            span {
+                font-size: 1.25rem;
+                font-weight: 500;
+                margin-left: 0.25rem;
+            }
+            margin-bottom: 0.75rem;
+        }
+
+        .obs {
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+    }
+
+    .bntGroup {
+        width: 100%;
+    }
+
+    .loader {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            position: absolute;
+            top: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .spinner {
+            width: 3.5rem;
+            height: 3.5rem;
+            border: 0.35rem solid rgba($color: $softWhite, $alpha: 0.5);
+            border-left-color: $honeyYellow;
+            border-radius: 50%;
+            animation: rotate 0.9s linear infinite;
+        }
+    }
+}
+
+.result {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .iconError {
+        filter: $filterYellowColor;
+    }
+
+    .message {
+        text-align: center;
+        font-size: 1.125rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .card {
+        max-width: 25rem; //400px
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes top-to-down {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-5rem); //-80px
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -34,8 +34,6 @@ export const timeNow = () => {
     const datetime = new Date();
     const hr = datetime.getHours();
 
-    console.log("TODAY", TODAY);
-
     return (hr < 10) ? `0${hr}:00` : `${hr}:00`;
 }
 

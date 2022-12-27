@@ -14,10 +14,9 @@ import HeadComponent from "../../../components/head";
 import HeaderComponent from "../../../components/header";
 import MainComponent from "../../../components/main";
 import MenuComponent from "../../../components/menu";
-// import { ContentMenuComponent } from "../../../components/content-menu";
 import { ProfileComponent } from "../../../components/profile";
 import LoadingComponent from "../../../components/loading";
-import ModalComponent from "../../../components/modal";
+import { PaymentComponent } from "../../../components/payment";
 
 import styles from "./CreateReserve.module.css";
 
@@ -31,6 +30,7 @@ export default function CreateReserve() {
     const [modalResponseData, setModalResponseData] = useState("");
     const [userCars, setUserCars] = useState<any[]>([]);
     const [vacancy, setVacancy] = useState();
+    const [reserve, setReserve] = useState();
     const { register, handleSubmit } = useForm();
 
     useEffect(() => {
@@ -61,29 +61,34 @@ export default function CreateReserve() {
     const exit_time = setExitTime(param![2], 1);
 
     const onSubmit = async (data: any) => {
+        data.date = param![1];
+        data.entry_time = param![2];
+        data.exit_time = exit_time;
+        data.car = JSON.parse(data.car);
+        data.vacancy = vacancy;
+
+        // console.log(data);
+
+        setReserve(data);
+        setSubmitted(true);
+    };
+
+    const confirmPayment = async () => {
         try {
-            data.date = param![1];
-            data.entry_time = param![2];
-            data.exit_time = exit_time;
-            data.car = JSON.parse(data.car);
-            data.vacancy = vacancy;
+            const response = await api.post("/reserve", reserve);
 
-            const response = await api.post("/reserve", data);
-
-            // console.log(response);
+            console.log(response);
 
             if (response) {
                 setModalResponseStatus(response.status);
                 setModalResponseData(response.data.message);
-                setSubmitted(true);
             }
         } catch (error) {
             setModalResponseStatus(error.response.status);
             setModalResponseData(error.response.data.message);
-            setSubmitted(true);
             console.error(error);
         }
-    };
+    }
 
     return (
         <div>
@@ -96,7 +101,6 @@ export default function CreateReserve() {
             <MainComponent hideFooter={true} dark={true}>
                 {isLoading ? <LoadingComponent /> :
                     <div className={`main-container`}>
-                        {/* <ContentMenuComponent> */}
                         <div className="container bg-dark">
                             <div className={styles.wrapper}>
                                 <h3>Criar uma reserva</h3>
@@ -130,10 +134,9 @@ export default function CreateReserve() {
                                 </form>
                             </div>
 
-                            {submitted && <ModalComponent status={modalResponseStatus} message={modalResponseData} redirectPath={"/dashboard"} />}
+                            {submitted && <PaymentComponent status={modalResponseStatus} message={modalResponseData} redirectPath={"/dashboard"} onSubmit={confirmPayment} onClose={() => setSubmitted(false)} />}
 
                         </div>
-                        {/* </ContentMenuComponent> */}
 
                         <div className={`menu-left`}>
                             <MenuComponent />
