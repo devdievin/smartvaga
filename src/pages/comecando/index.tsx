@@ -22,8 +22,8 @@ export default function Starting() {
                     <h3>Seja bem-vindo(a) a bordo!</h3>
 
                     <p>Parabéns! Agora você faz parte do time dos
-                        que buscam segurança e rapidez no
-                        estacionamento do seu carro.</p>
+                        que buscam segurança e rapidez para
+                        estacionar o carro.</p>
 
                     <div className={styles.vectorImg}>
                         {/* Image here */}

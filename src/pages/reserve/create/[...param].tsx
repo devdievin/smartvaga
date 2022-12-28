@@ -17,8 +17,15 @@ import MenuComponent from "../../../components/menu";
 import { ProfileComponent } from "../../../components/profile";
 import LoadingComponent from "../../../components/loading";
 import { PaymentComponent } from "../../../components/payment";
+import ModalComponent from "../../../components/modal";
 
 import styles from "./CreateReserve.module.css";
+
+type ErrorProps = {
+    isError: boolean;
+    status: number;
+    message: string;
+}
 
 export default function CreateReserve() {
     const router = useRouter();
@@ -26,8 +33,9 @@ export default function CreateReserve() {
     const { user } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
-    const [modalResponseStatus, setModalResponseStatus] = useState(200);
-    const [modalResponseData, setModalResponseData] = useState("");
+    const [paymentResponseStatus, setPaymentResponseStatus] = useState(200);
+    const [paymentResponseData, setPaymentResponseData] = useState("");
+    const [errors, setErrors] = useState<ErrorProps>({ isError: false, status: 500, message: "Internal server error" });
     const [userCars, setUserCars] = useState<any[]>([]);
     const [vacancy, setVacancy] = useState();
     const [reserve, setReserve] = useState();
@@ -38,9 +46,16 @@ export default function CreateReserve() {
             api.get(`/cars/${user.id}`)
                 .then(response => {
                     setUserCars(response.data);
+
+                    // console.log(response.data.length);
+                    
+                    if (response.data.length === 0) {
+                        setErrors({ isError: true, status: 404, message: "Você precisa ter pelo menos um veículo cadastrado para criar uma reserva!" });
+                    }
                 })
                 .catch(err => {
                     console.error(err)
+                    setErrors({ isError: true, status: err.response.status, message: err.response.data.message });
                 });
 
             api.get(`/vacancy/${param![0]}`)
@@ -49,6 +64,7 @@ export default function CreateReserve() {
                 })
                 .catch(err => {
                     console.error(err)
+                    setErrors({ isError: true, status: err.response.status, message: err.response.data.message });
                 })
                 .finally(() => {
                     setTimeout(() => {
@@ -80,12 +96,12 @@ export default function CreateReserve() {
             console.log(response);
 
             if (response) {
-                setModalResponseStatus(response.status);
-                setModalResponseData(response.data.message);
+                setPaymentResponseStatus(response.status);
+                setPaymentResponseData(response.data.message);
             }
         } catch (error) {
-            setModalResponseStatus(error.response.status);
-            setModalResponseData(error.response.data.message);
+            setPaymentResponseStatus(error.response.status);
+            setPaymentResponseData(error.response.data.message);
             console.error(error);
         }
     }
@@ -134,7 +150,9 @@ export default function CreateReserve() {
                                 </form>
                             </div>
 
-                            {submitted && <PaymentComponent status={modalResponseStatus} message={modalResponseData} redirectPath={"/dashboard"} onSubmit={confirmPayment} onClose={() => setSubmitted(false)} />}
+                            {submitted && <PaymentComponent status={paymentResponseStatus} message={paymentResponseData} redirectPath={"/dashboard"} onSubmit={confirmPayment} onClose={() => setSubmitted(false)} />}
+
+                            {errors.isError && <ModalComponent status={errors.status} message={errors.message} textBtn={"Entendi"} action={() => { router.push("/car/add"); }} />}
 
                         </div>
 

@@ -1,6 +1,8 @@
 @import "./partials/colors";
 @import "./partials/sizes";
 
+// $wrapperWidthMd: 350px;
+
 .container {
     height: 100%;
     display: flex;
@@ -13,14 +15,13 @@
         font-size: 1.5rem;
         color: $charcoal;
         text-decoration: underline;
-        margin-top: 0.5rem;
     }
 
     p {
         font-size: 1rem;
         font-weight: 600;
         text-align: center;
-        color: #33658a;
+        color: $queenBlue;
         margin-top: 1rem;
         margin-bottom: 0.5rem;
     }
@@ -57,7 +58,7 @@ $wrapperWidthLg: 600px;
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-        
+
         p {
             width: $wrapperWidthLg;
             font-size: 1.8rem;

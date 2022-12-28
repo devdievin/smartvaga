@@ -12,6 +12,21 @@
 
 .brand {
     color: $softWhite;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+@media only screen and (min-width: 1400px) {
+    .header {
+        height: 90px;
+        padding: 0.5rem 2rem;
+    }
+
+    .brand {
+        font-size: 1.25rem;
+    }
 }
