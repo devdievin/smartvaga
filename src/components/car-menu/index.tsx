@@ -53,16 +53,18 @@ export const CarMenuComponent = () => {
         isLoading ? <LoadingComponent /> :
             <div className={styles.container}>
                 <div>
-                    {cars.map((car, index) => {
-                        return <div className={styles.card} key={index}>
-                            <div className={styles.infoWrapper}>
-                                <div className={styles.cardTitle}>{car.brand} {car.name} {car.model}</div>
-                                <div>Ano: {car.year} | Cor: {car.color}</div>
-                                <div>Placa: {car.licensePlate}</div>
-                            </div>
-                            <Image src={"/icons/icon-trash-delete.svg"} alt={"Excluir"} width={26} height={29} className={styles.btnDelete} onClick={() => { setdeleteCardId(car.id); setDeleted(true); }} />
-                        </div>;
-                    })}
+                    {cars.length === 0 ? <div>Você não tem nenhum carro cadastrado!</div> :
+                        cars.map((car, index) => {
+                            return <div className={styles.card} key={index}>
+                                <div className={styles.infoWrapper}>
+                                    <div className={styles.cardTitle}>{car.brand} {car.name} {car.model}</div>
+                                    <div>Ano: {car.year} | Cor: {car.color}</div>
+                                    <div>Placa: {car.licensePlate}</div>
+                                </div>
+                                <Image src={"/icons/icon-trash-delete.svg"} alt={"Excluir"} width={26} height={29} className={styles.btnDelete} onClick={() => { setdeleteCardId(car.id); setDeleted(true); }} />
+                            </div>;
+                        })
+                    }
 
                     <span className={styles.btnAdd} onClick={() => router.push("/car/add")}>
                         <Image src={"/icons/icon-add.svg"} alt={"Add"} width={44} height={44} />

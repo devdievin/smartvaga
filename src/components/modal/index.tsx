@@ -1,16 +1,18 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import ButtonComponent from "../button";
 import styles from "./Modal.module.css";
 
 type ModalProps = {
     status: number;
     message: string;
-    redirectPath: string;
+    textBtn: string;
+    // redirectPath: string;
+    action: () => Promise<void> | void;
 }
 
-export default function ModalComponent({ status, message, redirectPath }: ModalProps) {
-    const router = useRouter();
+export default function ModalComponent({ status, message, textBtn, action }: ModalProps) {
+    // const router = useRouter();
 
     return (
         <div className={styles.container}>
@@ -24,7 +26,7 @@ export default function ModalComponent({ status, message, redirectPath }: ModalP
                 </div>
                 <p className={styles.message}>{message}</p>
                 <div className={styles.btnGroup}>
-                    <ButtonComponent text={"Continuar"} type={"button"} style={"btn btn-secondary btn-large"} callback={() => { router.push(redirectPath); }} />
+                    <ButtonComponent text={textBtn} type={"button"} style={"btn btn-secondary btn-large"} callback={action} />
                 </div>
             </div>
         </div>

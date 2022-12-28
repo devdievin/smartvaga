@@ -1,49 +1,63 @@
 .container {
-  padding: 1rem 0.5rem;
-}
-
-.header {
+  padding: 0.625rem;
+  height: 100%;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  color: #33658a;
-  margin-bottom: 3rem;
+  gap: 1rem;
 }
-.header .text {
-  margin-left: 1.25rem;
-}
-.header h3 {
-  font-size: 28px;
+.container h3 {
+  font-size: 1.25rem;
   font-weight: 600;
-  text-transform: uppercase;
+  color: #2f4858;
 }
-.header h4 {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.content1,
-.content2 {
+.container p {
   color: #2f4858;
   font-weight: 500;
-}
-
-.content1 {
-  margin-bottom: 2rem;
-}
-.content1 p {
-  margin-bottom: 0.5rem;
-}
-.content1 ul {
-  margin-left: 2rem;
-  line-height: 1.5rem;
-}
-
-.content2 {
   text-align: center;
 }
-.content2 p {
-  margin-bottom: 2rem;
+
+.vectorImg {
+  max-width: 300px;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-image: url("/images/happy-people.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 1.25rem;
+    gap: 0.75rem;
+  }
+  .container h3 {
+    font-size: 1.5rem;
+  }
+  .container p {
+    width: 600px;
+    font-size: 1.125rem;
+  }
+  .vectorImg {
+    max-width: 350px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .container {
+    gap: 2rem;
+  }
+  .container h3 {
+    font-size: 1.75rem;
+  }
+  .container p {
+    width: 900px;
+    font-size: 1.5rem;
+  }
+  .vectorImg {
+    max-width: 600px;
+  }
 }
 
 /*# sourceMappingURL=Starting.module.css.map */

@@ -13,7 +13,7 @@ export const QuestionerComponent = ({ message, negativeAction, positiveAction }:
         <div className={styles.container}>
             <div className={styles.card}>
                 <div className={styles.cardIcon}>
-                    <Image src={"/icons/icon-alert-triangle-outline.svg"} alt={"Alerta"} width={64} height={64} />
+                    <Image src={"/icons/icon-alert-triangle-outline.svg"} alt={"Alerta"} width={72} height={72} />
                 </div>
 
                 <div className={styles.cardMessage}>

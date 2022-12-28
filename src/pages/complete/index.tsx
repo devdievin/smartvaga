@@ -7,7 +7,7 @@ import { api } from "../../services/api";
 import { getAPIClient } from "../../services/axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
-import { ContentMenuComponent } from "../../components/content-menu";
+// import { ContentMenuComponent } from "../../components/content-menu";
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import InputComponent from "../../components/input";
@@ -17,23 +17,47 @@ import FooterComponent from "../../components/footer";
 import { ProfileComponent } from "../../components/profile";
 
 import styles from "./Complete.module.css";
+import LoadingComponent from "../../components/loading";
+import ModalComponent from "../../components/modal";
+
+type ErrorProps = {
+    isError: boolean;
+    status: number;
+    message: string;
+}
 
 export default function Complete() {
     const { user } = useContext(AuthContext);
     const [cpf, setCpf] = useState("");
     const [birth, setBirth] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<ErrorProps>({ isError: false, status: 500, message: "Internal server error" });
     const { register, handleSubmit } = useForm();
 
     const onSubmit = async (data: any) => {
         try {
             const updateData = { ...user, cpf: data.cpf, birth_date: data.birth_date };
-            const response = await api.put(`/account/update/${user?.id}`, updateData);
 
-            if (response.status === 200) return Router.push("/dashboard");
+            setLoading(true);
 
-            console.log(response.data);
+            if (user) {
+                const response = await api.put(`/account/update/${user.id}`, updateData);
+
+                if (response.status === 200) return Router.push("/dashboard");
+
+                // console.log(response.data);
+                return setError({ isError: true, status: response.status, message: response.data.message });
+            }
+
+            return setError({ isError: true, status: 400, message: "ID do usuário inválido!" });
         } catch (err) {
             console.error(err.response.data);
+            setLoading(false);
+            setError({
+                isError: true,
+                status: err.response.status,
+                message: err.response.data.message
+            });
         }
     }
 
@@ -45,21 +69,26 @@ export default function Complete() {
                 <ProfileComponent />
             </HeaderComponent>
             <MainComponent hideFooter={false} dark={true}>
-                <div className={styles.container}>
-                    <div className={styles.wrapper}>
-                        <p className={styles.title}>Olá {user?.name ? user.name : "Motorista"},</p>
-                        <p>Para você usar todas as funcionalidades da plataforma com segurança. Precisamos que conclua seu cadastro.</p>
+                <div className="h-100">
+                    {loading ? <LoadingComponent /> :
+                        <div className={styles.container}>
+                            <div className={styles.wrapper}>
+                                <p className={styles.title}>Olá {user?.name ? user.name : "Motorista"},</p>
+                                <p>Para você usar todas as funcionalidades da plataforma com segurança. Precisamos que conclua seu cadastro.</p>
 
-                        <p>Fica tranquilo(a), leva menos de 1 minuto.</p>
+                                <p>Fica tranquilo(a), leva menos de 1 minuto.</p>
 
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <InputComponent register={register} type={"text"} label={"CPF:"} name="cpf" placeholder="Ex.: 000.000.000-00" mask="cpf" state={[cpf, setCpf]} minLength={11} maxLength={11} required={true} />
-                            <InputComponent register={register} type={"text"} label={"Data de nascimento:"} name="birth_date" placeholder="Ex.:01/01/2000" mask="birth" state={[birth, setBirth]} minLength={8} maxLength={8} required={true} />
-                            <div className={styles.btnGroup}>
-                                <ButtonComponent type="submit" text={"COMPLETAR CADASTRO"} style={"btn btn-secondary btn-large"} />
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <InputComponent register={register} type={"text"} label={"CPF:"} name="cpf" placeholder="Ex.: 000.000.000-00" mask="cpf" state={[cpf, setCpf]} minLength={11} maxLength={11} required={true} />
+                                    <InputComponent register={register} type={"text"} label={"Data de nascimento:"} name="birth_date" placeholder="Ex.:01/01/2000" mask="birth" state={[birth, setBirth]} minLength={8} maxLength={8} required={true} />
+                                    <div className={styles.btnGroup}>
+                                        <ButtonComponent type="submit" text={"COMPLETAR CADASTRO"} style={"btn btn-secondary btn-large"} />
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    }
+                    {error.isError && <ModalComponent status={error.status} message={error.message} textBtn={"Entendi"} action={() => setError({ ...error, isError: false })} />}
                 </div>
             </MainComponent>
 

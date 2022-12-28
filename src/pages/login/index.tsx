@@ -11,13 +11,23 @@ import HeaderComponent from "../../components/header";
 import InputComponent from "../../components/input";
 import LinkComponent from "../../components/link";
 import MainComponent from "../../components/main";
+import ModalComponent from "../../components/modal";
 
 import styles from './Login.module.css';
+import PreloadComponent from "../../components/preload";
+
+type ErrorProps = {
+    isError: boolean;
+    status: number;
+    message: string;
+}
 
 export default function Login() {
     const { signIn, isAuthenticated } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<ErrorProps>({ isError: false, status: 500, message: "Internal server error" });
+
 
     const onError = (errors: any, e: any) => console.log(errors, e);
 
@@ -28,11 +38,16 @@ export default function Login() {
             if (!isAuthenticated) {
                 setLoading(true);
             }
-            
+
             await signIn({ email: email, password: password });
         } catch (error) {
+            // console.log(error);
             setLoading(false);
-            alert(error.message);
+            setError({
+                isError: true,
+                status: error.response.status,
+                message: error.response.data
+            });
         }
     }
 
@@ -69,11 +84,9 @@ export default function Login() {
                             </div>
                         </form>
                     </CardComponent>
-                    {loading &&
-                        <div className={styles.loadWrapper}>
-                            <div className={styles.spinner}></div>
-                        </div>
-                    }
+                    {loading && <PreloadComponent />}
+
+                    {error.isError && <ModalComponent status={error.status} message={error.message} textBtn={"Entendi"} action={() => setError({ ...error, isError: false })} />}
                 </div>
             </MainComponent>
 

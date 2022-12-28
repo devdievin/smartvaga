@@ -7,6 +7,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    padding: 0 0.625rem;
     background-color: rgba($color: #000000, $alpha: 0.5);
     display: flex;
     justify-content: center;
@@ -16,7 +17,7 @@
 }
 
 .card {
-    max-width: 15rem; //240px
+    // max-width: 15rem; //240px
     width: 100%;
     background-color: $charcoal;
     text-align: center;

@@ -2,11 +2,13 @@
 @import "../../styles/partials/sizes";
 
 .container {
+    position: relative;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     color: $softWhite;
+    padding: 1rem 1rem;
 
     .wrapper {
         width: 25rem;
@@ -37,6 +39,9 @@
 }
 
 @media only screen and (min-width: 768px) {
+    .container{
+        align-items: center;
+    }
 }
 
 @media only screen and (min-width: 1400px) {

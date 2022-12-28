@@ -81,7 +81,7 @@ export default function CarAdd() {
                             </form>
                         </div>
 
-                        {submitted && <ModalComponent status={modalResponseStatus} message={modalResponseData} redirectPath={"/dashboard"} />}
+                        {submitted && <ModalComponent status={modalResponseStatus} message={modalResponseData} textBtn={"Continuar"} action={() => { router.push("/dashboard"); }} />}
                     </div>
                     <div className={`menu-left`}>
                         <MenuComponent />
