@@ -13,4 +13,11 @@
     span {
         font-weight: 400;
     }
+
+    a {
+        &:hover {
+            color: $honeyYellow;
+            text-decoration: underline;
+        }
+    }
 }

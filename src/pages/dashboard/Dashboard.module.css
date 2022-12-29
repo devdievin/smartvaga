@@ -44,10 +44,11 @@
 .vacanciesGrid > div .freeVacancy span:last-child {
   margin: auto auto;
   font-size: 3rem;
+  transition: transform 0.2s;
   cursor: pointer;
 }
 .vacanciesGrid > div .freeVacancy span:last-child:hover {
-  opacity: 0.6;
+  transform: scale(1.075);
 }
 
 .sideRight {

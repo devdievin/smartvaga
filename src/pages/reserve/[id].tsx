@@ -49,7 +49,7 @@ export default function ShowReserve() {
     const handleDeleteReserve = async () => {
         try {
             const response = await api.delete(`/reserve/${id}`);
-            console.log(response);
+            // console.log(response);
             if (response) {
                 setReserveResponseStatus(response.status);
                 setReserveResponseMessage(response.data.message);

@@ -2,6 +2,7 @@
 @import "../../styles/partials/sizes";
 
 $gridColor: #4c4c4c;
+// $gridColor: #6b6b69;
 
 .datetimeHeader {
     display: flex;
@@ -50,10 +51,12 @@ $gridColor: #4c4c4c;
             span:last-child {
                 margin: auto auto;
                 font-size: 3rem;
+                transition: transform 0.2s;
                 cursor: pointer;
 
                 &:hover {
-                    opacity: 0.6;
+                    // opacity: 0.6;
+                    transform: scale(1.075);
                 }
             }
         }

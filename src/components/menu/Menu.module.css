@@ -109,7 +109,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #e7e7e7;
+    color: rgba(247, 247, 247, 0.3);
   }
 }
 

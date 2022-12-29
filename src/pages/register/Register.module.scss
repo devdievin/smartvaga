@@ -1,6 +1,18 @@
 @import "../../styles/partials/colors";
 @import "../../styles/partials/sizes";
 
+.termsOfUse {
+    a {
+        color: $lightGray;
+        text-decoration: underline;
+        transition: all 0.3s;
+
+        &:hover {
+            color: $honeyYellow;
+        }
+    }
+}
+
 .btnGroup {
     width: 100%;
     display: flex;

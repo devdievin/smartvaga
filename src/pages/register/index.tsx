@@ -16,6 +16,7 @@ import PreloadComponent from "../../components/preload";
 import ModalComponent from "../../components/modal";
 
 import styles from './Register.module.css';
+import Link from "next/link";
 
 type ErrorProps = {
     isError: boolean;
@@ -85,7 +86,7 @@ export default function Register() {
                             <InputComponent register={register} placeholder="Confirma senha" name="cpassword" type={"password"} required={true} />
 
                             <CheckboxComponent name="check" label="Concordo com os Termos de uso" checked={() => setCheck(!check)}>
-                                <span>Concordo com os Termos de uso</span>
+                                <span className={styles.termsOfUse}>Concordo com os <Link href={"/register"}>Termos de uso</Link></span>
                             </CheckboxComponent>
 
                             <div className={styles.btnGroup}>

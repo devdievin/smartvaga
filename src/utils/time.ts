@@ -1,11 +1,6 @@
 import moment from "moment";
-// import * as moment from "moment"
 import "moment/locale/pt-br";
-import "moment-timezone";
 import { formatTimeZero } from "./format";
-
-// moment.tz.setDefault("America/Sao_Paulo");
-// moment.updateLocale("pt-br", config)
 
 export const TODAY = moment().locale("pt-br").format('YYYY-MM-DD');
 export let WORKING_DAY = moment().locale("pt-br").format('YYYY-MM-DD');
@@ -38,8 +33,6 @@ export const timeNow = () => {
 }
 
 export const timeRangeNow = (range: string[]) => {
-    console.log("function timeNow():", timeNow());
-
     if (timeNow() < range[0]) {
         return range;
     }

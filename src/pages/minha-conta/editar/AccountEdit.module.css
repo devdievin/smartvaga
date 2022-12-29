@@ -1,0 +1,45 @@
+.container {
+  color: #f7f7f7;
+  padding: 1rem;
+}
+.container .header h3 {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  color: #f6ae2d;
+  margin-bottom: 1rem;
+}
+.container .group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.container .btnGroup {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    margin: auto;
+    width: 500px;
+  }
+  .container .header {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .container .btnGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 1rem;
+  }
+  .container .btnGroup button:first-child {
+    grid-row: 1;
+    grid-column: 2;
+  }
+}
+
+/*# sourceMappingURL=AccountEdit.module.css.map */

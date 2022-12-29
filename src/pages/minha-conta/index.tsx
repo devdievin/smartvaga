@@ -4,20 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import ButtonComponent from "../../components/button";
-// import { ContentMenuComponent } from "../../components/content-menu";
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { ProfileComponent } from "../../components/profile";
-import InputComponent from "../../components/input";
 import { QuestionerComponent } from "../../components/questioner";
 import LoadingComponent from "../../components/loading";
-import { AuthContext } from "../../contexts/AuthContext";
 import ModalComponent from "../../components/modal";
 
 import styles from "./MyAccount.module.css";
@@ -31,10 +28,8 @@ type ErrorProps = {
 export default function MyAccount() {
     const router = useRouter();
     const { user, signOut } = useContext(AuthContext);
-    const { register, handleSubmit } = useForm();
     const [userData, setUserData] = useState<any>();
     const [isLoading, setIsLoading] = useState(true);
-    const [edit, setEdit] = useState(false);
     const [deleteAccount, setDeleteAccount] = useState(false);
     const [error, setError] = useState<ErrorProps>({ isError: false, status: 500, message: "Internal server error" });
 
@@ -53,10 +48,6 @@ export default function MyAccount() {
                 }, 1 * 1000);
             });
     }, []);
-
-    const onSubmit = (data: any) => {
-        console.log(data);
-    }
 
     const handleDeleteAccount = async () => {
         try {
@@ -117,7 +108,7 @@ export default function MyAccount() {
                                             </div>
 
                                             <div className={styles.iconEdit}>
-                                                <Image src={"/icons/icon-edit.svg"} alt={"editar minha conta"} width={26} height={26} onClick={() => setEdit(true)} />
+                                                <Image src={"/icons/icon-edit.svg"} alt={"editar minha conta"} title={"Editar"} width={26} height={26} onClick={() => router.push("/minha-conta/editar")} />
                                             </div>
                                         </div>
 
@@ -135,28 +126,13 @@ export default function MyAccount() {
                                             <ButtonComponent type="button" text="Remover Conta" style="btn btn-outline-primary btn-small" callback={() => setDeleteAccount(true)} />
                                         </div>
 
-                                        {edit &&
-                                            <div className={styles.containerModal}>
-                                                <div className={styles.modalForm}>
-                                                    <form onSubmit={handleSubmit(onSubmit)}>
-                                                        <InputComponent type={"text"} name={"name"} label={"Nome:"} value={userData.name} onChange={(e) => setUserData({ ...userData, name: e.target.value })} register={register} />
-                                                        <InputComponent type={"email"} name={"email"} label={"E-mail:"} value={userData.email} onChange={(e) => setUserData({ ...userData, email: e.target.value })} register={register} />
-                                                        <InputComponent type={"date"} name={"birth_date"} label={"Data de nascimento:"} value={userData.birth_date} onChange={(e) => setUserData({ ...userData, birth_date: e.target.value })} register={register} />
-                                                        <InputComponent type={"number"} name={"cpf"} label={"Cpf:"} value={userData.cpf} onChange={(e) => setUserData({ ...userData, cpf: e.target.value })} register={register} />
-                                                        <InputComponent type={"password"} name={"password"} label={"Senha:"} value={userData.password} onChange={(e) => setUserData({ ...userData, password: e.target.value })} register={register} />
-
-                                                        <ButtonComponent type="submit" text="Salvar" style="btn btn-secondary btn-small w-100" />
-                                                        <ButtonComponent type="button" text="Cancelar" style="btn btn-outline-secondary btn-small mt-1 w-100" callback={() => { setEdit(false); }} />
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        }
-
                                         {deleteAccount &&
                                             <QuestionerComponent message={"Tem certeza que deseja excluir sua conta?"} negativeAction={() => setDeleteAccount(false)} positiveAction={handleDeleteAccount} />
                                         }
 
-                                        {error.isError && <ModalComponent status={error.status} message={error.message} textBtn={"Entendi"} action={() => setError({ ...error, isError: false })} />}
+                                        {error.isError &&
+                                            <ModalComponent status={error.status} message={error.message} textBtn={"Entendi"} action={() => setError({ ...error, isError: false })} />
+                                        }
                                     </div>
                                 }
                             </div>
@@ -167,8 +143,6 @@ export default function MyAccount() {
                     }
                 </div>
             </MainComponent>
-
-            {/* <MenuComponent /> */}
         </div>
     );
 }

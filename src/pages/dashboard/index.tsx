@@ -6,20 +6,18 @@ import { parseCookies } from 'nookies';
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAPIClient } from "../../services/axios";
 import { api } from "../../services/api";
-// import moment from 'moment';
+import { setTimeRange, timeRangeNow, TIME_RANGE, WORKING_DAY } from "../../utils/time";
 
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { TimePickerComponent } from "../../components/time-picker";
-import { setTimeRange, timeRangeNow, TIME_RANGE, WORKING_DAY } from "../../utils/time";
 import { ProfileComponent } from "../../components/profile";
 import LoadingComponent from "../../components/loading";
 
-// import { tVacancies } from "../../utils/reserves-test";
-
 import styles from './Dashboard.module.css';
+import Link from "next/link";
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
@@ -53,8 +51,7 @@ export default function Dashboard() {
                     }, 1 * 1000);
                 });
 
-                console.log(WORKING_DAY);
-                
+            // console.log(WORKING_DAY);
         }
     }, [user]);
 
@@ -84,7 +81,7 @@ export default function Dashboard() {
                     (reserve) ?
                         <div className={styles.imgCar}>
                             {/* Renderiza os carros nas vagas */}
-                            {findMyCar(reserve.car.id, carIconFocus, carIcon, vacancy.num)}
+                            {findMyCar(reserve.id, reserve.car.id, carIconFocus, carIcon, vacancy.num)}
                         </div>
                         :
                         <span className={styles.freeVacancy} onClick={() => addReserve(vacancy.num)}>
@@ -98,7 +95,7 @@ export default function Dashboard() {
         });
     }
 
-    const findMyCar = (id: string, myCarIcon: string, carIcon: string, vacancyNum: number) => {
+    const findMyCar = (reserveId: string, id: string, myCarIcon: string, carIcon: string, vacancyNum: number) => {
         if (id === null || id === undefined) throw new Error("Car ID in reserve nullable");
 
         const result = userCars.find(car => car.id === id);
@@ -106,7 +103,7 @@ export default function Dashboard() {
         console.log(result);
 
         if (result) {
-            return <Image src={myCarIcon} alt={"meu carro"} title={`${result.brand} ${result.name} ${result.color}`} width={140} height={70} />
+            return <Link href={`/reserve/${reserveId}`}><Image src={myCarIcon} alt={"meu carro"} title={`${result.brand} ${result.name} ${result.color}`} width={140} height={70} /></Link>
         }
         return <Image src={carIcon} alt={"carro"} title={`Vaga ${vacancyNum}`} width={140} height={70} />
     }
