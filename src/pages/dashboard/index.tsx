@@ -26,7 +26,7 @@ export default function Dashboard() {
     const [isLoading, setIsLoading] = useState(true);
     const [userCars, setUserCars] = useState<any[]>([]);
     const [vacancies, setVacancies] = useState<any[]>([]);
-    const [reserveDate, setReserveDate] = useState(WORKING_DAY);
+    const [reserveDate, setReserveDate] = useState("");
     const [reserveTime, setReserveTime] = useState(timeRangeNow(TIME_RANGE)[0]);
 
     useEffect(() => {
@@ -39,6 +39,8 @@ export default function Dashboard() {
                     console.error(err)
                 });
 
+            setReserveDate(WORKING_DAY);
+
             api.get('/vacancies')
                 .then(response => {
                     setVacancies(response.data);
@@ -50,6 +52,9 @@ export default function Dashboard() {
                         setIsLoading(false)
                     }, 1 * 1000);
                 });
+
+                console.log(WORKING_DAY);
+                
         }
     }, [user]);
 

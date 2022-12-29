@@ -21,7 +21,7 @@ type User = {
 type AuthContextType = {
     isAuthenticated: boolean;
     user: User | null;
-    signIn: (data: SignInData) => Promise<boolean| undefined>;
+    signIn: (data: SignInData) => Promise<boolean | undefined>;
     signOut: () => Promise<void>
 }
 
@@ -43,42 +43,28 @@ export function AuthProvider({ children }: any): JSX.Element {
     }, []);
 
     async function signIn({ email, password }: SignInData) {
-        try {
-            const response = await api.post("/login", {
-                email,
-                password
-            });
+        const response = await api.post("/login", {
+            email,
+            password
+        });
 
-            const { token, user } = response.data;
+        const { token, user } = response.data;
 
-            setCookie(undefined, "smartvaga.token", token, {
-                maxAge: 60 * 60 * 1 // 1 hour
-            });
+        setCookie(undefined, "smartvaga.token", token, {
+            maxAge: 60 * 60 * 1 // 1 hour
+        });
 
-            api.defaults.headers['Authorization'] = `Bearer ${token}`;
+        api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
-            setUser(user);
+        setUser(user);
 
-            // console.log(user);  
+        // console.log(user);  
 
-            if (user.cpf === null || user.birth_date === null) {
-                return Router.push("/complete");
-            }
-
-            return Router.push("/dashboard");
-        } catch (err) {
-            if (err.response) {
-                // The client was given an error response (5xx, 4xx)
-                alert(err.response.data);
-                console.error("Response:", err.response);
-            } else if (err.request) {
-                // The client never received a response, and the request was never left
-                console.error("Request:", err.request);
-            } else {
-                // Anything else
-                console.log('Error', err.message);
-            }
+        if (user.cpf === null || user.birth_date === null) {
+            return Router.push("/complete");
         }
+
+        return Router.push("/dashboard");
     }
 
     async function signOut() {

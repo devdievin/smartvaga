@@ -17,18 +17,26 @@ import { ProfileComponent } from "../../components/profile";
 import InputComponent from "../../components/input";
 import { QuestionerComponent } from "../../components/questioner";
 import LoadingComponent from "../../components/loading";
+import { AuthContext } from "../../contexts/AuthContext";
+import ModalComponent from "../../components/modal";
 
 import styles from "./MyAccount.module.css";
-import { AuthContext } from "../../contexts/AuthContext";
+
+type ErrorProps = {
+    isError: boolean;
+    status: number;
+    message: string;
+}
 
 export default function MyAccount() {
     const router = useRouter();
-    const { signOut } = useContext(AuthContext);
+    const { user, signOut } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const [userData, setUserData] = useState<any>();
     const [isLoading, setIsLoading] = useState(true);
     const [edit, setEdit] = useState(false);
     const [deleteAccount, setDeleteAccount] = useState(false);
+    const [error, setError] = useState<ErrorProps>({ isError: false, status: 500, message: "Internal server error" });
 
     useEffect(() => {
         api.get("/profile")
@@ -51,8 +59,30 @@ export default function MyAccount() {
     }
 
     const handleDeleteAccount = async () => {
-        await signOut();
-        router.push("/");
+        try {
+            setIsLoading(true);
+
+            if (user) {
+                const response = await api.delete(`/account/delete/${user.id}`);
+
+                if (response.status === 200) {
+                    await signOut();
+                    return router.push("/");
+                }
+
+                return setError({ isError: true, status: response.status, message: response.data.message });
+            }
+
+            return setError({ isError: true, status: 400, message: "ID do usuário inválido!" });
+        } catch (error) {
+            console.error(error);
+            setIsLoading(false);
+            setError({
+                isError: true,
+                status: error.response.status,
+                message: error.response.data.message
+            });
+        }
     }
 
     return (
@@ -125,6 +155,8 @@ export default function MyAccount() {
                                         {deleteAccount &&
                                             <QuestionerComponent message={"Tem certeza que deseja excluir sua conta?"} negativeAction={() => setDeleteAccount(false)} positiveAction={handleDeleteAccount} />
                                         }
+
+                                        {error.isError && <ModalComponent status={error.status} message={error.message} textBtn={"Entendi"} action={() => setError({ ...error, isError: false })} />}
                                     </div>
                                 }
                             </div>

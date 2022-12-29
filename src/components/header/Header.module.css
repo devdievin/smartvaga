@@ -9,8 +9,18 @@
 
 .brand {
   color: #f7f7f7;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
+}
+
+@media only screen and (min-width: 1400px) {
+  .header {
+    height: 90px;
+    padding: 0.5rem 2rem;
+  }
+  .brand {
+    font-size: 1.25rem;
+  }
 }
 
 /*# sourceMappingURL=Header.module.css.map */

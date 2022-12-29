@@ -102,7 +102,7 @@ export default function ShowReserve() {
                                 </div>
                                 {/* <ButtonComponent text={"VOLTAR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} callback={() => router.push("/dashboard")} /> */}
                             </div>
-                            {showModal && <ModalComponent status={reserveResponseStatus} message={reserveResponseMessage} redirectPath={"/dashboard"} />}
+                            {showModal && <ModalComponent status={reserveResponseStatus} message={reserveResponseMessage} textBtn={"Continuar"} action={() => { router.push("/dashboard"); }} />}
                         </div>
 
                         <div className={`menu-left`}>

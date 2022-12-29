@@ -1,8 +1,14 @@
 import moment from "moment";
+// import * as moment from "moment"
+import "moment/locale/pt-br";
+import "moment-timezone";
 import { formatTimeZero } from "./format";
 
-export const TODAY = moment().format('YYYY-MM-DD');
-export let WORKING_DAY = moment().format('YYYY-MM-DD');
+// moment.tz.setDefault("America/Sao_Paulo");
+// moment.updateLocale("pt-br", config)
+
+export const TODAY = moment().locale("pt-br").format('YYYY-MM-DD');
+export let WORKING_DAY = moment().locale("pt-br").format('YYYY-MM-DD');
 
 export const TIME_RANGE = [
     "08:00",
@@ -32,10 +38,16 @@ export const timeNow = () => {
 }
 
 export const timeRangeNow = (range: string[]) => {
+    console.log("function timeNow():", timeNow());
+
+    if (timeNow() < range[0]) {
+        return range;
+    }
+
     const index = range.indexOf(timeNow());
 
     if (index === -1 || index === (range.length - 1)) {
-        WORKING_DAY = moment().add(1, "day").format('YYYY-MM-DD');
+        WORKING_DAY = moment().locale("pt-br").add(1, "day").format('YYYY-MM-DD');
         return range;
     }
 
@@ -43,7 +55,7 @@ export const timeRangeNow = (range: string[]) => {
 }
 
 export const setTimeRange = (reserveDate: string, range: string[]) => {
-    if (reserveDate === WORKING_DAY) {
+    if (reserveDate === TODAY) {
         return timeRangeNow(range);
     }
 

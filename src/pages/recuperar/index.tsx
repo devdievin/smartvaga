@@ -1,20 +1,22 @@
 import Router from "next/router";
 import { useForm } from "react-hook-form";
 
-import ButtonComponent from "../../components/button";
-import CardComponent from "../../components/card";
-import FooterComponent from "../../components/footer";
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
-import InputComponent from "../../components/input";
 import MainComponent from "../../components/main";
+import ButtonComponent from "../../components/button";
+import FooterComponent from "../../components/footer";
 
 import styles from "./Recover.module.css";
 
-export default function Recover() {
-    const { register, handleSubmit } = useForm();
+type FormProps = {
+    email: string;
+}
 
-    const onSubmit = async (data: any) => {
+export default function Recover() {
+    const { register, handleSubmit } = useForm<FormProps>();
+
+    const onSubmit = async (data: FormProps) => {
         console.log(data);
     }
 
@@ -26,28 +28,24 @@ export default function Recover() {
                 <ButtonComponent text={"Sign Up"} type={"button"} style={"btn btn-secondary btn-small"} callback={() => Router.push("/register")} />
             </HeaderComponent>
 
-            <MainComponent hideFooter={false}>
-                <div className="wrapper">
-                    <div className={styles.content}>
-                        <CardComponent color={"primary"}>
-                            <div>
-                                <div className={styles.header}>
-                                    <h3>Recuperar conta</h3>
-                                    <h4>Recupere sua conta Smartvaga</h4>
-                                </div>
+            <MainComponent hideFooter={true}>
+                <div className={styles.container}>
 
-                                <div>
-                                    <form onSubmit={handleSubmit(onSubmit)}>
-                                        <InputComponent type={"email"} name={"email"} placeholder={"Seu e-mail"} register={register} required={true} />
+                    <h3>Recuperar Conta</h3>
 
-                                        <div>
-                                            <ButtonComponent type="submit" text="PRÓXIMO" style="btn btn-primary btn-large" />
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </CardComponent>
+                    <p>Recupere sua conta Smartvaga</p>
+
+                    <div className={styles.vectorImg}>
+                        {/* Image here */}
                     </div>
+
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <input {...register("email")} type="email" placeholder="Seu e-mail" required={true} />
+
+                        <div className={styles.btnGroup}>
+                            <ButtonComponent type="submit" text="PRÓXIMO" style="btn btn-primary btn-small" />
+                        </div>
+                    </form>
                 </div>
             </MainComponent >
 

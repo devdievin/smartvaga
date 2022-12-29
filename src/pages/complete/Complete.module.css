@@ -1,9 +1,10 @@
 .container {
+  position: relative;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   color: #f7f7f7;
+  padding: 1rem 1rem;
 }
 .container .wrapper {
   width: 25rem;
@@ -27,6 +28,11 @@
   text-align: center;
 }
 
+@media only screen and (min-width: 768px) {
+  .container {
+    align-items: center;
+  }
+}
 @media only screen and (min-width: 1400px) {
   .container .wrapper {
     width: 30rem;

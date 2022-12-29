@@ -1,23 +1,34 @@
 import { useRouter } from "next/router";
 import { useState } from "react"
 import { useForm } from "react-hook-form";
-import ButtonComponent from "../../components/button";
-import CardComponent from "../../components/card";
-import { CheckboxComponent } from "../../components/checkbox";
-import FooterComponent from "../../components/footer";
-import HeadComponent from "../../components/head";
-import HeaderComponent from "../../components/header";
-import InputComponent from "../../components/input";
-import LinkComponent from "../../components/link";
-import MainComponent from "../../components/main";
 import { api } from "../../services/api";
 
+import HeadComponent from "../../components/head";
+import HeaderComponent from "../../components/header";
+import MainComponent from "../../components/main";
+import CardComponent from "../../components/card";
+import InputComponent from "../../components/input";
+import ButtonComponent from "../../components/button";
+import { CheckboxComponent } from "../../components/checkbox";
+import LinkComponent from "../../components/link";
+import FooterComponent from "../../components/footer";
+import PreloadComponent from "../../components/preload";
+import ModalComponent from "../../components/modal";
+
 import styles from './Register.module.css';
+
+type ErrorProps = {
+    isError: boolean;
+    status: number;
+    message: string;
+}
 
 export default function Register() {
     const router = useRouter();
     const { register, handleSubmit } = useForm();
     const [check, setCheck] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<ErrorProps>({ isError: false, status: 500, message: "Internal server error" });
 
     const onSubmit = async (data: any) => {
         try {
@@ -25,11 +36,12 @@ export default function Register() {
 
             // console.log(name, email, password, cpassword);
 
-            if (!checkPasswords(password, cpassword)) return alert("As senhas não são iguais");
+            if (!checkPasswords(password, cpassword)) return setError({ isError: true, status: 409, message: "As senhas não são iguais" });
 
-            if (!check) return alert("É necessário aceitar os termos de uso");
+            if (!check) return setError({ isError: true, status: 400, message: "É necessário aceitar os termos de uso" });
 
-            console.log(data);
+            setLoading(true);
+
             const response = await api.post('/register', {
                 name: name,
                 email: email,
@@ -37,15 +49,17 @@ export default function Register() {
             });
 
             if (response.status === 201) {
-                router.push('/comecando');
+                return router.push('/comecando');
             }
+
+            return setError({ isError: true, status: response.status, message: response.data.message });
         } catch (err) {
-            if (err.response) {
-                alert(err.response.data.message);
-                console.error("Response Error:", err.response);
-            } else {
-                console.error("Error:", err.message);
-            }
+            setLoading(false);
+            setError({
+                isError: true,
+                status: err.response.status,
+                message: err.response.data.message
+            });
         }
     }
 
@@ -79,6 +93,9 @@ export default function Register() {
                             </div>
                         </form>
                     </CardComponent>
+                    {loading && <PreloadComponent />}
+
+                    {error.isError && <ModalComponent status={error.status} message={error.message} textBtn={"Entendi"} action={() => setError({ ...error, isError: false })} />}
                 </div>
             </MainComponent>
 
