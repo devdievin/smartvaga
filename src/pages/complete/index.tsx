@@ -7,7 +7,6 @@ import { api } from "../../services/api";
 import { getAPIClient } from "../../services/axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
-// import { ContentMenuComponent } from "../../components/content-menu";
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import InputComponent from "../../components/input";
@@ -15,10 +14,10 @@ import ButtonComponent from "../../components/button";
 import MainComponent from "../../components/main";
 import FooterComponent from "../../components/footer";
 import { ProfileComponent } from "../../components/profile";
-
-import styles from "./Complete.module.css";
 import LoadingComponent from "../../components/loading";
 import ModalComponent from "../../components/modal";
+
+import styles from "./Complete.module.css";
 
 type ErrorProps = {
     isError: boolean;
@@ -36,7 +35,10 @@ export default function Complete() {
 
     const onSubmit = async (data: any) => {
         try {
-            const updateData = { ...user, cpf: data.cpf, birth_date: data.birth_date };
+            let b_date = data.birth_date.replaceAll("/", "-");
+            b_date = b_date.split("-").reverse().join("-");
+
+            const updateData = { ...user, cpf: data.cpf, birth_date: b_date };
 
             setLoading(true);
 
@@ -45,7 +47,6 @@ export default function Complete() {
 
                 if (response.status === 200) return Router.push("/dashboard");
 
-                // console.log(response.data);
                 return setError({ isError: true, status: response.status, message: response.data.message });
             }
 
