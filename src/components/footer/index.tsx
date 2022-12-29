@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 
@@ -11,7 +12,7 @@ const FooterComponent = () => {
 
     return (
         <footer className={styles.footer}>
-            <span>© {currentYear}, Smartvaga - feito por Dievin</span>
+            <span>© {currentYear}, Smartvaga - feito por <Link href={`${process.env.NEXT_PUBLIC_PORTFOLIO_URL}`}>Dievin</Link></span>
         </footer>
     );
 }

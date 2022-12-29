@@ -112,10 +112,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 0.625rem;
 
     .modalForm {
         background-color: $charcoal;
-        width: 17.5rem;
+        max-width: 25rem;
+        width: 100%;
         padding: 1rem;
         border-radius: 0.25rem;
         animation: TopToDown 0.3s linear both;

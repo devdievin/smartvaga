@@ -10,5 +10,9 @@
 .footer span {
   font-weight: 400;
 }
+.footer a:hover {
+  color: #f6ae2d;
+  text-decoration: underline;
+}
 
 /*# sourceMappingURL=Footer.module.css.map */

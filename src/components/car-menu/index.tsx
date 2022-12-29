@@ -67,7 +67,7 @@ export const CarMenuComponent = () => {
                     }
 
                     <span className={styles.btnAdd} onClick={() => router.push("/car/add")}>
-                        <Image src={"/icons/icon-add.svg"} alt={"Add"} width={44} height={44} />
+                        <Image src={"/icons/icon-add.svg"} alt={"Add"} title={"Add carro"} width={44} height={44} />
                     </span>
                 </div>
                 {deleted && <QuestionerComponent message='Você tem certeza que quer excluir esse veículo?' negativeAction={negativeAction} positiveAction={positiveAction} />}

@@ -18,5 +18,11 @@
   position: absolute;
   bottom: 0;
 }
+.helpContainer .footer a {
+  color: #f6ae2d;
+}
+.helpContainer .footer a:hover {
+  text-decoration: underline;
+}
 
 /*# sourceMappingURL=Help.module.css.map */

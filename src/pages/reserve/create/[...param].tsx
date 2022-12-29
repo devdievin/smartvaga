@@ -136,15 +136,15 @@ export default function CreateReserve() {
                                     </div>
 
                                     <div className={styles.text2}>
-                                        <p>Está certo?</p>
+                                        <p>Confirmar reserva?</p>
                                     </div>
 
                                     <div className={styles.btnGroup}>
                                         <span onClick={() => router.push("/dashboard")} className={styles.btnCancel}>
-                                            <Image src={"/icons/icon-circle-error.svg"} alt={"Não"} width={50} height={50} />
+                                            <Image src={"/icons/icon-circle-error.svg"} alt={"Não"} title={"Não"} width={50} height={50} />
                                         </span>
                                         <button type="submit" className="btn btn-transparent">
-                                            <Image src={"/icons/icon-check-circle-outline.svg"} alt={"Sim"} width={50} height={50} />
+                                            <Image src={"/icons/icon-check-circle-outline.svg"} alt={"Sim"} title={"Sim"} width={50} height={50} />
                                         </button>
                                     </div>
                                 </form>
