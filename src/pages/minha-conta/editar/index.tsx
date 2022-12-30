@@ -23,6 +23,7 @@ export default function AccountEdit() {
     const router = useRouter();
     const [userData, setUserData] = useState<any>();
     const [cpf, setCpf] = useState("");
+    const [profileCompare, setProfileCompare] = useState<any>();
     const [submitted, setSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [responseResult, setResponseResult] = useState<ResponseResultProps>({ status: 200, message: "OK" });
@@ -34,6 +35,7 @@ export default function AccountEdit() {
                 // console.log(response.data);
                 setUserData(response.data);
                 setCpf(response.data.cpf);
+                setProfileCompare(response.data);
             })
             .catch(err => {
                 console.error(err)
@@ -53,10 +55,13 @@ export default function AccountEdit() {
 
     const onSubmit = async (data: any) => {
         try {
-            // console.log(data);
+            const { password, ...rest } = data;
+
+            const result = (password === profileCompare.password) ? rest : { ...rest, password };
+
             setIsLoading(true);
 
-            const response = await api.put(`/account/update/${userData.id}`, data);
+            const response = await api.put(`/account/update/${userData.id}`, result);
 
             setResponseResult({
                 status: response.status,
@@ -74,6 +79,12 @@ export default function AccountEdit() {
             });
             setIsLoading(false);
             setSubmitted(true);
+        }
+    }
+
+    const clearInputPassword = (e: any) => {
+        if (e.target.value === profileCompare.password) {
+            setUserData({...userData, password: ""});
         }
     }
 
@@ -103,7 +114,7 @@ export default function AccountEdit() {
                                             <InputComponent type={"text"} name={"cpf"} label={"Cpf:"} mask={"cpf"} state={[cpf, setCpf]} minLength={11} maxLength={11} register={register} required={true} />
                                         </div>
 
-                                        <InputComponent type={"password"} name={"password"} label={"Senha:"} value={userData.password} minLength={8} onChange={(e) => setUserData({ ...userData, password: e.target.value })} register={register} required={true} />
+                                        <InputComponent type={"password"} name={"password"} label={"Senha:"} value={userData.password} minLength={8} onChange={(e) => setUserData({ ...userData, password: e.target.value })} register={register} onClick={clearInputPassword} required={true} />
 
                                         <div className={styles.btnGroup}>
                                             <ButtonComponent type="submit" text="Salvar" style="btn btn-secondary btn-small w-100" />

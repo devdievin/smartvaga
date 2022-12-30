@@ -8,18 +8,26 @@
 }
 
 .brand {
-  color: #f7f7f7;
-  font-size: 1.125rem;
-  font-weight: 600;
+  width: 140px;
+  aspect-ratio: 241/44;
+  background-image: url("/logo.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
+@media only screen and (min-width: 768px) {
+  .brand {
+    width: 150px;
+  }
+}
 @media only screen and (min-width: 1400px) {
   .header {
     height: 90px;
     padding: 0.5rem 2rem;
   }
   .brand {
-    font-size: 1.25rem;
+    width: 150px;
   }
 }
 
