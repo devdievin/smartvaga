@@ -17,10 +17,11 @@ type InputProps = {
     // register: UseFormRegister<FieldValues>;
     register: UseFormRegister<any>;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick?: React.MouseEventHandler<HTMLInputElement>;
 }
 
-const InputComponent = ({ label, type, name, value, placeholder, minLength, maxLength, required, mask, state, register, onChange }: InputProps) => {
-    const [error, setError] = useState("");
+const InputComponent = ({ label, type, name, value, placeholder, minLength, maxLength, required, mask, state, register, onChange, onClick }: InputProps) => {
+    // const [error, setError] = useState("");
 
     const inputMask = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
         let data = e.target.value;
@@ -50,9 +51,9 @@ const InputComponent = ({ label, type, name, value, placeholder, minLength, maxL
             {(label) && <label>{label}</label>}
             {(state)
                 ?
-                <input {...register(name)} type={type} name={name} value={state[0]} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={(e) => { (mask) && inputMask(e, mask); onChange }} />
+                <input {...register(name)} type={type} name={name} value={state[0]} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={(e) => { (mask) && inputMask(e, mask); onChange }} onClick={onClick} />
                 :
-                <input {...register(name)} type={type} name={name} value={value} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={onChange} />
+                <input {...register(name)} type={type} name={name} value={value} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} onChange={onChange} onClick={onClick} />
             }
         </div>
     );

@@ -12,7 +12,7 @@ const FooterComponent = () => {
 
     return (
         <footer className={styles.footer}>
-            <span>© {currentYear}, Smartvaga - feito por <Link href={`${process.env.NEXT_PUBLIC_PORTFOLIO_URL}`}>Dievin</Link></span>
+            <span>© {currentYear}, SmartVaga - feito por <Link href={`${process.env.NEXT_PUBLIC_PORTFOLIO_URL}`} target={"_blank"}>Dievin</Link></span>
         </footer>
     );
 }

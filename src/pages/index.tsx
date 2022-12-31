@@ -18,7 +18,7 @@ export default function Home() {
 
       <MainComponent hideFooter={true}>
         <div className={styles.container}>
-          <h1>Smartvaga</h1>
+          <h1>SmartVaga</h1>
           <p>Uma forma simples e rápida de estacionar o seu carro.</p>
           <div className={styles.imageContainer}>
             <Image
