@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import styles from "./Checkbox.module.css";
 

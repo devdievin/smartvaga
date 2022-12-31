@@ -11,7 +11,7 @@ import styles from "./Starting.module.css";
 export default function Starting() {
     return (
         <div>
-            <HeadComponent title="Iniciando no Smartvaga" description="lorem ipsum" />
+            <HeadComponent title="Bem-vindo ao SmartVaga" description="Parabéns! Agora você faz parte do time dos que buscam segurança e rapidez para estacionar o carro." />
 
             <HeaderComponent logoLink="/">
                 <ButtonComponent text={"Login"} type={"button"} style={"btn btn-primary btn-small"} callback={() => Router.push("/login")} />

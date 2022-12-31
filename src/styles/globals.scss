@@ -154,9 +154,6 @@ $borderSize: 2px;
     border-radius: 0.25rem;
     padding: 0.5rem 0.25rem;
     margin: 0.5rem 0;
-    // -webkit-appearance: none;
-    // -moz-appearance: none;
-    // appearance: none;
 
     &:focus {
         outline: 2px solid $darkCharcoal;
@@ -210,8 +207,4 @@ $borderSize: 2px;
     .btn-large {
         padding: 1rem 2rem;
     }
-
-    // .btn-small {
-    //     padding: 0.75rem 0.875rem;
-    // }
 }

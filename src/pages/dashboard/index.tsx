@@ -1,7 +1,8 @@
 import { GetServerSideProps } from "next";
 import Image from "next/image";
-import React, { useContext, useEffect, useState } from "react";
+import Link from "next/link";
 import Router from "next/router";
+import React, { useContext, useEffect, useState } from "react";
 import { parseCookies } from 'nookies';
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAPIClient } from "../../services/axios";
@@ -17,7 +18,6 @@ import { ProfileComponent } from "../../components/profile";
 import LoadingComponent from "../../components/loading";
 
 import styles from './Dashboard.module.css';
-import Link from "next/link";
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
@@ -50,8 +50,6 @@ export default function Dashboard() {
                         setIsLoading(false)
                     }, 1 * 1000);
                 });
-
-            // console.log(WORKING_DAY);
         }
     }, [user]);
 
@@ -114,7 +112,7 @@ export default function Dashboard() {
 
     return (
         <>
-            <HeadComponent title="Dashboard" description="dashboard smartvaga" />
+            <HeadComponent title="Dashboard - SmartVaga" description="Painel de controle SmartVaga. Tenha acesso a suas reservas, carros e disponibilidades de vagas." />
 
             <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />

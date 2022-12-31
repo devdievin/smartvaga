@@ -22,7 +22,7 @@ export default function Recover() {
 
     return (
         <div>
-            <HeadComponent title={"Recuperar conta Smartvaga"} description={"Recupere sua conta Smartvaga"} />
+            <HeadComponent title={"Recuperar conta SmartVaga"} description={"Esqueceu sua senha? Recupere sua conta SmartVaga aqui."} />
 
             <HeaderComponent logoLink="/">
                 <ButtonComponent text={"Sign Up"} type={"button"} style={"btn btn-secondary btn-small"} callback={() => Router.push("/register")} />

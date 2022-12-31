@@ -36,7 +36,6 @@ export default function MyAccount() {
     useEffect(() => {
         api.get("/profile")
             .then(response => {
-                // console.log(response.data);
                 setUserData(response.data);
             })
             .catch(err => {
@@ -78,7 +77,7 @@ export default function MyAccount() {
 
     return (
         <div>
-            <HeadComponent title={"Minha Conta - Smartvaga"} description={"Confira e altere seus dados na Smartvaga."} />
+            <HeadComponent title={"Minha Conta - SmartVaga"} description={"Confira os dados da sua conta SmartVaga."} />
 
             <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />

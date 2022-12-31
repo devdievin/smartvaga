@@ -32,7 +32,6 @@ export default function AccountEdit() {
     useEffect(() => {
         api.get("/profile")
             .then(response => {
-                // console.log(response.data);
                 setUserData(response.data);
                 setCpf(response.data.cpf);
                 setProfileCompare(response.data);
@@ -90,7 +89,7 @@ export default function AccountEdit() {
 
     return (
         <div>
-            <HeadComponent title="Editar Conta" description="Edite os dados da sua conta Smartvaga" />
+            <HeadComponent title="Editar Conta - SmartVaga" description="Edite os dados da sua conta SmartVaga." />
 
             <HeaderComponent logoLink={"/dashboard"}>
                 <ProfileComponent />

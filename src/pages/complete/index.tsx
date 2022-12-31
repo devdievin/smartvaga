@@ -64,7 +64,7 @@ export default function Complete() {
 
     return (
         <div>
-            <HeadComponent title="complete" description="bla bla bla" />
+            <HeadComponent title="Complete seu cadastro - SmartVaga" description="Complete seu cadastro para começar a utilizar todos os serviços da plataforma com segurança." />
 
             <HeaderComponent logoLink="/">
                 <ProfileComponent />

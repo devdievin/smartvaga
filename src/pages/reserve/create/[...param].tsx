@@ -46,8 +46,6 @@ export default function CreateReserve() {
             api.get(`/cars/${user.id}`)
                 .then(response => {
                     setUserCars(response.data);
-
-                    // console.log(response.data.length);
                     
                     if (response.data.length === 0) {
                         setErrors({ isError: true, status: 404, message: "Você precisa ter pelo menos um veículo cadastrado para criar uma reserva!" });
@@ -83,8 +81,6 @@ export default function CreateReserve() {
         data.car = JSON.parse(data.car);
         data.vacancy = vacancy;
 
-        // console.log(data);
-
         setReserve(data);
         setSubmitted(true);
     };
@@ -108,7 +104,7 @@ export default function CreateReserve() {
 
     return (
         <div>
-            <HeadComponent title="Criar Reserva" description="teste" />
+            <HeadComponent title="Criar Reserva - SmartVaga" description="Faça agora sua reserva e tenha segurança e rapidez para estacionar seu carro. É simples e rápido!" />
 
             <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />

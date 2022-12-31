@@ -14,9 +14,9 @@ import LinkComponent from "../../components/link";
 import FooterComponent from "../../components/footer";
 import PreloadComponent from "../../components/preload";
 import ModalComponent from "../../components/modal";
+import Link from "next/link";
 
 import styles from './Register.module.css';
-import Link from "next/link";
 
 type ErrorProps = {
     isError: boolean;
@@ -34,8 +34,6 @@ export default function Register() {
     const onSubmit = async (data: any) => {
         try {
             const { name, email, password, cpassword } = data;
-
-            // console.log(name, email, password, cpassword);
 
             if (!checkPasswords(password, cpassword)) return setError({ isError: true, status: 409, message: "As senhas não são iguais" });
 
@@ -70,7 +68,7 @@ export default function Register() {
 
     return (
         <>
-            <HeadComponent title="Criar conta - Smartvaga" description="Crie sua conta e comece a facilitar seu dia-a-dia ao estacionar." />
+            <HeadComponent title="Criar conta - SmartVaga" description="Crie sua conta e comece a facilitar seu dia-a-dia ao estacionar." />
 
             <HeaderComponent logoLink="/">
                 <LinkComponent text='Login' style='btn btn-primary btn-small' url={"/login"} />

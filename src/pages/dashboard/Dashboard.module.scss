@@ -2,7 +2,7 @@
 @import "../../styles/partials/sizes";
 
 $gridColor: #4c4c4c;
-// $gridColor: #6b6b69;
+$borderColor: #767676;
 
 .datetimeHeader {
     display: flex;
@@ -16,7 +16,7 @@ $gridColor: #4c4c4c;
     font-size: 1rem;
     padding: 0.5rem;
     color: $softBlack;
-    border: 1px solid #767676;
+    border: 1px solid $borderColor;
     border-radius: 0.25rem;
 }
 
@@ -55,7 +55,6 @@ $gridColor: #4c4c4c;
                 cursor: pointer;
 
                 &:hover {
-                    // opacity: 0.6;
                     transform: scale(1.075);
                 }
             }
@@ -95,7 +94,6 @@ $gridColor: #4c4c4c;
             img {
                 width: 200px;
                 height: auto;
-                // height: 100px;
             }
         }
 

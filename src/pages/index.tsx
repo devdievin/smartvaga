@@ -10,7 +10,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
     <>
-      <HeadComponent title='Smartvaga' description='Encontre e reserve a vaga para seu carro rapidamente.' />
+      <HeadComponent title='SmartVaga - Página Inicial' description='Encontre e reserve a vaga de estacionamento para seu carro rapidamente.' />
 
       <HeaderComponent logoLink='/'>
         <LinkComponent text='Login' style='btn btn-primary btn-small' url={"/login"} />
