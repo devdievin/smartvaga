@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { parseCookies } from "nookies";
@@ -12,14 +13,12 @@ import HeaderComponent from "../../components/header";
 import MainComponent from "../../components/main";
 import MenuComponent from "../../components/menu";
 import { ProfileComponent } from "../../components/profile";
-// import { ContentMenuComponent } from "../../components/content-menu";
 import ButtonComponent from "../../components/button";
 import LoadingComponent from "../../components/loading";
 import ExpiredTagComponent from "../../components/expired-tag";
 import ModalComponent from "../../components/modal";
 
 import styles from "./ShowReserve.module.css";
-import Image from "next/image";
 
 export default function ShowReserve() {
     const router = useRouter();
@@ -49,7 +48,6 @@ export default function ShowReserve() {
     const handleDeleteReserve = async () => {
         try {
             const response = await api.delete(`/reserve/${id}`);
-            // console.log(response);
             if (response) {
                 setReserveResponseStatus(response.status);
                 setReserveResponseMessage(response.data.message);
@@ -64,7 +62,7 @@ export default function ShowReserve() {
 
     return (
         <div>
-            <HeadComponent title={"Informações da reserva - Smartvaga"} description={"Veja informações detalhadas sobre sua reserva Smartvaga."} />
+            <HeadComponent title={"Informações da reserva - SmartVaga"} description={"Veja informações detalhadas sobre sua reserva SmartVaga."} />
 
             <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />
@@ -100,7 +98,7 @@ export default function ShowReserve() {
                                 <div className={styles.btnGroup}>
                                     <ButtonComponent text={"EXCLUIR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} callback={handleDeleteReserve} />
                                 </div>
-                                {/* <ButtonComponent text={"VOLTAR"} type={"button"} style={"btn btn-outline-secondary btn-small w-100"} callback={() => router.push("/dashboard")} /> */}
+                                
                             </div>
                             {showModal && <ModalComponent status={reserveResponseStatus} message={reserveResponseMessage} textBtn={"Continuar"} action={() => { router.push("/dashboard"); }} />}
                         </div>

@@ -58,8 +58,6 @@ export function AuthProvider({ children }: any): JSX.Element {
 
         setUser(user);
 
-        // console.log(user);  
-
         if (user.cpf === null || user.birth_date === null) {
             return Router.push("/complete");
         }

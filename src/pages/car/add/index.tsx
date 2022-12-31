@@ -7,12 +7,11 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { api } from "../../../services/api";
 import { getAPIClient } from "../../../services/axios";
 
-import ButtonComponent from "../../../components/button";
-// import { ContentMenuComponent } from "../../../components/content-menu";
 import HeadComponent from "../../../components/head";
 import HeaderComponent from "../../../components/header";
-import InputComponent from "../../../components/input";
 import MainComponent from "../../../components/main";
+import InputComponent from "../../../components/input";
+import ButtonComponent from "../../../components/button";
 import MenuComponent from "../../../components/menu";
 import { ProfileComponent } from "../../../components/profile";
 import ModalComponent from "../../../components/modal";
@@ -47,7 +46,7 @@ export default function CarAdd() {
 
     return (
         <div>
-            <HeadComponent title="add car" description="lorem..." />
+            <HeadComponent title="Adicionar carro - SmartVaga" description="Adicione seu carro no SmartVaga, e tenha mais facilidade ao estacionar no dia-a-dia." />
 
             <HeaderComponent logoLink="/dashboard">
                 <ProfileComponent />

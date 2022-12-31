@@ -1,5 +1,5 @@
-import { Dispatch, HTMLInputTypeAttribute, SetStateAction, useState } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { Dispatch, HTMLInputTypeAttribute, SetStateAction } from "react";
+import { UseFormRegister } from "react-hook-form";
 
 import styles from './Input.module.css';
 
@@ -14,14 +14,12 @@ type InputProps = {
     required?: boolean;
     mask?: string;
     state?: [string, Dispatch<SetStateAction<string>>];
-    // register: UseFormRegister<FieldValues>;
     register: UseFormRegister<any>;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onClick?: React.MouseEventHandler<HTMLInputElement>;
 }
 
 const InputComponent = ({ label, type, name, value, placeholder, minLength, maxLength, required, mask, state, register, onChange, onClick }: InputProps) => {
-    // const [error, setError] = useState("");
 
     const inputMask = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
         let data = e.target.value;

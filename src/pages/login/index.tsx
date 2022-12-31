@@ -12,9 +12,9 @@ import InputComponent from "../../components/input";
 import LinkComponent from "../../components/link";
 import MainComponent from "../../components/main";
 import ModalComponent from "../../components/modal";
+import PreloadComponent from "../../components/preload";
 
 import styles from './Login.module.css';
-import PreloadComponent from "../../components/preload";
 
 type ErrorProps = {
     isError: boolean;
@@ -57,7 +57,7 @@ export default function Login() {
 
     return (
         <>
-            <HeadComponent title="Login - Smartvaga" description="Fazer o login para acessar o Smartvaga" />
+            <HeadComponent title="Login - SmartVaga" description="Faça o login para acessar a plataforma SmartVaga" />
 
             <HeaderComponent logoLink="/">
                 <LinkComponent text='Sign Up' style='btn btn-secondary btn-small' url={"/register"} />
