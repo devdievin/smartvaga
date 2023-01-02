@@ -112,5 +112,10 @@
     color: rgba(247, 247, 247, 0.3);
   }
 }
+@media only screen and (min-width: 1400px) {
+  .headerMenu {
+    margin-bottom: 2rem;
+  }
+}
 
 /*# sourceMappingURL=Menu.module.css.map */

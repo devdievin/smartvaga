@@ -88,7 +88,7 @@ export default function AccountEdit() {
     }
 
     return (
-        <div>
+        <div className="bg-dark">
             <HeadComponent title="Editar Conta - SmartVaga" description="Edite os dados da sua conta SmartVaga." />
 
             <HeaderComponent logoLink={"/dashboard"}>

@@ -1,3 +1,7 @@
+.form {
+  display: grid;
+}
+
 .termsOfUse a {
   color: #e7e7e7;
   text-decoration: underline;
@@ -12,6 +16,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (min-width: 1400px) {
+  .form {
+    row-gap: 0.625rem;
+  }
 }
 
 /*# sourceMappingURL=Register.module.css.map */

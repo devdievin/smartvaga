@@ -111,7 +111,7 @@ export default function Dashboard() {
     }
 
     return (
-        <>
+        <div className="bg-dark">
             <HeadComponent title="Dashboard - SmartVaga" description="Painel de controle SmartVaga. Tenha acesso a suas reservas, carros e disponibilidades de vagas." />
 
             <HeaderComponent logoLink="/dashboard">
@@ -146,7 +146,7 @@ export default function Dashboard() {
                 }
             </MainComponent>
 
-        </>
+        </div>
     );
 }
 

@@ -19,3 +19,13 @@
         height: calc(100% - $headerHeight);
     }
 }
+
+@media only screen and (min-width: 1400px) {
+    .contentMenu {
+        top: $headerHeightLg;
+        left: 300px;
+        width: calc(100% - 300px);
+        height: calc(100% - $headerHeightLg);
+        padding: 2rem 2rem;
+    }
+}

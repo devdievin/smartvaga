@@ -1,11 +1,6 @@
 @import "../../styles/partials/colors";
 @import "../../styles/partials/sizes";
 
-.main,
-.mainFooter {
-    // padding: 1rem;
-}
-
 .main {
     height: calc(100vh - $headerHeight);
 }
@@ -16,4 +11,14 @@
 
 .mainDark {
     background-color: $darkCharcoal;
+}
+
+@media only screen and (min-width: 1400px){
+    .main {
+        height: calc(100vh - $headerHeightLg);
+    }
+    
+    .mainFooter {
+        height: calc(100vh - ($headerHeightLg + $footerHeightLg));
+    }
 }

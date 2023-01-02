@@ -31,9 +31,8 @@
         color: $darkSkyBlue;
     }
 
-    .section1{
+    .section1 {
         margin-bottom: 2rem;
-
     }
 
     h3 {
@@ -60,6 +59,32 @@
     .wrapper {
         .btnGroup {
             width: 15rem; //240px
+        }
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .wrapper {
+        .headerMenu {
+            .title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .iconClose {
+            img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        h3 {
+            font-size: 1.375rem;
+        }
+
+        .reserveInfo {
+            font-size: 1.25rem;
+            line-height: 2rem;
         }
     }
 }

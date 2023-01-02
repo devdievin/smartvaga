@@ -15,4 +15,11 @@
   text-decoration: underline;
 }
 
+@media only screen and (min-width: 1400px) {
+  .footer {
+    font-size: 1rem;
+    height: 70px;
+  }
+}
+
 /*# sourceMappingURL=Footer.module.css.map */

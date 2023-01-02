@@ -120,7 +120,7 @@ $borderSize: 2px;
 }
 
 .btn-small {
-    padding: 0.5rem 0.625rem;
+    padding: 0.75rem 0.875rem;
 }
 
 .btn-fit {
@@ -174,7 +174,6 @@ $borderSize: 2px;
             grid-column: 1;
             grid-row: 1;
         }
-
     }
 
     .container {
@@ -194,17 +193,39 @@ $borderSize: 2px;
         font-size: 1.25rem;
     }
 
+    .btn-small {
+        padding: 0.625rem 1.5rem;
+    }
+
     .btn-large {
         padding: 1rem 2rem;
     }
 }
 
 @media only screen and (min-width: 1400px) {
+    .container {
+        height: calc(100vh - $headerHeightLg);
+        grid-column: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 2rem;
+    }
+
+    .wrapper {
+        max-width: 32rem;
+        margin: 0 auto;
+    }
+
     .btn {
         font-size: 1.5rem;
     }
 
-    .btn-large {
+    .btn-small {
         padding: 1rem 2rem;
+    }
+
+    .btn-large {
+        padding: 1rem 2.5rem;
     }
 }
