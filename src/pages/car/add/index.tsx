@@ -45,7 +45,7 @@ export default function CarAdd() {
     }
 
     return (
-        <div>
+        <div className="bg-dark">
             <HeadComponent title="Adicionar carro - SmartVaga" description="Adicione seu carro no SmartVaga, e tenha mais facilidade ao estacionar no dia-a-dia." />
 
             <HeaderComponent logoLink="/dashboard">

@@ -41,5 +41,18 @@
     grid-column: 2;
   }
 }
+@media only screen and (min-width: 1400px) {
+  .container {
+    margin: auto;
+    width: 800px;
+  }
+  .container .header {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .container .header h3 {
+    font-size: 1.5rem;
+  }
+}
 
 /*# sourceMappingURL=AccountEdit.module.css.map */

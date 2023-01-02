@@ -76,7 +76,7 @@ export default function MyAccount() {
     }
 
     return (
-        <div>
+        <div className="bg-dark">
             <HeadComponent title={"Minha Conta - SmartVaga"} description={"Confira os dados da sua conta SmartVaga."} />
 
             <HeaderComponent logoLink="/dashboard">

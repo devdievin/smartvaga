@@ -1,3 +1,7 @@
+.form {
+  display: grid;
+}
+
 .btnGroup {
   width: 100%;
   display: flex;
@@ -23,6 +27,12 @@
 @media only screen and (min-width: 601px) {
   .helpLink {
     margin: 1.25rem 0;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .inputGroup {
+    display: grid;
+    row-gap: 0.5rem;
   }
 }
 

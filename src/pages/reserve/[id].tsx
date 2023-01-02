@@ -61,7 +61,7 @@ export default function ShowReserve() {
     }
 
     return (
-        <div>
+        <div className="bg-dark">
             <HeadComponent title={"Informações da reserva - SmartVaga"} description={"Veja informações detalhadas sobre sua reserva SmartVaga."} />
 
             <HeaderComponent logoLink="/dashboard">
@@ -81,7 +81,7 @@ export default function ShowReserve() {
                                 </div>
 
                                 <div className={styles.section1}>
-                                    <h3><span className={styles.label}>Reserva:</span> # {reserve.id}</h3>
+                                    <h3><span className={styles.label}>ID da reserva:</span> {reserve.id}</h3>
                                     <ExpiredTagComponent date={reserve.date} exit_time={reserve.exit_time} />
                                 </div>
 

@@ -10,4 +10,13 @@
   background-color: #233642;
 }
 
+@media only screen and (min-width: 1400px) {
+  .main {
+    height: calc(100vh - 90px);
+  }
+  .mainFooter {
+    height: calc(100vh - 160px);
+  }
+}
+
 /*# sourceMappingURL=Main.module.css.map */

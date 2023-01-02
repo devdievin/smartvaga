@@ -1,5 +1,9 @@
 @import "../../styles/partials/colors";
 
+.form {
+    display: grid;
+}
+
 .btnGroup {
     width: 100%;
     display: flex;
@@ -32,4 +36,8 @@
 }
 
 @media only screen and (min-width: 1400px) {
+    .inputGroup{
+        display: grid;
+        row-gap: 0.5rem;
+    }
 }

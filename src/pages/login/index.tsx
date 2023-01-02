@@ -66,9 +66,11 @@ export default function Login() {
             <MainComponent hideFooter={false}>
                 <div className="wrapper">
                     <CardComponent title="Login" color="primary">
-                        <form onSubmit={handleSubmit(onSubmit, onError)} onKeyDown={(e) => checkKeyDown(e)}>
-                            <InputComponent register={register} placeholder="Seu e-mail" name="email" type={"email"} required={true} />
-                            <InputComponent register={register} placeholder="Sua senha" name="password" type={"password"} required={true} />
+                        <form onSubmit={handleSubmit(onSubmit, onError)} onKeyDown={(e) => checkKeyDown(e)} className={styles.form}>
+                            <div className={styles.inputGroup}>
+                                <InputComponent register={register} placeholder="Seu e-mail" name="email" type={"email"} required={true} />
+                                <InputComponent register={register} placeholder="Sua senha" name="password" type={"password"} required={true} />
+                            </div>
                             <div className={`${styles.helpLink} align-end`}>
                                 <Link href={"/recuperar"}>
                                     <span>Esqueceu sua senha?</span>

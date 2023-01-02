@@ -52,3 +52,19 @@
         }
     }
 }
+
+@media only screen and (min-width: 1400px) {
+    .container {
+        margin: auto;
+        width: 800px;
+
+        .header {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
