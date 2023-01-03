@@ -10,7 +10,7 @@ const HeadComponent = ({ title, description }: HeadProps) => {
         <Head>
             <title>{title}</title>
             <meta name="description" content={description} />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/favicon.png" type="image/png"/>
 
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
