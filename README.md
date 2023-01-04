@@ -26,3 +26,4 @@ Projeto com a finalidade de simular a consulta e locação de vagas de um estaci
 * Node js (Back-end)
 * Typeorm
 * Postgres
+* Sass
