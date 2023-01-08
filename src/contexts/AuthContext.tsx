@@ -16,6 +16,7 @@ type User = {
     cpf: string;
     birth_date: Date;
     cars: any[];
+    isAdmin: boolean;
 }
 
 type AuthContextType = {
@@ -28,7 +29,7 @@ type AuthContextType = {
 export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthProvider({ children }: any): JSX.Element {
-    const [user, setUser] = useState<User | null>(null)
+    const [user, setUser] = useState<User | null>(null);
 
     const isAuthenticated = !!user;
 
@@ -60,6 +61,10 @@ export function AuthProvider({ children }: any): JSX.Element {
 
         if (user.cpf === null || user.birth_date === null) {
             return Router.push("/complete");
+        }
+
+        if (user.isAdmin) {
+            return Router.push("/admin");
         }
 
         return Router.push("/dashboard");

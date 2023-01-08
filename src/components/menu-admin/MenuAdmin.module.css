@@ -1,0 +1,58 @@
+.container {
+  position: relative;
+  background-color: #2f4858;
+  height: 100%;
+  border-top: 0.25rem solid #233642;
+}
+.container .header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: rgba(247, 247, 247, 0.55);
+  background-color: rgba(35, 54, 66, 0.45);
+  border-bottom: 0.125rem solid rgba(247, 247, 247, 0.1);
+  padding: 0.75rem;
+}
+.container .menuLink {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.125rem;
+  color: #f7f7f7;
+  padding: 1.25rem 0.75rem;
+  border-bottom: 0.125rem solid rgba(247, 247, 247, 0.1);
+  transition: 0.25s;
+  cursor: not-allowed;
+}
+.container .menuLink:hover {
+  background-color: #233642;
+  color: #f6ae2d;
+}
+.container .menuLink:hover img {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
+.container .menuLink img {
+  margin-right: 0.5rem;
+}
+.container .menuLinkActive {
+  border-right: 0.125rem solid #f6ae2d;
+  background-color: #233642;
+  color: #f6ae2d;
+}
+.container .menuLinkActive img {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
+.container .appVersion {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem;
+  font-size: 0.875rem;
+  color: rgba(247, 247, 247, 0.35);
+}
+
+/*# sourceMappingURL=MenuAdmin.module.css.map */
