@@ -7,7 +7,7 @@ import { parseCookies } from 'nookies';
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAPIClient } from "../../services/axios";
 import { api } from "../../services/api";
-import { setTimeRange, timeRangeNow, TIME_RANGE, WORKING_DAY } from "../../utils/time";
+import { getTimeIndex, timeRangeNow, TIMES_OF_DAY, WORKING_DAY } from "../../utils/time";
 
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
@@ -18,15 +18,63 @@ import { ProfileComponent } from "../../components/profile";
 import LoadingComponent from "../../components/loading";
 
 import styles from './Dashboard.module.css';
+import { log } from "console";
+
+type ParkingProps = {
+    open: string;
+    close: string;
+}
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const [userCars, setUserCars] = useState<any[]>([]);
-    const [vacancies, setVacancies] = useState<any[]>([]);
-    const [reserveDate, setReserveDate] = useState("");
-    const [reserveTime, setReserveTime] = useState(timeRangeNow(TIME_RANGE)[0]);
+    const [parking, setParking] = useState<ParkingProps | null>(null);
+    const [workTime, setWorkTime] = useState<string[] | null>(null);
 
+    const [vacancies, setVacancies] = useState<any[]>([]);
+    const [reserveDate, setReserveDate] = useState<string | null>(null);
+    const [reserveTime, setReserveTime] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!parking) {
+            api.get("/parking/info")
+                .then(response => {
+                    setParking(
+                        {
+                            open: response.data.opening_time,
+                            close: response.data.closing_time
+                        }
+                    );
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        }
+
+        if (parking && !workTime) {
+            setWorkTime(TIMES_OF_DAY.slice(
+                getTimeIndex(parking.open),
+                getTimeIndex(parking.close) + 1
+            ));
+        }
+    }, [parking, workTime]);
+
+    
+    useEffect(() => {
+        if (!reserveTime) {
+            if (workTime && reserveDate) {
+                setReserveTime(timeRangeNow(reserveDate, workTime)[0]);
+            }
+        }
+    }, [reserveDate, reserveTime, workTime]);
+    
+    useEffect(() => {
+        if (!reserveDate) {
+            setReserveDate(WORKING_DAY);
+        }
+    }, [reserveDate]);
+    
     useEffect(() => {
         if (user) {
             api.get(`/cars/${user.id}`)
@@ -37,7 +85,7 @@ export default function Dashboard() {
                     console.error(err)
                 });
 
-            setReserveDate(WORKING_DAY);
+            // setReserveDate(WORKING_DAY);
 
             api.get('/vacancies')
                 .then(response => {
@@ -122,13 +170,14 @@ export default function Dashboard() {
                 {isLoading ? <LoadingComponent /> :
                     <div className={styles.mainContainerDashboard}>
                         <div className="container">
+                            {/* <pre>{workTime}</pre> */}
                             <div className={styles.datetimeHeader}>
-                                <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
-                                <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
+                                {reserveDate && <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />}
+                                {(workTime && reserveDate && reserveTime) && <TimePickerComponent name="hora" data={timeRangeNow(reserveDate, workTime)} value={reserveTime} onChange={selectHour} />}
                             </div>
 
                             <div className={styles.vacanciesGrid}>
-                                {searchReserves(reserveDate, reserveTime)}
+                                {(reserveDate && reserveTime) && searchReserves(reserveDate, reserveTime)}
                             </div>
                         </div>
                         <div className={styles.sideLeft}>
@@ -136,10 +185,10 @@ export default function Dashboard() {
                         </div>
                         <div className={styles.sideRight}>
                             <div>
-                                <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />
+                                {reserveDate && <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />}
                             </div>
                             <div>
-                                <TimePickerComponent name="hora" data={setTimeRange(reserveDate, TIME_RANGE)} value={reserveTime} onChange={selectHour} />
+                                {workTime && reserveDate && reserveTime && <TimePickerComponent name="hora" data={timeRangeNow(reserveDate, workTime)} value={reserveTime} onChange={selectHour} />}
                             </div>
                         </div>
                     </div>
