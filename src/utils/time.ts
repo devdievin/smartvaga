@@ -3,7 +3,6 @@ import "moment/locale/pt-br";
 import { formatTimeZero } from "./format";
 
 export const TODAY = moment().locale("pt-br").format('YYYY-MM-DD');
-export var WORKING_DAY = moment().locale("pt-br").format('YYYY-MM-DD');
 
 export const TIMES_OF_DAY = [
     "00:00:00", "01:00:00", "02:00:00", "03:00:00",
@@ -30,36 +29,26 @@ export const timeNow = () => {
 
 export const timeRangeNow = (reserveDate: string, range: string[]) => {
     if (reserveDate === TODAY) {
+
         if (timeNow() < range[0]) {
-            console.log("MENOR");
-            return range;
+            // console.log("MENOR");
+            return { day: 0, hours: range };
         }
 
         const index = range.indexOf(timeNow());
 
         if (index === -1 || index === (range.length - 1)) {
-            // Colocar o WORKING_DAY direto no dashboard e manipular se o worktime for [] vazio
-            WORKING_DAY = moment().locale("pt-br").add(1, "day").format('YYYY-MM-DD');
-            console.log("MAIOR");
-
-            return range;
+            // console.log("MAIOR");
+            return { day: 1, hours: range };
         }
 
-        console.log("DENTRO");
-        return range.slice((index + 1), range.length);
+        // console.log("DENTRO");
+
+        return { day: 0, hours: range.slice((index + 1), range.length) };
     }
 
-    return range;
+    return { day: 0, hours: range };
 }
-
-// # OBS: ESSA FUNÇÃO É DISPENSÁVEL, TENHO QUE REMOVÊ-LA
-// export const setTimeRange = (reserveDate: string, range: string[]) => {
-//     if (reserveDate === TODAY) {
-//         return timeRangeNow(range);
-//     }
-
-//     return range;
-// }
 
 export const getTimeIndex = (value: string) => {
     return TIMES_OF_DAY.indexOf(value);

@@ -7,7 +7,9 @@ import { parseCookies } from 'nookies';
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAPIClient } from "../../services/axios";
 import { api } from "../../services/api";
-import { getTimeIndex, timeRangeNow, TIMES_OF_DAY, WORKING_DAY } from "../../utils/time";
+import { getTimeIndex, timeRangeNow, TIMES_OF_DAY } from "../../utils/time";
+import moment from "moment";
+import "moment/locale/pt-br";
 
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
@@ -18,7 +20,6 @@ import { ProfileComponent } from "../../components/profile";
 import LoadingComponent from "../../components/loading";
 
 import styles from './Dashboard.module.css';
-import { log } from "console";
 
 type ParkingProps = {
     open: string;
@@ -28,10 +29,11 @@ type ParkingProps = {
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
-    const [userCars, setUserCars] = useState<any[]>([]);
     const [parking, setParking] = useState<ParkingProps | null>(null);
     const [workTime, setWorkTime] = useState<string[] | null>(null);
+    const [workDay, setWorkDay] = useState<string | null>(null);
 
+    const [userCars, setUserCars] = useState<any[]>([]);
     const [vacancies, setVacancies] = useState<any[]>([]);
     const [reserveDate, setReserveDate] = useState<string | null>(null);
     const [reserveTime, setReserveTime] = useState<string | null>(null);
@@ -60,21 +62,34 @@ export default function Dashboard() {
         }
     }, [parking, workTime]);
 
-    
+
     useEffect(() => {
+        if (!workDay) {
+            setWorkDay(moment().locale("pt-br").format('YYYY-MM-DD'));
+            // console.log("DAY add");
+        }
+
+        if (!reserveDate) {
+            setReserveDate(workDay);
+            // console.log("ReserveDate add");
+        }
+
         if (!reserveTime) {
             if (workTime && reserveDate) {
-                setReserveTime(timeRangeNow(reserveDate, workTime)[0]);
+                const data = timeRangeNow(reserveDate, workTime);
+                // console.log(data, workDay);
+                if (data.day > 0) {
+                    const nextDay = moment().locale("pt-br").add(data.day, "day").format('YYYY-MM-DD');
+                    setWorkDay(nextDay);
+                    setReserveDate(nextDay);
+                } else {
+                    setReserveDate(workDay);
+                }
+                setReserveTime(data.hours[0]);
             }
         }
-    }, [reserveDate, reserveTime, workTime]);
-    
-    useEffect(() => {
-        if (!reserveDate) {
-            setReserveDate(WORKING_DAY);
-        }
-    }, [reserveDate]);
-    
+    }, [reserveDate, reserveTime, workDay, workTime]);
+
     useEffect(() => {
         if (user) {
             api.get(`/cars/${user.id}`)
@@ -84,8 +99,6 @@ export default function Dashboard() {
                 .catch(err => {
                     console.error(err)
                 });
-
-            // setReserveDate(WORKING_DAY);
 
             api.get('/vacancies')
                 .then(response => {
@@ -115,9 +128,9 @@ export default function Dashboard() {
         let carIcon, carIconFocus;
 
         return vacancies.map((vacancy, index) => {
-            let reserves: any[] = vacancy.reserves;
+            let reserves: any[] = vacancy.reserves;            
 
-            reserve = reserves.find(reserve => reserve.date === reserveDate && reserve.entry_time === `${entry_time}:00`);
+            reserve = reserves.find(reserve => reserve.date === reserveDate && reserve.entry_time === entry_time);
 
             { carIcon = (index % 2 === 1) ? "/images/car-default-right.svg" : "/images/car-default-left.svg" }
             { carIconFocus = (index % 2 === 1) ? "/images/car-focus-right.svg" : "/images/car-focus-left.svg" }
@@ -146,7 +159,7 @@ export default function Dashboard() {
 
         const result = userCars.find(car => car.id === id);
 
-        console.log(result);
+        // console.log(result);
 
         if (result) {
             return <Link href={`/reserve/${reserveId}`}><Image src={myCarIcon} alt={"meu carro"} title={`${result.brand} ${result.name} ${result.color}`} width={140} height={70} /></Link>
@@ -172,8 +185,8 @@ export default function Dashboard() {
                         <div className="container">
                             {/* <pre>{workTime}</pre> */}
                             <div className={styles.datetimeHeader}>
-                                {reserveDate && <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />}
-                                {(workTime && reserveDate && reserveTime) && <TimePickerComponent name="hora" data={timeRangeNow(reserveDate, workTime)} value={reserveTime} onChange={selectHour} />}
+                                {workDay && reserveDate && <input type="date" className={styles.dateInput} value={reserveDate} min={workDay} onChange={selectDate} />}
+                                {(workTime && reserveDate && reserveTime) && <TimePickerComponent name="hora" data={timeRangeNow(reserveDate, workTime).hours} value={reserveTime} onChange={selectHour} />}
                             </div>
 
                             <div className={styles.vacanciesGrid}>
@@ -185,10 +198,10 @@ export default function Dashboard() {
                         </div>
                         <div className={styles.sideRight}>
                             <div>
-                                {reserveDate && <input type="date" className={styles.dateInput} value={reserveDate} min={WORKING_DAY} onChange={selectDate} />}
+                                {workDay && reserveDate && <input type="date" className={styles.dateInput} value={reserveDate} min={workDay} onChange={selectDate} />}
                             </div>
                             <div>
-                                {workTime && reserveDate && reserveTime && <TimePickerComponent name="hora" data={timeRangeNow(reserveDate, workTime)} value={reserveTime} onChange={selectHour} />}
+                                {workTime && reserveDate && reserveTime && <TimePickerComponent name="hora" data={timeRangeNow(reserveDate, workTime).hours} value={reserveTime} onChange={selectHour} />}
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,6 @@
   padding: 1.25rem 0.75rem;
   border-bottom: 0.125rem solid rgba(247, 247, 247, 0.1);
   transition: 0.25s;
-  cursor: not-allowed;
 }
 .container .menuLink:hover {
   background-color: #233642;
@@ -42,6 +41,9 @@
 }
 .container .menuLinkActive img {
   filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
+}
+.container .menuLinkDisable {
+  cursor: not-allowed;
 }
 .container .appVersion {
   position: absolute;

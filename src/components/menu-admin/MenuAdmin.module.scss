@@ -27,7 +27,6 @@
         padding: 1.25rem 0.75rem;
         border-bottom: 0.125rem solid rgba($color: $softWhite, $alpha: 0.1);
         transition: 0.25s;
-        cursor: not-allowed;
 
         &:hover {
             background-color: $darkCharcoal;
@@ -51,7 +50,11 @@
         }
     }
 
-    .appVersion{
+    .menuLinkDisable {
+        cursor: not-allowed;
+    }
+
+    .appVersion {
         position: absolute;
         bottom: 0;
         width: 100%;

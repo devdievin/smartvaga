@@ -37,16 +37,6 @@ export default function MenuAdminComponent() {
         }
     }, [router.pathname]);
 
-    // const menuSelected = (menuName: string) => {
-    //     switch (menuName) {
-    //         case "vacancies":
-    //             setLink1([...link1, `${styles.menuLinkActive}`]);
-
-    //         default:
-    //             break;
-    //     }
-    // }
-
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -54,15 +44,15 @@ export default function MenuAdminComponent() {
             </div>
 
             <div>
-                <Link href={"/admin"} className={`${link1}`} >
+                <Link href={"/admin"} className={`${link1} ${styles.menuLinkDisable}`} >
                     <Image src={"/icons/icon-user.svg"} alt={"reservas"} width={26} height={26} />
                     <span>Lista de usuários</span>
                 </Link>
-                <Link href={"/admin"} className={`${link2}`}>
+                <Link href={"/admin"} className={`${link2} ${styles.menuLinkDisable}`}>
                     <Image src={"/icons/icon-reports.svg"} alt={"reservas"} width={26} height={26} />
                     <span>Relatórios</span>
                 </Link>
-                <Link href={"/admin"} className={`${link3}`}>
+                <Link href={"/admin/configuracoes"} className={`${link3}`}>
                     <Image src={"/icons/icon-settings-account.svg"} alt={"configurações"} width={26} height={26} />
                     <span>Configurações</span>
                 </Link>

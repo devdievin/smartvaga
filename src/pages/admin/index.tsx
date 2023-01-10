@@ -5,25 +5,30 @@ import { useForm } from "react-hook-form";
 import { getAPIClient } from "../../services/axios";
 import { api } from "../../services/api";
 import { useRouter } from "next/router";
+import { formatTimeZero } from "../../utils/format";
 
 import HeadComponent from "../../components/head";
 import HeaderComponent from "../../components/header";
 import { ProfileComponent } from "../../components/profile";
 import MainComponent from "../../components/main";
-import MenuComponent from "../../components/menu";
 import InputComponent from "../../components/input";
 import ButtonComponent from "../../components/button";
 import LoadingComponent from "../../components/loading";
 import ModalComponent from "../../components/modal";
+import MenuAdminComponent from "../../components/menu-admin";
 
 import styles from "./Admin.module.css";
-import MenuAdminComponent from "../../components/menu-admin";
 
 type SubmittedProps = {
     isSubmitted: boolean;
     status: number;
     message: string;
     action: () => void;
+}
+
+type WorkTimeProps = {
+    open: string;
+    close: string;
 }
 
 export default function Admin() {
@@ -33,9 +38,27 @@ export default function Admin() {
     const [cars, setCars] = useState([]);
     const [num, setNum] = useState("");
     const [reserves, setReserves] = useState([]);
+    const [workTime, setWorkTime] = useState<WorkTimeProps | null>(null);
     const [submitted, setSubmitted] = useState<SubmittedProps>({ isSubmitted: false, status: 200, message: "OK", action: () => { } });
     const router = useRouter();
     const { register, handleSubmit } = useForm();
+
+    useEffect(() => {
+        if (!workTime) {
+            console.log("Dados estacionamento");
+
+            api.get("/parking/info")
+                .then(response => {
+                    setWorkTime({
+                        open: response.data.opening_time,
+                        close: response.data.closing_time
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        }
+    }, [workTime]);
 
     useEffect(() => {
         api.get("/vacancies")
@@ -147,6 +170,10 @@ export default function Admin() {
                                     </div>
                                 </section>
 
+                                <section className={styles.section3}>
+                                    {workTime && <p>Horário de estacionamento das <strong>{formatTimeZero(workTime.open)}</strong>h às <strong>{formatTimeZero(workTime.close)}</strong>h</p>}
+                                </section>
+
                                 {submitted.isSubmitted &&
                                     <ModalComponent status={submitted.status} message={submitted.message} textBtn={"Entendi"} action={submitted.action} />
                                 }
@@ -155,7 +182,6 @@ export default function Admin() {
                     </div>
                     <div className={`menu-left`}>
                         <MenuAdminComponent />
-                        {/* <MenuComponent /> */}
                     </div>
                 </div>
             </MainComponent>
