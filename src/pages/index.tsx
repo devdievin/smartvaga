@@ -1,13 +1,15 @@
 import Image from 'next/image'
-import FooterComponent from '../components/footer'
+
 import HeadComponent from '../components/head'
 import HeaderComponent from '../components/header'
-import LinkComponent from '../components/link'
 import MainComponent from '../components/main'
+import LinkComponent from '../components/link'
+import FooterComponent from '../components/footer'
 
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
   return (
     <>
       <HeadComponent title='SmartVaga - Página Inicial' description='Encontre e reserve a vaga de estacionamento para seu carro rapidamente.' />

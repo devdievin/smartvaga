@@ -28,12 +28,14 @@ export const ProfileComponent = () => {
                     <h4>{user?.email ? user.email : "user@email.com"}</h4>
                 </div>
                 <ul>
-                    <li onClick={() => router.push("/minha-conta")}>
-                        <div className={styles.btn}>
-                            <Image src={"/icons/icon-settings-account.svg"} alt={"minha conta"} width={16} height={16} />
-                            <span>Minha conta</span>
-                        </div>
-                    </li>
+                    {!user?.isAdmin &&
+                        <li onClick={() => router.push("/minha-conta")}>
+                            <div className={styles.btn}>
+                                <Image src={"/icons/icon-settings-account.svg"} alt={"minha conta"} width={16} height={16} />
+                                <span>Minha conta</span>
+                            </div>
+                        </li>
+                    }
                     <li onClick={logout}>
                         <div className={styles.btn} >
                             <Image src={"/icons/icon-turn-off.svg"} alt={"sair"} width={16} height={16} />

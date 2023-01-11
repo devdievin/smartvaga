@@ -102,13 +102,16 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        border-bottom: 1px solid $darkCharcoal;
-        font-size: 1.25rem;
+        font-size: 1.125rem;
         color: $softWhite;
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 0.75rem;
+        border-bottom: 0.125rem solid rgba($color: $softWhite, $alpha: 0.1);
+        transition: background-color 0.25s;
 
         &:hover {
-            .labelBtn {
+            background-color: $darkCharcoal;
+            color: $honeyYellow;
+            img {
                 filter: $filterYellowColor;
             }
         }
@@ -116,7 +119,7 @@
         img {
             width: 1.75rem; //28px
             height: 1.75rem;
-            margin-right: 0.675rem;
+            margin-right: 0.5rem;
         }
 
         .labelBtn {
@@ -126,7 +129,7 @@
 
     .active {
         background-color: $darkCharcoal;
-        border-right: 2px solid $honeyYellow;
+        border-right: 0.125rem solid $honeyYellow;
 
         img,
         .labelBtn {

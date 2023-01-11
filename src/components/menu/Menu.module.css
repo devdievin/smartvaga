@@ -77,25 +77,30 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: 1px solid #233642;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: #f7f7f7;
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 0.75rem;
+    border-bottom: 0.125rem solid rgba(247, 247, 247, 0.1);
+    transition: background-color 0.25s;
   }
-  .iconLink:hover .labelBtn {
+  .iconLink:hover {
+    background-color: #233642;
+    color: #f6ae2d;
+  }
+  .iconLink:hover img {
     filter: brightness(0) saturate(100%) invert(86%) sepia(12%) saturate(7163%) hue-rotate(336deg) brightness(101%) contrast(93%);
   }
   .iconLink img {
     width: 1.75rem;
     height: 1.75rem;
-    margin-right: 0.675rem;
+    margin-right: 0.5rem;
   }
   .iconLink .labelBtn {
     display: block;
   }
   .active {
     background-color: #233642;
-    border-right: 2px solid #f6ae2d;
+    border-right: 0.125rem solid #f6ae2d;
   }
   .active img,
 .active .labelBtn {

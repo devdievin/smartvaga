@@ -62,6 +62,12 @@ $borderColor: #767676;
     }
 }
 
+.workingInfo {
+    color: rgba($color: $softWhite ,$alpha: 0.5);
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
 .sideRight {
     display: none;
 }
