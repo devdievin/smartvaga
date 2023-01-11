@@ -170,10 +170,11 @@ a {
     grid-row: 1;
   }
   .container {
-    height: calc(100vh - 68px);
+    height: 100%;
     grid-column: 2;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
   }
   .wrapper {

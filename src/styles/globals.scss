@@ -177,10 +177,12 @@ $borderSize: 2px;
     }
 
     .container {
-        height: calc(100vh - $headerHeight);
+        // height: calc(100vh - $headerHeight);
+        height: 100%;
         grid-column: 2;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: space-around;
         align-items: center;
     }
 

@@ -50,7 +50,7 @@ const InputComponent = ({ label, type, name, value, placeholder, minLength, maxL
             {(label) && <label>{label}</label>}
             {(state)
                 ?
-                <input {...register(name)} type={type} name={name} value={state[0]} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} disabled={disabled} onChange={(e) => { (mask) && inputMask(e, mask); state[1](e.target.value); onChange }} onClick={onClick} />
+                <input {...register(name)} type={type} name={name} value={state[0]} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} disabled={disabled} onChange={(e) => { (mask) && inputMask(e, mask); onChange }} onClick={onClick} />
                 :
                 <input {...register(name)} type={type} name={name} value={value} placeholder={placeholder} minLength={minLength} maxLength={maxLength} required={required} disabled={disabled} onChange={onChange} onClick={onClick} />
             }

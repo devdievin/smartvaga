@@ -151,7 +151,7 @@ export default function Admin() {
                                             <p>Cadastrar Nova Vaga</p>
                                         </div>
                                         <form onSubmit={handleSubmit(onSubmit)}>
-                                            <InputComponent type={"text"} name="num" label="Nº da vaga:" placeholder="Ex.: 4" state={[num, setNum]} register={register} required={true} />
+                                            <InputComponent type={"text"} name="num" label="Nº da vaga:" placeholder="Ex.: 4" register={register} required={true} />
                                             <InputComponent type={"text"} name="price" label="Preço por hora da vaga:" placeholder="Ex.: R$ 5,00" register={register} disabled={true} />
 
                                             <ButtonComponent type="submit" text="Salvar" style="btn btn-primary btn-large btn-full" />

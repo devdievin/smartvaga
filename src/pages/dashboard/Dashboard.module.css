@@ -51,6 +51,12 @@
   transform: scale(1.075);
 }
 
+.workingInfo {
+  color: rgba(247, 247, 247, 0.5);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
 .sideRight {
   display: none;
 }

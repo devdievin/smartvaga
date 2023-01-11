@@ -20,6 +20,7 @@ import { ProfileComponent } from "../../components/profile";
 import LoadingComponent from "../../components/loading";
 
 import styles from './Dashboard.module.css';
+import { formatTimeZero } from "../../utils/format";
 
 type ParkingProps = {
     open: string;
@@ -128,7 +129,7 @@ export default function Dashboard() {
         let carIcon, carIconFocus;
 
         return vacancies.map((vacancy, index) => {
-            let reserves: any[] = vacancy.reserves;            
+            let reserves: any[] = vacancy.reserves;
 
             reserve = reserves.find(reserve => reserve.date === reserveDate && reserve.entry_time === entry_time);
 
@@ -184,6 +185,7 @@ export default function Dashboard() {
                     <div className={styles.mainContainerDashboard}>
                         <div className="container">
                             {/* <pre>{workTime}</pre> */}
+
                             <div className={styles.datetimeHeader}>
                                 {workDay && reserveDate && <input type="date" className={styles.dateInput} value={reserveDate} min={workDay} onChange={selectDate} />}
                                 {(workTime && reserveDate && reserveTime) && <TimePickerComponent name="hora" data={timeRangeNow(reserveDate, workTime).hours} value={reserveTime} onChange={selectHour} />}
@@ -192,6 +194,8 @@ export default function Dashboard() {
                             <div className={styles.vacanciesGrid}>
                                 {(reserveDate && reserveTime) && searchReserves(reserveDate, reserveTime)}
                             </div>
+
+                            {parking && <div className={styles.workingInfo}>Estacionamento aberto das <strong>{formatTimeZero(parking.open)}</strong> às <strong>{formatTimeZero(parking.close)}</strong></div>}
                         </div>
                         <div className={styles.sideLeft}>
                             <MenuComponent />
