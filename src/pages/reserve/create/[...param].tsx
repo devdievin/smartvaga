@@ -20,6 +20,7 @@ import { PaymentComponent } from "../../../components/payment";
 import ModalComponent from "../../../components/modal";
 
 import styles from "./CreateReserve.module.css";
+import { formatTimeZero } from "../../../utils/format";
 
 type ErrorProps = {
     isError: boolean;
@@ -117,7 +118,7 @@ export default function CreateReserve() {
                             <div className={styles.wrapper}>
                                 <h3>Criar uma reserva</h3>
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <p className={styles.text1}>Você está reservando a vaga {param![0]} para o dia <strong>{moment(param![1]).format("DD/MM/YYYY")}</strong> das <strong>{param![2]}</strong> às <strong>{exit_time}</strong>.</p>
+                                    <p className={styles.text1}>Você está reservando a vaga {param![0]} para o dia <strong>{moment(param![1]).format("DD/MM/YYYY")}</strong> das <strong>{formatTimeZero(param![2])}</strong> às <strong>{exit_time}</strong>.</p>
 
                                     <div className={styles.selectCar}>
                                         <label>VEÍCULO:</label>
